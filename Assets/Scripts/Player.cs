@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     
+
     private PlayerInput _input;
     private Rigidbody2D _rb;
     private Animator _an;
@@ -29,11 +30,11 @@ public class Player : MonoBehaviour
     void Update()
     {
         moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
-        if (_input.currentControlScheme == "Gamepad") aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
+        if (/*_input.currentControlScheme == "Gamepad"*/ true) aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
         else  {
             
         }
-        Debug.Log(aimDir);
+        // Debug.Log(aimDir);
         if (_cco) {
             _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
         }
@@ -44,5 +45,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         _rb.velocity = Vector2.ClampMagnitude(moveDir, 1) * baseSpeed;
+    }
+
+    void OnPrimaryAttack() {
+        Debug.Log("Primary attack");
     }
 }
