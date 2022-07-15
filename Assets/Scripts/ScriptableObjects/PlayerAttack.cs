@@ -27,6 +27,10 @@ public class PlayerAttack {
     public float AttackDuration {
         get { return attackDuration; }
     }
+    [SerializeField] private float attackCooldown;
+    public float AttackCooldown {
+        get { return attackCooldown; }
+    }
     [SerializeField] private float comboTimeLimit;
     public float ComboTimeLimit {
         get { return comboTimeLimit; }

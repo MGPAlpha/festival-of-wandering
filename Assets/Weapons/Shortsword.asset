@@ -20,5 +20,14 @@ MonoBehaviour:
     colliderCenter: {x: 0, y: 0}
     colliderSize: {x: 0.6666667, y: 0.20833333}
     attackStartTime: 0
-    attackDuration: 1
+    attackDuration: 0.5
+    attackCooldown: 0.2
+    comboTimeLimit: 0.4
+  - animationClip: {fileID: 7400000, guid: b782f31488921848db25be37573723f9, type: 2}
+    pivotOffset: {x: 0, y: 0.5}
+    colliderCenter: {x: 0, y: 0}
+    colliderSize: {x: 0.6666667, y: 0.20833333}
+    attackStartTime: 0
+    attackDuration: 0.2
+    attackCooldown: 0.2
     comboTimeLimit: 0
