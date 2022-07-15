@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5024c74f7c020ac5bdceb383647f851, type: 3}
-  m_Name: Shortsword
+  m_Name: Longsword
   m_EditorClassIdentifier: 
-  weaponName: Shortsword
+  weaponName: Longsword
   isHeavy: 0
   attacks:
   - animationClip: {fileID: 7400000, guid: 118f2bf2d191cb1878b32fd4c76d4a22, type: 2}
     animationSpeed: 1
-    movementSpeed: 0.7
-    pivotOffset: {x: 0, y: 0.5}
+    movementSpeed: 1
+    pivotOffset: {x: 0, y: 1}
     colliderCenter: {x: 0, y: 0}
     colliderSize: {x: 0.6666667, y: 0.20833333}
     attackStartTime: 0
@@ -26,12 +26,22 @@ MonoBehaviour:
     attackCooldown: 0.2
     comboTimeLimit: 0.4
   - animationClip: {fileID: 7400000, guid: b782f31488921848db25be37573723f9, type: 2}
-    animationSpeed: 0.2
-    movementSpeed: 0.4
+    animationSpeed: 0.5
+    movementSpeed: 1
     pivotOffset: {x: 0, y: 0.5}
     colliderCenter: {x: 0, y: 0}
     colliderSize: {x: 0.6666667, y: 0.20833333}
     attackStartTime: 0
     attackDuration: 0.2
-    attackCooldown: 0.1
+    attackCooldown: 0.2
+    comboTimeLimit: 0.2
+  - animationClip: {fileID: 7400000, guid: e71b6d922c053b303af6deb7224945f0, type: 2}
+    animationSpeed: 0.5
+    movementSpeed: 1
+    pivotOffset: {x: 0, y: 0.5}
+    colliderCenter: {x: 0, y: 0}
+    colliderSize: {x: 0.6666667, y: 0.20833333}
+    attackStartTime: 0
+    attackDuration: 0.2
+    attackCooldown: 0.2
     comboTimeLimit: 0

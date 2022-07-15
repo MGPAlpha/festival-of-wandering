@@ -9,10 +9,11 @@ public class PlayerAttackComponent : MonoBehaviour
     private BoxCollider2D _col;
     private SpriteRenderer _sp;
     private AnimatorOverrideController _ao;
+    private int animationSpeedParameter;
 
     HashSet<GameObject> hits = new HashSet<GameObject>();
 
-    PlayerAttack currAttack;
+    public PlayerAttack CurrAttack { get; private set; }
     PlayerAttack currAttackIndex;
     PlayerWeaponBase currWeapon;
     private bool hitboxActive = false;
@@ -34,24 +35,26 @@ public class PlayerAttackComponent : MonoBehaviour
         _sp.enabled = false;
         _ao = new AnimatorOverrideController(_an.runtimeAnimatorController);
         _an.runtimeAnimatorController = _ao;
+        animationSpeedParameter = Animator.StringToHash("Attack Speed");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currAttack == null) return;
+        if (CurrAttack == null) return;
         
         attackTime += Time.deltaTime;
-        if (!hitboxActive && attackTime > currAttack.AttackStartTime && attackTime < currAttack.AttackStartTime + currAttack.AttackDuration) {
+        if (!hitboxActive && attackTime > CurrAttack.AttackStartTime && attackTime < CurrAttack.AttackStartTime + CurrAttack.AttackDuration) {
             hitboxActive = true;
         }
-        if (hitboxActive && attackTime > currAttack.AttackStartTime + currAttack.AttackDuration) {
+        if (hitboxActive && attackTime > CurrAttack.AttackStartTime + CurrAttack.AttackDuration) {
             hitboxActive = false;
         }
-        if (!canAttack && attackTime > currAttack.AttackStartTime + currAttack.AttackDuration + currAttack.AttackCooldown) {
+        if (!canAttack && attackTime > CurrAttack.AttackStartTime + CurrAttack.AttackDuration + CurrAttack.AttackCooldown) {
             canAttack = true;
+            Attacking = false;
         }
-        if (canAttack && canCombo && attackTime > currAttack.AttackStartTime + currAttack.AttackDuration + currAttack.AttackCooldown + currAttack.ComboTimeLimit) {
+        if (canAttack && canCombo && attackTime > CurrAttack.AttackStartTime + CurrAttack.AttackDuration + CurrAttack.AttackCooldown + CurrAttack.ComboTimeLimit) {
             canCombo = false;
         }
     }
@@ -65,13 +68,14 @@ public class PlayerAttackComponent : MonoBehaviour
             comboIndex = 0;
         }
         currWeapon = weapon;
-        currAttack = attacks[comboIndex];
-        _col.offset = currAttack.ColliderCenter;
-        _col.size = currAttack.ColliderSize;
+        CurrAttack = attacks[comboIndex];
+        _col.offset = CurrAttack.ColliderCenter;
+        _col.size = CurrAttack.ColliderSize;
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Rad2Deg * Mathf.Atan2(direction.y, direction.x) - 90);
-        transform.localPosition = transform.rotation * currAttack.PivotOffset;
-        _ao["Attack"] = currAttack.AnimationClip;
-        _an.Play("Attacking");
+        transform.localPosition = transform.rotation * CurrAttack.PivotOffset;
+        _ao["Attack"] = CurrAttack.AnimationClip;
+        _an.SetFloat(animationSpeedParameter, CurrAttack.AnimationSpeed);
+        _an.Play("Attacking", -1, 0f);
         _sp.enabled = true;
         Attacking = true;
         canAttack = false;

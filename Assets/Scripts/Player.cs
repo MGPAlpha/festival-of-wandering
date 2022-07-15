@@ -47,7 +47,9 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = Vector2.ClampMagnitude(moveDir, 1) * baseSpeed;
+        float speed = baseSpeed;
+        if (_attackComponent.Attacking) speed *= _attackComponent.CurrAttack.MovementSpeed;
+        _rb.velocity = Vector2.ClampMagnitude(moveDir, 1) * speed;
     }
 
     void OnPrimaryAttack() {

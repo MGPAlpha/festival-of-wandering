@@ -7,6 +7,10 @@ public class PlayerAttack {
     public AnimationClip AnimationClip {
         get { return animationClip; }
     }
+    [SerializeField] private float animationSpeed = 1f;
+    public float AnimationSpeed { get => animationSpeed; }
+    [SerializeField] private float movementSpeed = 1f;
+    public float MovementSpeed { get => movementSpeed; }
     [SerializeField] private Vector2 pivotOffset;
     public Vector2 PivotOffset {
         get { return pivotOffset; }
@@ -35,4 +39,5 @@ public class PlayerAttack {
     public float ComboTimeLimit {
         get { return comboTimeLimit; }
     }
+
 }
