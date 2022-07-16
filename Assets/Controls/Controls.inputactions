@@ -131,6 +131,17 @@
                 },
                 {
                     "name": "",
+                    "id": "3024cdc3-3ab6-4309-b1bc-89e5568b4fa6",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "ScreenCenteredVector",
+                    "groups": "Mouse & Keyboard",
+                    "action": "Gamepad Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6ea1b568-7d8d-413c-8809-e9a5780f9362",
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",

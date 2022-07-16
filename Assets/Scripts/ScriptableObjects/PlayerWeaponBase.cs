@@ -1,0 +1,21 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "PlayerWeaponBase", menuName = "")]
+public class PlayerWeaponBase : ScriptableObject
+{
+    [SerializeField] private string weaponName;
+    public string WeaponName {
+        get { return weaponName; }
+    }
+    [SerializeField] private bool isHeavy;
+    public bool IsHeavy {
+        get { return isHeavy; }
+    }
+    [SerializeField] private List<PlayerAttack> attacks;
+    public ReadOnlyCollection<PlayerAttack> GetAttacks() {
+        return attacks.AsReadOnly();
+    }
+}
