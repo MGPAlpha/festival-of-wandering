@@ -11,9 +11,11 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private Animator _an;
     private PlayerAttackComponent _attackComponent;
+    private WeaponEmitter _weaponEmitter;
     [SerializeField] private CinemachineCameraOffset _cco;
 
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
+    [SerializeField] private Weapon spell;
 
     private Vector2 moveDir;
     private Vector2 aimDir;
@@ -28,6 +30,7 @@ public class Player : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _an = GetComponent<Animator>();
         _attackComponent = GetComponentInChildren<PlayerAttackComponent>();
+        _weaponEmitter = GetComponentInChildren<WeaponEmitter>();
     }
 
     // Update is called once per frame
@@ -60,5 +63,10 @@ public class Player : MonoBehaviour
     void OnSecondaryAttack() {
         if (weapons[1])
             _attackComponent.TriggerWeapon(weapons[1], aimDir);
+    }
+
+    void OnSpell() {
+        if (!spell) return;
+        _weaponEmitter.Fire(spell, aimDir);
     }
 }

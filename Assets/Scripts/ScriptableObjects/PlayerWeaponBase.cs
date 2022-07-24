@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerWeaponBase", menuName = "")]
+[CreateAssetMenu(fileName = "New Player Weapon", menuName = "Festival/Player Weapon")]
 public class PlayerWeaponBase : ScriptableObject
 {
     [SerializeField] private string weaponName;
