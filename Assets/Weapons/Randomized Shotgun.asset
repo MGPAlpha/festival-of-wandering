@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd4bd5c5dce5b3c1788fe49eb33635fc, type: 3}
-  m_Name: Basic Weapon
+  m_Name: Randomized Shotgun
   m_EditorClassIdentifier: 
   bursts:
   - startTime: 0
     bullet: {fileID: 11400000, guid: ef456f6f69eec5311ba642cdc80a4be5, type: 2}
-    firingSpread: 0
-    bulletsInSpread: 1
+    firingSpread: 20
+    bulletsInSpread: 6
     spreadTimeInterval: 0
-    spreadRandomization: 0
+    spreadRandomization: 40
     aimOffset: 0
