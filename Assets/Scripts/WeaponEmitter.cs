@@ -24,8 +24,10 @@ public class WeaponEmitter : MonoBehaviour
 
     public void Fire(Weapon weapon, Vector2 direction) {
         
-        
-        StartCoroutine(FiringCoroutine(weapon, direction));
+        ReadOnlyCollection<WeaponBurst> bursts = weapon.Bursts;
+        foreach (WeaponBurst burst in bursts) {
+            StartCoroutine(FireBurstCoroutine(burst, direction));
+        }
     }
 
     private BulletController FireNewBullet(BulletData bullet, Vector2 direction) {
@@ -35,24 +37,21 @@ public class WeaponEmitter : MonoBehaviour
         return controller;
     }
 
-    IEnumerator FiringCoroutine(Weapon weapon, Vector2 direction) {
-        ReadOnlyCollection<WeaponBurst> bursts = weapon.Bursts;
-        foreach (WeaponBurst burst in bursts) {
-            if (burst.StartTime > 0) yield return new WaitForSeconds(burst.StartTime);
-            float localAimAngle = burst.AimOffset;
-            if (burst.BulletsInSpread > 1) localAimAngle -= burst.FiringSpread/2;
-            float angleBetweenBullets = burst.FiringSpread / (burst.BulletsInSpread - (burst.FiringSpread == 360 ? 0 : 1));
-            for (int i = 0; i < burst.BulletsInSpread; i++) {
-                // if (i == 0 && burst.BulletsInSpread > 1 && burst.FiringSpread == 360 && burst.SpreadTimeInterval == 0) continue; 
-                if (burst.SpreadTimeInterval > 0 && i != 0) yield return new WaitForSeconds(burst.SpreadTimeInterval);
-                float thisBulletAimAngle = localAimAngle;
-                if (burst.SpreadRandomization > 0) {
-                    thisBulletAimAngle += Random.Range(-burst.SpreadRandomization/2, burst.SpreadRandomization/2);
-                }
-                Vector2 bulletDirection = direction.Rotate(thisBulletAimAngle);
-                FireNewBullet(burst.Bullet, bulletDirection);
-                if (burst.BulletsInSpread > 1) localAimAngle += angleBetweenBullets;
+    IEnumerator FireBurstCoroutine(WeaponBurst burst, Vector2 direction) {
+        if (burst.StartTime > 0) yield return new WaitForSeconds(burst.StartTime);
+        float localAimAngle = burst.AimOffset;
+        if (burst.BulletsInSpread > 1) localAimAngle -= burst.FiringSpread/2;
+        float angleBetweenBullets = burst.FiringSpread / (burst.BulletsInSpread - (burst.FiringSpread == 360 ? 0 : 1));
+        for (int i = 0; i < burst.BulletsInSpread; i++) {
+            // if (i == 0 && burst.BulletsInSpread > 1 && burst.FiringSpread == 360 && burst.SpreadTimeInterval == 0) continue; 
+            if (burst.SpreadTimeInterval > 0 && i != 0) yield return new WaitForSeconds(burst.SpreadTimeInterval);
+            float thisBulletAimAngle = localAimAngle;
+            if (burst.SpreadRandomization > 0) {
+                thisBulletAimAngle += Random.Range(-burst.SpreadRandomization/2, burst.SpreadRandomization/2);
             }
+            Vector2 bulletDirection = direction.Rotate(thisBulletAimAngle);
+            FireNewBullet(burst.Bullet, bulletDirection);
+            if (burst.BulletsInSpread > 1) localAimAngle += angleBetweenBullets;
         }
     }
 }

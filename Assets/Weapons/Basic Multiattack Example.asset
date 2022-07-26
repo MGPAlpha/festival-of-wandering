@@ -27,14 +27,14 @@ MonoBehaviour:
     spreadTimeInterval: 0
     spreadRandomization: 0
     aimOffset: 35
-  - startTime: 0
+  - startTime: 0.5
     bullet: {fileID: 11400000, guid: ef456f6f69eec5311ba642cdc80a4be5, type: 2}
     firingSpread: 30
     bulletsInSpread: 4
     spreadTimeInterval: 0
     spreadRandomization: 0
     aimOffset: -35
-  - startTime: 0.5
+  - startTime: 1
     bullet: {fileID: 11400000, guid: ef456f6f69eec5311ba642cdc80a4be5, type: 2}
     firingSpread: 70
     bulletsInSpread: 10
