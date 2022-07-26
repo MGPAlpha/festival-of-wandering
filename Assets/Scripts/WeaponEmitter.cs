@@ -8,7 +8,6 @@ public class WeaponEmitter : MonoBehaviour
     [SerializeField] private GameObject _bulletPrefab;
     [SerializeField] private LayerMask hitLayers;
 
-    public bool Firing { get; private set; }
     
     // Start is called before the first frame update
     void Start()
@@ -22,11 +21,15 @@ public class WeaponEmitter : MonoBehaviour
         
     }
 
+    private List<Coroutine> activeBursts = new List<Coroutine>();
+    private int activeBurstCount = 0;
+    public bool FiringActive { get => activeBurstCount > 0; }
+
     public void Fire(Weapon weapon, Vector2 direction) {
         
         ReadOnlyCollection<WeaponBurst> bursts = weapon.Bursts;
         foreach (WeaponBurst burst in bursts) {
-            StartCoroutine(FireBurstCoroutine(burst, direction));
+            activeBursts.Add(StartCoroutine(FireBurstCoroutine(burst, direction)));
         }
     }
 
@@ -38,10 +41,12 @@ public class WeaponEmitter : MonoBehaviour
     }
 
     IEnumerator FireBurstCoroutine(WeaponBurst burst, Vector2 direction) {
+        activeBurstCount++;
         if (burst.StartTime > 0) yield return new WaitForSeconds(burst.StartTime);
         float localAimAngle = burst.AimOffset;
-        if (burst.BulletsInSpread > 1) localAimAngle -= burst.FiringSpread/2;
+        if (burst.BulletsInSpread > 1) localAimAngle -= burst.FiringSpread/2 * (burst.SpreadClockwise ? -1 : 1);
         float angleBetweenBullets = burst.FiringSpread / (burst.BulletsInSpread - (burst.FiringSpread == 360 ? 0 : 1));
+        angleBetweenBullets *=  (burst.SpreadClockwise ? -1 : 1);
         for (int i = 0; i < burst.BulletsInSpread; i++) {
             // if (i == 0 && burst.BulletsInSpread > 1 && burst.FiringSpread == 360 && burst.SpreadTimeInterval == 0) continue; 
             if (burst.SpreadTimeInterval > 0 && i != 0) yield return new WaitForSeconds(burst.SpreadTimeInterval);
@@ -53,5 +58,6 @@ public class WeaponEmitter : MonoBehaviour
             FireNewBullet(burst.Bullet, bulletDirection);
             if (burst.BulletsInSpread > 1) localAimAngle += angleBetweenBullets;
         }
+        activeBurstCount--;
     }
 }

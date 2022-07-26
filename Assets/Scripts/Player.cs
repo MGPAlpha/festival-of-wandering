@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
     }
 
     void OnSpell() {
-        if (!spell) return;
+        if (!spell || _weaponEmitter.FiringActive) return;
         _weaponEmitter.Fire(spell, aimDir);
     }
 }

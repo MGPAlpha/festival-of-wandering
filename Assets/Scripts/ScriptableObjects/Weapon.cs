@@ -27,6 +27,8 @@ public class WeaponBurst {
     public int BulletsInSpread { get => bulletsInSpread; }
     [SerializeField] private float spreadTimeInterval = 0;
     public float SpreadTimeInterval { get => spreadTimeInterval; }
+    [SerializeField] private bool spreadClockwise = false;
+    public bool SpreadClockwise { get => spreadClockwise; }
     [SerializeField] private float spreadRandomization = 0;
     public float SpreadRandomization { get => spreadRandomization; }
 
