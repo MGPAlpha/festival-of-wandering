@@ -17,6 +17,9 @@ public class BulletController : MonoBehaviour
 
     private Vector2 movementDir;
     private float movementSpeed;
+    private float movementAcceleration;
+    private float angularVelocity;
+    private float angularAcceletation;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -36,6 +39,9 @@ public class BulletController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        angularVelocity += angularAcceletation * Time.fixedDeltaTime;
+        movementDir = movementDir.Rotate(angularVelocity * Time.fixedDeltaTime);
+        movementSpeed += movementAcceleration * Time.fixedDeltaTime;
         Vector2 displacement = movementDir * movementSpeed * Time.fixedDeltaTime;
         transform.position += new Vector3(displacement.x, displacement.y);
         lifetimeRemaining -= Time.fixedDeltaTime;
@@ -52,7 +58,12 @@ public class BulletController : MonoBehaviour
         _ao["Basic Bullet Animation"] = null;
         _an.SetFloat(animationSpeedParameter, bulletData.AnimationSpeed);
         movementDir = direction.normalized;
-        movementSpeed = bullet.MovementSpeed;
+        movementSpeed = bullet.Velocity;
+        movementSpeed += Random.Range(0, bullet.VelocityRandomness);
+        movementAcceleration = bullet.Acceleration;
+        angularVelocity = bullet.AngularVelocity;
+        angularVelocity += Random.Range(-bullet.AngularVelocityRandomness, bullet.AngularVelocityRandomness);
+        angularAcceletation = bullet.AngularAcceleration;
         _cc.radius = bullet.ColliderRadius;
     }
 

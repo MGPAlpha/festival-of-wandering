@@ -15,8 +15,18 @@ public class BulletData : ScriptableObject
     [SerializeField] private bool rotateSprite = false;
     public bool RotateSprite { get => rotateSprite; }
 
-    [SerializeField] private float movementSpeed = 5;
-    public float MovementSpeed { get => movementSpeed; }
+    [SerializeField] private float velocity = 5;
+    public float Velocity { get => velocity; }
+    [SerializeField] private float velocityRandomness = 0;
+    public float VelocityRandomness { get => velocityRandomness; }
+    [SerializeField] private float acceleration = 0;
+    public float Acceleration { get => acceleration; }
+    [SerializeField] private float angularVelocity = 0;
+    public float AngularVelocity { get => angularVelocity; }
+    [SerializeField] private float angularVelocityRandomness = 0;
+    public float AngularVelocityRandomness { get => angularVelocityRandomness; }
+    [SerializeField] private float angularAcceletation = 0;
+    public float AngularAcceleration { get => angularAcceletation; }
 
     [SerializeField] private float colliderRadius = .2f;
     public float ColliderRadius { get => colliderRadius; }

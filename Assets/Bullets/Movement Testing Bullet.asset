@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6271348945317cb0da0b602f8437bf43, type: 3}
-  m_Name: Basic Bullet
+  m_Name: Movement Testing Bullet
   m_EditorClassIdentifier: 
   lifetime: 5
   animation: {fileID: 7400000, guid: c224184761388590180dab269294b685, type: 2}
   animationSpeed: 1
   rotateSprite: 0
-  velocity: 5
-  velocityRandomness: 0
-  acceleration: 0
+  velocity: 3
+  velocityRandomness: 7
+  acceleration: -1
   angularVelocity: 0
   angularVelocityRandomness: 0
   angularAcceletation: 0
