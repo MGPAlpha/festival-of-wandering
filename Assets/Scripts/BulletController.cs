@@ -20,6 +20,8 @@ public class BulletController : MonoBehaviour
     private float movementAcceleration;
     private float angularVelocity;
     private float angularAcceletation;
+    private float angularSwitchTime;
+    private float angularSwitchTimer;
 
     /// <summary>
     /// Awake is called when the script instance is being loaded.
@@ -39,13 +41,20 @@ public class BulletController : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
+        if (angularSwitchTime > 0) {
+            angularSwitchTimer -= Time.fixedDeltaTime;
+            if (angularSwitchTimer < 0) {
+                angularSwitchTimer += angularSwitchTime;
+                angularVelocity *= -1;
+            }
+        }
         angularVelocity += angularAcceletation * Time.fixedDeltaTime;
         movementDir = movementDir.Rotate(angularVelocity * Time.fixedDeltaTime);
         movementSpeed += movementAcceleration * Time.fixedDeltaTime;
         Vector2 displacement = movementDir * movementSpeed * Time.fixedDeltaTime;
         transform.position += new Vector3(displacement.x, displacement.y);
         lifetimeRemaining -= Time.fixedDeltaTime;
-        if (lifetimeRemaining < 0) {
+        if (lifetimeRemaining < 0 && bulletData.Lifetime != 0 || bulletData.Lifetime == 0 && movementSpeed < 0) {
             Destroy(this.gameObject);
         }
     }
@@ -58,12 +67,15 @@ public class BulletController : MonoBehaviour
         _ao["Basic Bullet Animation"] = null;
         _an.SetFloat(animationSpeedParameter, bulletData.AnimationSpeed);
         movementDir = direction.normalized;
+        movementDir = movementDir.Rotate(-bullet.AngularVelocity * bullet.AngularSwitchTime / 2);
         movementSpeed = bullet.Velocity;
         movementSpeed += Random.Range(0, bullet.VelocityRandomness);
         movementAcceleration = bullet.Acceleration;
         angularVelocity = bullet.AngularVelocity;
         angularVelocity += Random.Range(-bullet.AngularVelocityRandomness, bullet.AngularVelocityRandomness);
         angularAcceletation = bullet.AngularAcceleration;
+        angularSwitchTime = bullet.AngularSwitchTime;
+        angularSwitchTimer = angularSwitchTime;
         _cc.radius = bullet.ColliderRadius;
     }
 

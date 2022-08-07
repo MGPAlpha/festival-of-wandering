@@ -27,6 +27,8 @@ public class BulletData : ScriptableObject
     public float AngularVelocityRandomness { get => angularVelocityRandomness; }
     [SerializeField] private float angularAcceletation = 0;
     public float AngularAcceleration { get => angularAcceletation; }
+    [SerializeField] private float angularSwitchTime = 0;
+    public float AngularSwitchTime { get => angularSwitchTime; }
 
     [SerializeField] private float colliderRadius = .2f;
     public float ColliderRadius { get => colliderRadius; }

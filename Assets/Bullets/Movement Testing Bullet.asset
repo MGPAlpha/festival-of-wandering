@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6271348945317cb0da0b602f8437bf43, type: 3}
   m_Name: Movement Testing Bullet
   m_EditorClassIdentifier: 
-  lifetime: 5
+  lifetime: 2
   animation: {fileID: 7400000, guid: c224184761388590180dab269294b685, type: 2}
   animationSpeed: 1
   rotateSprite: 0
-  velocity: 3
-  velocityRandomness: 7
-  acceleration: -1
-  angularVelocity: 0
+  velocity: 8
+  velocityRandomness: 0
+  acceleration: 0
+  angularVelocity: 360
   angularVelocityRandomness: 0
   angularAcceletation: 0
+  angularSwitchTime: 0.2
   colliderRadius: 0.2
