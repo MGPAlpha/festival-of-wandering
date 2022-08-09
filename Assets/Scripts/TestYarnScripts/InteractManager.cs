@@ -36,10 +36,31 @@ public class InteractManager : MonoBehaviour
     }
 
     private void FindTarget() {
-        
+        if (inRange.Count <= 0) {
+            if (target) target.Detarget();
+            target = null;
+        }
+        else {
+            Interactible oldTarget = target;
+            target = null;
+            foreach (Interactible inter in inRange) {
+                if ((!target || inter.GetPriority() > target.GetPriority() 
+                || (inter.GetPriority() == target.GetPriority() && (inter.transform.position - transform.position).magnitude < (target.transform.position - transform.position).magnitude)) && inter.CanTarget()) target = inter;
+            }
+            if (target != oldTarget) {
+                if (target) target.Target();
+                if (oldTarget) oldTarget.Detarget();
+            }
+        }
     }
 
     public void Interact() {
-
+        if (target) {
+            bool keepTarget = target.Interact();
+            if (!keepTarget) {
+                target.Detarget();
+                FindTarget();
+            }
+        }
     }
 }
