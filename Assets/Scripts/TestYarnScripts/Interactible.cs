@@ -48,7 +48,7 @@ public class Interactible : MonoBehaviour {
         TryGetComponent<InteractibleSelection>(out interactibleSelection);
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) {
+    /*private void OnTriggerEnter2D(Collider2D collider) {
         if (collider.CompareTag("Player")) {
             //collider.gameObject.GetComponent<Player>().setCanInteract(true);
             onInteract.Invoke();
@@ -59,5 +59,5 @@ public class Interactible : MonoBehaviour {
         if (collider.CompareTag("Player")) {
             collider.gameObject.GetComponent<Player>().setCanInteract(false);
         }
-    }
+    }*/
 }

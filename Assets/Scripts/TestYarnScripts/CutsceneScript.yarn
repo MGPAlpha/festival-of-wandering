@@ -1,0 +1,8 @@
+﻿title: CutsceneScript
+tags:
+---
+<<pan_camera "CM vcam1" "cFixture1" 5.0>>
+<<walk_to "Player" "pStop1">>
+<<wait 4.5>>
+Elder Witch: Who goes there?
+===
