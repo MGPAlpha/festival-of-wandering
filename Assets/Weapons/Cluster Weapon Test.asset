@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fd4bd5c5dce5b3c1788fe49eb33635fc, type: 3}
-  m_Name: Movement Testing Weapon
+  m_Name: Cluster Weapon Test
   m_EditorClassIdentifier: 
   bursts:
   - startTime: 0
-    bullet: {fileID: 11400000, guid: 066d868f1d554f09babb8346eece21b5, type: 2}
+    bullet: {fileID: 11400000, guid: 63517db42f1b995c99e85d74d3d2224f, type: 2}
     firingSpread: 0
     bulletsInSpread: 1
-    spreadTimeInterval: 0.08
+    spreadTimeInterval: 0
     spreadClockwise: 0
     spreadRandomization: 0
     aimOffset: 0

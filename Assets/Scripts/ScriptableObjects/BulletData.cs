@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BulletClusterAimMode {
+    Root,
+    Absolute,
+    Normal
+}
 
 [CreateAssetMenu(fileName = "New Bullet", menuName = "Festival/Bullet")]
 public class BulletData : ScriptableObject
@@ -32,4 +37,17 @@ public class BulletData : ScriptableObject
 
     [SerializeField] private float colliderRadius = .2f;
     public float ColliderRadius { get => colliderRadius; }
+
+    [SerializeField] private Weapon clusterWeapon;
+    public Weapon ClusterWeapon { get => clusterWeapon; }
+    [SerializeField] private bool burstOnWall = false;
+    public bool BurstOnWall { get => burstOnWall; }
+    [SerializeField] private bool burstOnTimeout = false;
+    public bool BurstOnTimeout { get => burstOnTimeout; }
+    [SerializeField] private BulletClusterAimMode clusterAimMode = BulletClusterAimMode.Root;
+    public BulletClusterAimMode ClusterAimMode { get => clusterAimMode; }
+    [SerializeField] private float clusterAimOffset = 0;
+    public float ClusterAimOffset { get => clusterAimOffset; }
+    [SerializeField] private float clusterWallOffset = 0;
+    public float ClusterWallOffset { get => clusterWallOffset; }
 }
