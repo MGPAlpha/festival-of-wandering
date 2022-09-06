@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    
 
     private PlayerInput _input;
     private Rigidbody2D _rb;
@@ -23,6 +22,10 @@ public class Player : MonoBehaviour
     [SerializeField] private float baseSpeed = 3f;
     [SerializeField] private float maxAimOffset = 2;
 
+    private bool dodging = false;
+    [SerializeField] private float dodgeSpeedFactor = 1.75f;
+    [SerializeField] private float dodgeTime = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dodging) return;
         moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
         aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
         // Debug.Log(aimDir);
@@ -68,5 +72,27 @@ public class Player : MonoBehaviour
     void OnSpell() {
         if (!spell || _weaponEmitter.FiringActive) return;
         _weaponEmitter.Fire(spell, aimDir);
+    }
+
+    IEnumerator Dodge(Vector2 dir) {
+        dodging = true;
+        float dodgeSpeed = dodgeSpeedFactor * baseSpeed;
+        float elapsedTime = 0;
+        while (elapsedTime < dodgeTime)
+        {
+            Vector3 displacement = dodgeSpeed * dir * Time.deltaTime;
+            transform.position += displacement;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        dodging = false;
+    }
+
+    void OnDodge() {
+        if (!dodging) {
+            Vector2 dodgeDir = moveDir;
+            if (moveDir == Vector2.zero) dodgeDir = aimDir;
+            StartCoroutine(Dodge(dodgeDir.normalized));
+        }
     }
 }
