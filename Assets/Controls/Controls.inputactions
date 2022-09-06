@@ -51,9 +51,18 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "bb6e7188-0193-4632-b3bf-c679811ef44a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Spell",
                     "type": "Button",
-                    "id": "bbe30045-9c7d-4867-9645-6c36b52531d5",
+                    "id": "b3540a0b-d842-4b63-9b55-df3758010ad3",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -217,19 +226,41 @@
                 },
                 {
                     "name": "",
-                    "id": "c0b1cd8b-b11f-4c1e-a108-25a30ee32c14",
-                    "path": "<Gamepad>/rightTrigger",
+                    "id": "8c2eec77-5398-4523-9b19-b42060cb0f3a",
+                    "path": "<Keyboard>/f",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Mouse & Keyboard",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9f2dec6c-614f-4fbb-a599-2d4d6efb5309",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7405c047-2e35-4205-911d-c70fcac5071e",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse & Keyboard",
                     "action": "Spell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "fb89df58-3a03-40ba-9c33-46333e50ffa4",
-                    "path": "<Keyboard>/#(E)",
+                    "id": "34121df4-84d5-47ed-97f3-058db1ceff63",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
