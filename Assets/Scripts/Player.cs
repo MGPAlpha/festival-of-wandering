@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dodging) return;
+        // if (dodging) return;
         moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
         aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
         // Debug.Log(aimDir);
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
             _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
         }
         if (aimDir.magnitude == 0) aimDir = moveDir;
+        if (dodging) return;
         Vector2 normalizedAim = aimDir.normalized;
         _an.SetFloat("facingX", normalizedAim.x);
         _an.SetFloat("facingY", normalizedAim.y);
@@ -54,6 +55,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (dodging) return;
         float speed = baseSpeed;
         if (_attackComponent.Attacking) speed *= _attackComponent.CurrAttack.MovementSpeed;
         _rb.velocity = Vector2.ClampMagnitude(moveDir, 1) * speed;
@@ -76,12 +78,13 @@ public class Player : MonoBehaviour
 
     IEnumerator Dodge(Vector2 dir) {
         dodging = true;
+        _an.SetFloat("facingX", dir.x);
+        _an.SetFloat("facingY", dir.y);
         float dodgeSpeed = dodgeSpeedFactor * baseSpeed;
+        _rb.velocity = dodgeSpeed * dir;
         float elapsedTime = 0;
         while (elapsedTime < dodgeTime)
         {
-            Vector3 displacement = dodgeSpeed * dir * Time.deltaTime;
-            transform.position += displacement;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
