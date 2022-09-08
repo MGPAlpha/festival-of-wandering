@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private PlayerAttackComponent _attackComponent;
     private WeaponEmitter _weaponEmitter;
     [SerializeField] private CinemachineCameraOffset _cco;
+    [SerializeField] private GameObject fireworkWavePrefab;
 
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
     [SerializeField] private Weapon spell;
@@ -97,5 +98,9 @@ public class Player : MonoBehaviour
             if (moveDir == Vector2.zero) dodgeDir = aimDir;
             StartCoroutine(Dodge(dodgeDir.normalized));
         }
+    }
+
+    void OnFirework() {
+        Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
     }
 }
