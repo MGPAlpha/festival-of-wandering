@@ -24,9 +24,9 @@ MonoBehaviour:
   angularAcceletation: 0
   angularSwitchTime: 0.2
   colliderRadius: 0.2
-  clusterWeapon: {fileID: 11400000, guid: ac14485c9631c8e16b04d82c0d12ebc0, type: 2}
-  burstOnWall: 1
-  burstOnTimeout: 1
+  clusterWeapon: {fileID: 0}
+  burstOnWall: 0
+  burstOnTimeout: 0
   clusterAimMode: 0
   clusterAimOffset: 0
   clusterWallOffset: 0.2

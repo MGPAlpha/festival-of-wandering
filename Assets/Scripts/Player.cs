@@ -136,4 +136,12 @@ public class Player : MonoBehaviour
     void OnFirework() {
         Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
     }
+
+    public void SetPrimary(PlayerWeaponBase weapon) {
+        weapons[0] = weapon;
+    }
+
+    public void SetSecondary(PlayerWeaponBase weapon) {
+        weapons[1] = weapon;
+    }
 }
