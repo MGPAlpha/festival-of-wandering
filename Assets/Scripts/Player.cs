@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         Vector2 normalizedAim = aimDir.normalized;
         _an.SetFloat("facingX", normalizedAim.x);
         _an.SetFloat("facingY", normalizedAim.y);
+        _an.SetBool("walking", moveDir.magnitude > 0);
     }
 
     private void OnGamepadAim() {
@@ -143,5 +144,9 @@ public class Player : MonoBehaviour
 
     public void SetSecondary(PlayerWeaponBase weapon) {
         weapons[1] = weapon;
+    }
+
+    public void SetSpell(Weapon spell) {
+        this.spell = spell;
     }
 }
