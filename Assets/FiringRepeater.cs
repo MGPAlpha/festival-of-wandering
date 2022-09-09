@@ -15,7 +15,7 @@ public class FiringRepeater : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        intervalTimer = 0;
+        intervalTimer = interval;
         _we = GetComponentInChildren<WeaponEmitter>();
     }
 
