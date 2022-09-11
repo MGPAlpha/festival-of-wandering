@@ -152,12 +152,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cco: {fileID: 0}
+  fireworkWavePrefab: {fileID: 4257421256083799110, guid: 321e0a7a241e2f417a07851645d10ab5, type: 3}
   weapons:
   - {fileID: 11400000, guid: f47f5c0b0a1ec4b418419686200f82af, type: 2}
   - {fileID: 11400000, guid: f01bcceb763ae022a85af6375283d85f, type: 2}
   spell: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
   baseSpeed: 3
   maxAimOffset: 2
+  dodgeSpeedFactor: 2.5
+  dodgeTime: 0.4
 --- !u!50 &4884819244816967162
 Rigidbody2D:
   serializedVersion: 4

@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 
 #if UNITY_EDITOR
 [InitializeOnLoad]
@@ -16,7 +18,7 @@ public class ScreenCenteredVectorProcessor : InputProcessor<Vector2>
     }
     #endif
 
-    [RuntimeInitializeOnLoadMethod]
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Initialize()
     {
         InputSystem.RegisterProcessor<ScreenCenteredVectorProcessor>();

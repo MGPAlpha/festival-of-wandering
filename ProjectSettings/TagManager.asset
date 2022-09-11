@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CameraBoundary
+  - Firework Wave
   layers:
   - Default
   - TransparentFX
@@ -12,14 +14,14 @@ TagManager:
   - Water
   - UI
   - 
+  - 
   - Player
   - Enemy
   - Bullet
+  - Firework Charm
   - 
-  - 
-  - 
-  - 
-  - 
+  - Interactible
+  - InteractManager
   - 
   - 
   - 
