@@ -21,6 +21,7 @@
 
 # Visual Studio cache directory
 .vs/
+.vsconfig
 
 # Gradle cache directory
 .gradle/
@@ -84,3 +85,6 @@ fmod_editor.log
 
 .vscode/
 UserSettings/
+
+# macOS folder attribute file
+.DS_Store
