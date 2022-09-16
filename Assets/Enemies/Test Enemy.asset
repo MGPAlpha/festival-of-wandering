@@ -14,4 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Test Enemy
   moveSpeed: 1
-  weapons: []
+  weapons:
+  - id: 0
+  - id: 1
+  - id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: AttackChoiceAlways, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 0}
+    00000001:
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: b4e3d3afc20f2bd44a4c2ac1165f289f, type: 2}
+        probability: 0.5
+    00000002:
+      type: {class: AttackChoiceAlways, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 0}
