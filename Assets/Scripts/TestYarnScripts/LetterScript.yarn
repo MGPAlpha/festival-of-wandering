@@ -1,5 +1,5 @@
 ﻿title: Letter
 ---
-<<face_towards Player Letter>>
+<<p_face_towards Player Letter>>
 Mysterious Note: Hello!
 ===
