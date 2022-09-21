@@ -48,16 +48,16 @@ public class Interactible : MonoBehaviour {
         TryGetComponent<InteractibleSelection>(out interactibleSelection);
     }
 
-    // private void OnTriggerEnter2D(Collider2D collider) {
-    //     if (collider.CompareTag("Player")) {
-    //         //collider.gameObject.GetComponent<Player>().setCanInteract(true);
-    //         onInteract.Invoke();
-    //     }
-    // }
+    /*private void OnTriggerEnter2D(Collider2D collider) {
+        if (collider.CompareTag("Player")) {
+            //collider.gameObject.GetComponent<Player>().setCanInteract(true);
+            onInteract.Invoke();
+        }
+    }
 
-    // private void OnTriggerExit2D(Collider2D collider) {
-    //     if (collider.CompareTag("Player")) {
-    //         collider.gameObject.GetComponent<Player>().setCanInteract(false);
-    //     }
-    // }
+    private void OnTriggerExit2D(Collider2D collider) {
+        if (collider.CompareTag("Player")) {
+            collider.gameObject.GetComponent<Player>().setCanInteract(false);
+        }
+    }*/
 }

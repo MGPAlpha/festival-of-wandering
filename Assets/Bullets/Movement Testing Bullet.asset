@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6271348945317cb0da0b602f8437bf43, type: 3}
   m_Name: Movement Testing Bullet
   m_EditorClassIdentifier: 
-  lifetime: 1
+  lifetime: 2
   animation: {fileID: 7400000, guid: c224184761388590180dab269294b685, type: 2}
   animationSpeed: 1
   rotateSprite: 0
-  velocity: 8
+  velocity: 12
   velocityRandomness: 0
   acceleration: 0
   angularVelocity: 360
@@ -24,9 +24,9 @@ MonoBehaviour:
   angularAcceletation: 0
   angularSwitchTime: 0.2
   colliderRadius: 0.2
-  clusterWeapon: {fileID: 11400000, guid: ac14485c9631c8e16b04d82c0d12ebc0, type: 2}
-  burstOnWall: 1
-  burstOnTimeout: 1
+  clusterWeapon: {fileID: 0}
+  burstOnWall: 0
+  burstOnTimeout: 0
   clusterAimMode: 0
   clusterAimOffset: 0
   clusterWallOffset: 0.2

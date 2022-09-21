@@ -16,7 +16,7 @@ MonoBehaviour:
   - startTime: 0
     bullet: {fileID: 11400000, guid: 066d868f1d554f09babb8346eece21b5, type: 2}
     firingSpread: 0
-    bulletsInSpread: 1
+    bulletsInSpread: 6
     spreadTimeInterval: 0.08
     spreadClockwise: 0
     spreadRandomization: 0
