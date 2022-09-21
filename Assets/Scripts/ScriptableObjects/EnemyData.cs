@@ -16,13 +16,6 @@ public class EnemyData : ScriptableObject {
 
 [System.Serializable]
 public abstract class EnemyAttackChoice {
-    
-    public static System.Type[] Subclasses { get; private set; }
-    
-    static EnemyAttackChoice()
-    {
-        Subclasses = typeof(EnemyAttackChoice).Assembly.GetTypes().Where(type => type.IsSubclassOf(typeof(EnemyAttackChoice))).ToArray();
-    }
 
     [SerializeField] private Weapon weapon;
     public Weapon Weapon { get; private set; }
@@ -32,6 +25,7 @@ public abstract class EnemyAttackChoice {
 [System.Serializable]
 public class AttackChoiceAlways : EnemyAttackChoice {
     public override bool ShouldChoose() => true;
+    public static string GetSubclassName() => "Select Always";
 }
 
 [System.Serializable]
@@ -43,5 +37,7 @@ public class AttackChoiceChance : EnemyAttackChoice {
     {
         return Random.Range(0,1) < probability;
     }
+
+    public static string GetSubclassName() => "Select by Chance";
 }
 
