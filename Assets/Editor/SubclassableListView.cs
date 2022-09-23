@@ -26,7 +26,7 @@ public class SubclassableListView<T> : ReorderableList
             SerializedProperty element = elements.GetArrayElementAtIndex(index);
 
 
-            System.Type elementType = typeof(T);
+            System.Type elementType = element.managedReferenceValue.GetType();
             string labelName;
             System.Reflection.MethodInfo subclassNameMethod = elementType.GetMethod("GetSubclassName");
             if (subclassNameMethod != null) {
