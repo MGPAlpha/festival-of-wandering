@@ -13,8 +13,11 @@ public class Player : MonoBehaviour
     private Animator _an;
     private PlayerAttackComponent _attackComponent;
     private WeaponEmitter _weaponEmitter;
-    [SerializeField] private bool inDialog;
+
+    private bool initAttack;
+    private bool initMove;
     [SerializeField] private bool canAttack;
+    [SerializeField] private bool canMove;
     [SerializeField] private CinemachineCameraOffset _cco;
     [SerializeField] private GameObject fireworkWavePrefab;
 
@@ -42,17 +45,22 @@ public class Player : MonoBehaviour
         _an = GetComponent<Animator>();
         _attackComponent = GetComponentInChildren<PlayerAttackComponent>();
         _weaponEmitter = GetComponentInChildren<WeaponEmitter>();
-        inDialog = false;
+        canMove = true;
         canAttack = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
         if (_cco) {
             _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
         }
+        if (!canMove) {
+            moveDir = Vector2.zero;
+            _rb.velocity = Vector2.zero;
+            return;
+        }
+        moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
         if (aimDir.magnitude == 0) aimDir = moveDir;
         if (dodging) return;
         Vector2 normalizedAim = aimDir.normalized;
@@ -62,14 +70,15 @@ public class Player : MonoBehaviour
     }
 
     private void OnGamepadAim() {
-        aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
+        if (canMove) {
+            aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
+        }
         // Debug.Log(aimDir);
-        
     }
 
     private void FixedUpdate()
     {
-        if (dodging) return;
+        if (dodging || !canMove) return;
         float speed = baseSpeed;
         if (_attackComponent.Attacking) speed *= _attackComponent.CurrAttack.MovementSpeed;
         _rb.velocity = Vector2.ClampMagnitude(moveDir, 1) * speed;
@@ -86,7 +95,7 @@ public class Player : MonoBehaviour
     }
 
     void OnSpell() {
-        if (!spell || _weaponEmitter.FiringActive) return;
+        if (!canAttack || !spell || _weaponEmitter.FiringActive) return;
         _weaponEmitter.Fire(spell, aimDir);
     }
     
@@ -94,21 +103,29 @@ public class Player : MonoBehaviour
         interactManager.Interact();
     }
 
-    [YarnCommand("face_towards")]
+    [YarnCommand("p_face_towards")]
     public void FaceTowards(GameObject gameObject) {
-        Vector2 vector = gameObject.transform.position - this.transform.position;
-        Vector2 normalVector = vector.normalized;
-        _an.SetFloat("facingX", normalVector.x);
-        _an.SetFloat("facingY", normalVector.y);
+        Vector2 dir = gameObject.transform.position - this.transform.position;
+        Vector2 normalizedAim = dir.normalized;
+        _an.SetFloat("facingX", normalizedAim.x);
+        _an.SetFloat("facingY", normalizedAim.y);
+        _an.SetBool("walking", false);
     }
 
-    [YarnCommand("walk_to")]
-    public void WalkTo(GameObject gameObject) {
+    [YarnCommand("p_walk_to")]
+    public IEnumerator WalkTo(GameObject gameObject, float time) {
         FaceTowards(gameObject);
-            //_rb.velocity = Vector2.ClampMagnitude(gameObject.transform.position - this.transform.position, 1) * baseSpeed;
-            //transform.position += (Vector3)(Vector2.ClampMagnitude(gameObject.transform.position - this.transform.position, 1) * baseSpeed * Time.deltaTime);
-        targetPos = gameObject.transform.position;
-        moveDir = gameObject.transform.position - transform.position;
+        float finalTime = Time.time + time;
+        float totalTime = 0;
+        Vector2 startPosition = transform.position;
+        Vector2 finalPosition = gameObject.transform.position;
+        _an.SetBool("walking", true);
+        while (Time.time < finalTime) {
+            transform.position = Vector2.Lerp(startPosition, finalPosition, totalTime / time);
+            totalTime += Time.deltaTime;
+            yield return null;
+        }
+        _an.SetBool("walking", false);
     }
 
     IEnumerator Dodge(Vector2 dir) {
@@ -127,7 +144,7 @@ public class Player : MonoBehaviour
     }
 
     void OnDodge() {
-        if (!dodging) {
+        if (!dodging && canMove) {
             Vector2 dodgeDir = moveDir;
             if (moveDir == Vector2.zero) dodgeDir = aimDir;
             StartCoroutine(Dodge(dodgeDir.normalized));
@@ -135,7 +152,9 @@ public class Player : MonoBehaviour
     }
 
     void OnFirework() {
-        Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
+        if (canAttack) {
+            Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
+        }
     }
 
     public void SetPrimary(PlayerWeaponBase weapon) {
@@ -148,5 +167,26 @@ public class Player : MonoBehaviour
 
     public void SetSpell(Weapon spell) {
         this.spell = spell;
+    }
+
+    public void StartDialogue() {
+        initAttack = canAttack;
+        initMove = canMove;
+        if (initAttack) {
+            canAttack = false;
+        }
+        if (initMove) {
+            canMove = false;
+            aimDir = Vector2.zero;
+        }
+    }
+
+    public void StopDialogue() {
+        if (initAttack) {
+            canAttack = true;
+        }
+        if (initMove) {
+            canMove = true;
+        }
     }
 }
