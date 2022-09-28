@@ -123,6 +123,11 @@ public class BulletController : MonoBehaviour
         } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
             if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable)) {
                 damageable.Damage(1);
+                if (other.attachedRigidbody) {
+                    if (bulletData.KnockbackForce > 0)
+                        other.attachedRigidbody.AddForce(bulletData.KnockbackForce * this.movementDir, ForceMode2D.Impulse);
+                    
+                }
             }
         } else if (other.gameObject.layer == 0) { // Layer is default
             Kill(BulletKillReason.Wall);

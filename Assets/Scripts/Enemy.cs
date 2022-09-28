@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IDamageable
 {
     private NavMeshAgent _nma;
     private WeaponEmitter _we;
+    private CircleCollider2D _cc;
     private GameObject target;
 
     public EnemyData enemyType;
@@ -35,6 +36,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _nma.updateRotation = false;
         _nma.updateUpAxis = false;
         _we = GetComponentInChildren<WeaponEmitter>();
+        _cc = GetComponent<CircleCollider2D>();
         if (enemyType) Initialize(enemyType);
     }
 
@@ -49,6 +51,7 @@ public class Enemy : MonoBehaviour, IDamageable
         health = enemy.BaseHealth;
         maxHealth = enemy.BaseHealth;
         _nma.speed = 0;
+        _cc.enabled = true;
         target = GameObject.Find("Player");
     }
 
@@ -133,5 +136,6 @@ public class Enemy : MonoBehaviour, IDamageable
         stateTime = 0;
         state = EnemyState.DEAD;
         _nma.speed = 0;
+        _cc.enabled = false;
     }
 }

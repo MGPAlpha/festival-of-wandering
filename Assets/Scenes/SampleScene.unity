@@ -343,10 +343,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.06594399
-    y: 0.05
-    width: 0.8672087
-    height: 0.90000004
+    x: 0.058769513
+    y: 0.064412236
+    width: 0.8815427
+    height: 0.86956525
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -961,6 +961,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &993420828 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 684315158556548935, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
+  m_PrefabInstance: {fileID: 684315157444923499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &993420834
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993420828}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 5
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &684315157444923499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1084,6 +1110,6 @@ PrefabInstance:
     - target: {fileID: 4884819244816967167, guid: 405acf42ed24b7f69998b4497f02b417, type: 3}
       propertyPath: spell
       value: 
-      objectReference: {fileID: 11400000, guid: 24039bc8d9270be838d1419f7f4ce718, type: 2}
+      objectReference: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405acf42ed24b7f69998b4497f02b417, type: 3}
