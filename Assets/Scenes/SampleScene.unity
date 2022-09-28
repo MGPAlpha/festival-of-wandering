@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_AssetsPPU: 24
+  m_AssetsPPU: 16
   m_RefResolutionX: 480
   m_RefResolutionY: 270
   m_CropFrame: 3
@@ -404,15 +404,15 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.058769513
-    y: 0.064412236
-    width: 0.8815427
-    height: 0.86956525
+    x: 0.06594399
+    y: 0.05
+    width: 0.8672087
+    height: 0.90000004
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 5.625
+  orthographic size: 8.4375
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
