@@ -128,6 +128,7 @@ public class BulletController : MonoBehaviour
                         other.attachedRigidbody.AddForce(bulletData.KnockbackForce * this.movementDir, ForceMode2D.Impulse);
                     
                 }
+                Kill(BulletKillReason.Hit);
             }
         } else if (other.gameObject.layer == 0) { // Layer is default
             Kill(BulletKillReason.Wall);

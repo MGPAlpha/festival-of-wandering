@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 using Yarn.Unity;
 
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
 
     private PlayerInput _input;
     private Rigidbody2D _rb;
     private Animator _an;
+    private SpriteRenderer _sp;
     private PlayerAttackComponent _attackComponent;
     private WeaponEmitter _weaponEmitter;
     [SerializeField] private bool inDialog;
@@ -25,6 +26,9 @@ public class Player : MonoBehaviour
     private Vector2 aimDir;
     private Vector2? targetPos;
 
+    [SerializeField] private int maxHealth = 6;
+    private int health;
+
     [SerializeField] private float baseSpeed = 3f;
     [SerializeField] private float maxAimOffset = 2;
 
@@ -34,21 +38,47 @@ public class Player : MonoBehaviour
     [SerializeField] private float dodgeSpeedFactor = 1.75f;
     [SerializeField] private float dodgeTime = 1;
 
+    [SerializeField] private float tempInvincibilityTime = 1;
+    private float tempInvincibilityRemaining = 0;
+    public bool IsTempInvincible { get => tempInvincibilityRemaining > 0; }
+    public bool IsInvincible { get => IsTempInvincible; } // Change once invincibility cheat available
+
     // Start is called before the first frame update
     void Start()
     {
         _input = GetComponent<PlayerInput>();
         _rb = GetComponent<Rigidbody2D>();
         _an = GetComponent<Animator>();
+        _sp = GetComponent<SpriteRenderer>();
         _attackComponent = GetComponentInChildren<PlayerAttackComponent>();
         _weaponEmitter = GetComponentInChildren<WeaponEmitter>();
         inDialog = false;
         canAttack = true;
+        health = maxHealth;
+    }
+
+    public void Damage(int amount) {
+        if (!IsInvincible) {
+            health -= amount;
+            tempInvincibilityRemaining = tempInvincibilityTime;
+            Debug.Log("New player health: " + health);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+        if (tempInvincibilityRemaining > 0) {
+            tempInvincibilityRemaining -= Time.deltaTime;
+        }
+
+        if (IsTempInvincible) {
+            _sp.enabled = Time.time % .3 > .15f;
+        } else {
+            _sp.enabled = true;
+        }
+
         moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
         if (_cco) {
             _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
