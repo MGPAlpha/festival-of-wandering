@@ -10,8 +10,8 @@ public class EnemyData : ScriptableObject {
     public string EnemyName { get => enemyName; }
     [SerializeField] private float moveSpeed = 1f;
     public float MoveSpeed { get => moveSpeed; }
-    [SerializeField] private float baseHealth = 3;
-    public float BaseHealth { get => baseHealth; }
+    [SerializeField] private int baseHealth = 3;
+    public int BaseHealth { get => baseHealth; }
     [SerializeField] private float initTime = 0;
     public float InitTime { get => initTime; }
     [SerializeField] private float moveTime = 4;
@@ -61,7 +61,6 @@ public class AttackChoiceChance : EnemyAttackChoice {
     public override bool ShouldChoose(Enemy enemy)
     {
         float v = Random.value;
-        Debug.Log(v);
         return v < probability;
     }
 

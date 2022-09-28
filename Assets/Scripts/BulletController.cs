@@ -121,7 +121,9 @@ public class BulletController : MonoBehaviour
         if (other.tag == "Firework Wave") {
             Kill(BulletKillReason.Firework);
         } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
-
+            if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable)) {
+                damageable.Damage(1);
+            }
         } else if (other.gameObject.layer == 0) { // Layer is default
             Kill(BulletKillReason.Wall);
         }
@@ -129,7 +131,6 @@ public class BulletController : MonoBehaviour
 
     public void Kill(BulletKillReason reason) {
         bool doCluster = reason == BulletKillReason.Timeout && bulletData.BurstOnTimeout || reason == BulletKillReason.Wall && bulletData.BurstOnWall;
-        if (reason == BulletKillReason.Firework) Debug.Log(doCluster);
         if (bulletData.ClusterWeapon && doCluster) {
             _sp.enabled = false;
             Vector2 clusterAimDirection;
@@ -155,7 +156,6 @@ public class BulletController : MonoBehaviour
                 _sp.enabled = false;
             }
         } else {
-            Debug.Log("Destroying bullet");
             Destroy(this.gameObject);
         }
         isDead = true;

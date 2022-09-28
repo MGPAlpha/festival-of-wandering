@@ -8,10 +8,11 @@ public enum EnemyState {
     MOVE,
     AIM,
     FIRE,
-    COOLDOWN
+    COOLDOWN,
+    DEAD
 }
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IDamageable
 {
     private NavMeshAgent _nma;
     private WeaponEmitter _we;
@@ -22,6 +23,10 @@ public class Enemy : MonoBehaviour
     private float stateTime = 0;
     private float lineOfSightTime = 0;
     [SerializeField] private LayerMask sightBlockingLayers;
+
+    private int health;
+    private int maxHealth;
+
 
     // Start is called before the first frame update
     void Start()
@@ -41,8 +46,18 @@ public class Enemy : MonoBehaviour
         state = EnemyState.INIT;
         stateTime = 0;
         enemyType = enemy;
+        health = enemy.BaseHealth;
+        maxHealth = enemy.BaseHealth;
         _nma.speed = 0;
         target = GameObject.Find("Player");
+    }
+
+    public void Damage(int amount) {
+        if (state == EnemyState.DEAD) return;
+        health -= amount;
+        if (health <= 0) {
+            Die();
+        }
     }
 
     // Update is called once per frame
@@ -82,6 +97,8 @@ public class Enemy : MonoBehaviour
                     TransitionMove();
                 }
                 break;
+            case EnemyState.DEAD:
+                break;
         }
     }
 
@@ -109,6 +126,12 @@ public class Enemy : MonoBehaviour
     private void TransitionCooldown() {
         stateTime = 0;
         state = EnemyState.COOLDOWN;
+        _nma.speed = 0;
+    }
+
+    private void Die() {
+        stateTime = 0;
+        state = EnemyState.DEAD;
         _nma.speed = 0;
     }
 }
