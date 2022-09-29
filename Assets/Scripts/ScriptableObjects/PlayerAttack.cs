@@ -39,5 +39,7 @@ public class PlayerAttack {
     public float ComboTimeLimit {
         get { return comboTimeLimit; }
     }
+    [SerializeField] private float pushbackForce = 5;
+    public float PushbackForce { get => pushbackForce; }
 
 }
