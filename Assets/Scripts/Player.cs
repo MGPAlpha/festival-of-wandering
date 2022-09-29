@@ -100,9 +100,9 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     private void OnGamepadAim() {
-        if (canMove) {
+        // if (canMove) {
             aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
-        }
+        // }
         // Debug.Log(aimDir);
     }
 
