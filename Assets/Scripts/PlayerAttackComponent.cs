@@ -11,11 +11,12 @@ public class PlayerAttackComponent : MonoBehaviour
     private AnimatorOverrideController _ao;
     private int animationSpeedParameter;
 
-    HashSet<GameObject> hits = new HashSet<GameObject>();
+    HashSet<IDamageable> hits = new HashSet<IDamageable>();
 
     public PlayerAttack CurrAttack { get; private set; }
     PlayerAttack currAttackIndex;
     PlayerWeaponBase currWeapon;
+    private Vector2 attackDirection;
     private bool hitboxActive = false;
     private float attackTime = 0;
     public bool Attacking {
@@ -24,7 +25,6 @@ public class PlayerAttackComponent : MonoBehaviour
     private bool canAttack = true;
     private bool canCombo = false;
     private int comboIndex = 0;
-    
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +83,19 @@ public class PlayerAttackComponent : MonoBehaviour
         canCombo = true;
         attackTime = 0;
         hits.Clear();
+        attackDirection = direction;
         comboIndex++;
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        if (!hitboxActive) return;
+        if (other.TryGetComponent<IDamageable>(out IDamageable damageable)) {
+            if (hits.Contains(damageable)) return;
+            hits.Add(damageable);
+            damageable.Damage(1);
+            if (other.TryGetComponent<Rigidbody2D>(out Rigidbody2D rbOther)) {
+                rbOther.AddForce(attackDirection * CurrAttack.PushbackForce, ForceMode2D.Impulse);
+            }
+        }
     }
 }

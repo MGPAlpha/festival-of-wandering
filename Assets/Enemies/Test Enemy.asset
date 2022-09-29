@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268c78606f600e9768a98c114ae497dd, type: 3}
+  m_Name: Test Enemy
+  m_EditorClassIdentifier: 
+  enemyName: Test Enemy
+  moveSpeed: 1
+  baseHealth: 3
+  initTime: 0
+  moveTime: 4
+  aimTime: 2
+  cooldownTime: 0.5
+  speedWhileAiming: 0
+  speedWhileFiring: 0
+  lineOfSightTime: 0.5
+  weapons:
+  - rid: 953465133186416640
+  - rid: 2
+  references:
+    version: 2
+    RefIds:
+    - rid: 2
+      type: {class: AttackChoiceAlways, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
+    - rid: 953465133186416640
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: 24039bc8d9270be838d1419f7f4ce718, type: 2}
+        probability: 0.5

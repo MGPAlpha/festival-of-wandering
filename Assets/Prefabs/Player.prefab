@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 4884819244816967162}
   - component: {fileID: 4884819244816967163}
   - component: {fileID: 4884819244816967161}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,6 +162,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f47f5c0b0a1ec4b418419686200f82af, type: 2}
   - {fileID: 11400000, guid: f01bcceb763ae022a85af6375283d85f, type: 2}
   spell: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
+  maxHealth: 6
   baseSpeed: 3
   maxAimOffset: 2
   interactManager: {fileID: 0}
@@ -247,7 +248,7 @@ GameObject:
   - component: {fileID: 4884819245130439815}
   - component: {fileID: 4884819245130439816}
   - component: {fileID: 4884819245130439817}
-  m_Layer: 7
+  m_Layer: 8
   m_Name: Player Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -437,6 +438,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Emitter
       objectReference: {fileID: 0}
+    - target: {fileID: 2340650306350059277, guid: 48404cc84a6ebddf297f3007f77ead82, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 2631931256971578531, guid: 48404cc84a6ebddf297f3007f77ead82, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -483,7 +488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6937564116877953324, guid: 48404cc84a6ebddf297f3007f77ead82, type: 3}
       propertyPath: hitLayers.m_Bits
-      value: 256
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48404cc84a6ebddf297f3007f77ead82, type: 3}

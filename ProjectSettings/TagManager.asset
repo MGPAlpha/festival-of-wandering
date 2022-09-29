@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraBoundary
   - Firework Wave
+  - Enemy
   layers:
   - Default
   - TransparentFX

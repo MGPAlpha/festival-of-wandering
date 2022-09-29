@@ -25,6 +25,7 @@ MonoBehaviour:
     attackDuration: 0.5
     attackCooldown: 0.2
     comboTimeLimit: 0.4
+    pushbackForce: 5
   - animationClip: {fileID: 7400000, guid: b782f31488921848db25be37573723f9, type: 2}
     animationSpeed: 0.2
     movementSpeed: 0.4
@@ -35,3 +36,4 @@ MonoBehaviour:
     attackDuration: 0.2
     attackCooldown: 0.1
     comboTimeLimit: 0
+    pushbackForce: 3
