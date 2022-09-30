@@ -16,7 +16,7 @@ public class Player : MonoBehaviour, IDamageable
     private WeaponEmitter _weaponEmitter;
     [SerializeField] private bool inDialog;
     [SerializeField] private bool canAttack;
-    [SerializeField] private CinemachineCameraOffset _cco;
+    [SerializeField] public CinemachineCameraOffset _cco;
     [SerializeField] private GameObject fireworkWavePrefab;
 
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
