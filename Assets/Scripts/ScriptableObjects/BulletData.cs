@@ -37,6 +37,8 @@ public class BulletData : ScriptableObject
 
     [SerializeField] private float colliderRadius = .2f;
     public float ColliderRadius { get => colliderRadius; }
+    [SerializeField] private float knockbackForce = 0f;
+    public float KnockbackForce { get => knockbackForce; }
 
     [SerializeField] private Weapon clusterWeapon;
     public Weapon ClusterWeapon { get => clusterWeapon; }

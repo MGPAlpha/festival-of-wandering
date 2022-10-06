@@ -5,7 +5,8 @@ using UnityEngine;
 public enum BulletKillReason {
     Timeout,
     Hit,
-    Wall
+    Wall,
+    Firework
 }
 
 public class BulletController : MonoBehaviour
@@ -15,6 +16,7 @@ public class BulletController : MonoBehaviour
     private float lifetimeRemaining;
 
     private bool isDead;
+    private BulletKillReason deathReason;
 
     private Animator _an;
     private SpriteRenderer _sp;
@@ -24,6 +26,7 @@ public class BulletController : MonoBehaviour
     private CircleCollider2D _cc;
     private Rigidbody2D _rb;
     private WeaponEmitter _we;
+    private ParticleSystem _ps;
 
     private Vector2 movementDir;
     private float movementSpeed;
@@ -42,6 +45,7 @@ public class BulletController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _an = GetComponent<Animator>();
         _we = GetComponentInChildren<WeaponEmitter>();
+        _ps = GetComponentInChildren<ParticleSystem>();
         _sp = GetComponent<SpriteRenderer>();
         _ao = new AnimatorOverrideController(_an.runtimeAnimatorController);
         _an.runtimeAnimatorController = _ao;
@@ -53,7 +57,10 @@ public class BulletController : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        if (isDead && !_we.FiringActive) {
+        if (isDead && !_we.FiringActive && deathReason != BulletKillReason.Firework) {
+            Destroy(this.gameObject);
+        }
+        if (isDead && deathReason == BulletKillReason.Firework && !_ps.IsAlive()) {
             Destroy(this.gameObject);
         }
     }
@@ -111,15 +118,24 @@ public class BulletController : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
-
+        if (other.tag == "Firework Wave") {
+            Kill(BulletKillReason.Firework);
+        } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
+            if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable)) {
+                damageable.Damage(1);
+                if (other.attachedRigidbody) {
+                    if (bulletData.KnockbackForce > 0)
+                        other.attachedRigidbody.AddForce(bulletData.KnockbackForce * this.movementDir, ForceMode2D.Impulse);
+                    
+                }
+                Kill(BulletKillReason.Hit);
+            }
         } else if (other.gameObject.layer == 0) { // Layer is default
             Kill(BulletKillReason.Wall);
         }
     }
 
     public void Kill(BulletKillReason reason) {
-        isDead = true;
         bool doCluster = reason == BulletKillReason.Timeout && bulletData.BurstOnTimeout || reason == BulletKillReason.Wall && bulletData.BurstOnWall;
         if (bulletData.ClusterWeapon && doCluster) {
             _sp.enabled = false;
@@ -136,7 +152,19 @@ public class BulletController : MonoBehaviour
             }
             clusterAimDirection = clusterAimDirection.Rotate(bulletData.ClusterAimOffset);
             _we.Fire(bulletData.ClusterWeapon, clusterAimDirection);
+        } else if (reason == BulletKillReason.Firework) {
+            if (_we.FiringActive) {
+                Destroy(this.gameObject);
+            } else if (!isDead) {
+                ParticleSystem.MainModule psMain = _ps.main;
+                psMain.startColor = Random.ColorHSV(0,1f, 1f, 1f, 1f, 1f);
+                _ps.Play();
+                _sp.enabled = false;
+            }
+        } else {
+            Destroy(this.gameObject);
         }
-        else Destroy(this.gameObject);
+        isDead = true;
+        deathReason = reason;
     }
 }

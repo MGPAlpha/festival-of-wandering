@@ -15,8 +15,9 @@ MonoBehaviour:
   bursts:
   - startTime: 0
     bullet: {fileID: 11400000, guid: ef456f6f69eec5311ba642cdc80a4be5, type: 2}
-    firingSpread: 20
+    firingSpread: 0
     bulletsInSpread: 6
     spreadTimeInterval: 0
-    spreadRandomization: 40
+    spreadClockwise: 0
+    spreadRandomization: 60
     aimOffset: 0
