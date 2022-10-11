@@ -101,7 +101,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private void OnGamepadAim() {
         // if (canMove) {
-            aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
+        aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
         // }
         // Debug.Log(aimDir);
     }
@@ -130,7 +130,9 @@ public class Player : MonoBehaviour, IDamageable
     }
     
     void OnInteract() {
-        interactManager.Interact();
+        if (canMove) {
+            interactManager.Interact();
+        }
     }
 
     [YarnCommand("p_face_towards")]
