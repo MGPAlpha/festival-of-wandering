@@ -19,6 +19,7 @@ MonoBehaviour:
   initTime: 0
   moveTime: 4
   aimTime: 2
+  attackAnimLeadTime: 0.8
   cooldownTime: 0.5
   speedWhileAiming: 0
   speedWhileFiring: 0
