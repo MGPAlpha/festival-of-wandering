@@ -343,10 +343,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.058769513
-    y: 0.064412236
-    width: 0.8815427
-    height: 0.86956525
+    x: 0.06594399
+    y: 0.05
+    width: 0.8672087
+    height: 0.90000004
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -961,6 +961,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2115097319 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 684315158556548935, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
+  m_PrefabInstance: {fileID: 684315157444923499}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2115097320
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2115097319}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &684315157444923499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1011,6 +1036,18 @@ PrefabInstance:
     - target: {fileID: 684315158556548932, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 684315158556548933, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 684315158556548933, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 684315158556548933, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 684315158556548935, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
       propertyPath: m_Name

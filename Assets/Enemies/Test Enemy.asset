@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Test Enemy
   m_EditorClassIdentifier: 
   enemyName: Test Enemy
+  animatorController: {fileID: 9100000, guid: 339c75ef5b706ff22b86bffe0fa83aa0, type: 2}
   moveSpeed: 1
   baseHealth: 3
   initTime: 0
