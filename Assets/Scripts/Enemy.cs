@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private NavMeshAgent _nma;
     private WeaponEmitter _we;
     private CircleCollider2D _cc;
+    private BoxCollider2D _hitbox;
     private Animator _an;
     private GameObject target;
 
@@ -41,6 +42,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _we = GetComponentInChildren<WeaponEmitter>();
         _cc = GetComponent<CircleCollider2D>();
         _an = GetComponent<Animator>();
+        _hitbox = GetComponent<BoxCollider2D>();
         if (enemyType) Initialize(enemyType);
     }
 
@@ -59,6 +61,8 @@ public class Enemy : MonoBehaviour, IDamageable
         _nma.speed = 0;
         _cc.enabled = true;
         _an.speed = 1;
+        _hitbox.offset = enemy.HitboxCenter;
+        _hitbox.size = enemy.HitboxSize;
         target = GameObject.Find("Player");
     }
 

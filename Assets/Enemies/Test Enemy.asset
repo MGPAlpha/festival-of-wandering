@@ -24,6 +24,8 @@ MonoBehaviour:
   speedWhileAiming: 0
   speedWhileFiring: 0
   lineOfSightTime: 0.5
+  hitboxCenter: {x: 0, y: 0.5}
+  hitboxSize: {x: 0.8, y: 2}
   weapons:
   - rid: 953465133186416640
   - rid: 2

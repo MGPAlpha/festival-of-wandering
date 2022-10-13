@@ -30,6 +30,10 @@ public class EnemyData : ScriptableObject {
     public float SpeedWhileFiring { get => speedWhileFiring; }
     [Tooltip("Enemy must have line of sight for this long before aiming")][SerializeField] private float lineOfSightTime = .5f;
     public float LineOfSightTime { get => lineOfSightTime; }
+    [SerializeField] private Vector2 hitboxCenter;
+    public Vector2 HitboxCenter { get => hitboxCenter; }
+    [SerializeField] private Vector2 hitboxSize = new Vector2(1,1);
+    public Vector2 HitboxSize { get => hitboxSize; }
     [SerializeReference] private List<EnemyAttackChoice> weapons;
     public ReadOnlyCollection<EnemyAttackChoice> Weapons { get => weapons.AsReadOnly(); }
 }
