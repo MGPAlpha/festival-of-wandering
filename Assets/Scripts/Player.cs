@@ -47,6 +47,8 @@ public class Player : MonoBehaviour, IDamageable
     public bool IsTempInvincible { get => tempInvincibilityRemaining > 0; }
     public bool IsInvincible { get => IsTempInvincible || IsDodgeInvincible; } // Change once invincibility cheat available
 
+    [SerializeField] private List<Checkpoint> checkpoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,10 +64,12 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public bool Damage(int amount, GameObject src) {
-        if (!IsInvincible) {
+        if (!dead && !IsInvincible) {
             health -= amount;
             tempInvincibilityRemaining = tempInvincibilityTime;
-            Debug.Log("New player health: " + health);
+            if (health <= 0) {
+                StartCoroutine(Die());
+            }
             return true;
         } return false;
     }
@@ -117,18 +121,23 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     void OnPrimaryAttack() {
-        if (weapons[0] && canAttack)
+        if (weapons[0] && canAttack) {
             _attackComponent.TriggerWeapon(weapons[0], aimDir);
+            _an.SetTrigger("attack");
+        }
     }
 
     void OnSecondaryAttack() {
-        if (weapons[1] && canAttack)
+        if (weapons[1] && canAttack) {
             _attackComponent.TriggerWeapon(weapons[1], aimDir);
+            _an.SetTrigger("attack");
+        }
     }
 
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive) return;
         _weaponEmitter.Fire(spell, aimDir);
+        _an.SetTrigger("spell");
     }
     
     void OnInteract() {
@@ -160,6 +169,25 @@ public class Player : MonoBehaviour, IDamageable
             yield return null;
         }
         _an.SetBool("walking", false);
+    }
+
+    /// <summary>
+    /// OnGUI is called for rendering and handling GUI events.
+    /// This function can be called multiple times per frame (one call per event).
+    /// </summary>
+    private void OnGUI()
+    {
+        // GUIStyle healthStyle = new GUIStyle();
+        // healthStyle.fontSize = 30;
+        // GUI.skin.label.fontSize = 20;
+        GUILayout.Label("Health: " + health + "/" + maxHealth);
+        GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
+        GUILayout.Label("Current Memento: " + (spell ? ("Yes!" + " (Left Click or Right Trigger)") : "None"));
+        GUILayout.Label("Firework Charms: " + "not implemented" + " remaining");
+        if (dead) {
+            GUILayout.Label("You died!");
+        }
+
     }
 
     float dodgeTimer;
@@ -224,5 +252,39 @@ public class Player : MonoBehaviour, IDamageable
         if (initMove) {
             canMove = true;
         }
+    }
+
+    [SerializeField] private float deathTime = 3;
+    private bool dead = false;
+    private IEnumerator Die() {
+        initAttack = canAttack;
+        initMove = canMove;
+        
+        canAttack = false;
+        canMove = false;
+        dead = true;
+
+        float deathTimer = 0;
+        while (deathTimer < deathTime) {
+            deathTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        RespawnAtLastCheckpoint();
+    }
+
+    public void AddCheckpoint(Checkpoint checkpoint) {
+        if (!checkpoints.Contains(checkpoint)) {
+            checkpoints.Add(checkpoint);
+        }
+    }
+
+    private void RespawnAtLastCheckpoint() {
+        Checkpoint lastCheckpoint = checkpoints[checkpoints.Count-1];
+        transform.position = lastCheckpoint.transform.position;
+        health = maxHealth;
+        lastCheckpoint.ResetCheckpoint();
+        StopDialogue();
+        dead = false;
     }
 }
