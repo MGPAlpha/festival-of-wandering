@@ -177,10 +177,13 @@ public class Player : MonoBehaviour, IDamageable
     /// </summary>
     private void OnGUI()
     {
-        GUI.skin.label.fontSize = 30;
+        // GUIStyle healthStyle = new GUIStyle();
+        // healthStyle.fontSize = 30;
+        // GUI.skin.label.fontSize = 20;
         GUILayout.Label("Health: " + health + "/" + maxHealth);
         GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
         GUILayout.Label("Current Memento: " + (spell ? ("Yes!" + " (Left Click or Right Trigger)") : "None"));
+        GUILayout.Label("Firework Charms: " + "not implemented" + " remaining");
         if (dead) {
             GUILayout.Label("You died!");
         }

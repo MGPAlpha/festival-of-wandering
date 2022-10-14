@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5024c74f7c020ac5bdceb383647f851, type: 3}
   m_Name: Test Sword
   m_EditorClassIdentifier: 
-  weaponName: 
+  weaponName: Beginner's Brew
   isHeavy: 0
   attacks:
   - animationClip: {fileID: 7400000, guid: 9c007980663686da68dd159c243acbca, type: 2}
