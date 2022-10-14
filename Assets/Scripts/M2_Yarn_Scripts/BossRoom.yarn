@@ -1,7 +1,7 @@
 ﻿title: BossRoom
 tags:
 ---
-Elder Witch: Who goes there?
+Hostess: Face me, dear guest!
 <<stop_track "TrackManager">>
 <<play_track "TrackManager" "Bosses/Hostess_Tutorial">>
 ===
