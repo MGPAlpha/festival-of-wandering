@@ -129,6 +129,7 @@ public class Player : MonoBehaviour, IDamageable
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive) return;
         _weaponEmitter.Fire(spell, aimDir);
+        _an.SetTrigger("spell");
     }
     
     void OnInteract() {
