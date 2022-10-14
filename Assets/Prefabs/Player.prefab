@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2983765063445255747, guid: 5e918b3da5c144157aed98c97900f515, type: 3}
+  m_Sprite: {fileID: 4729606205655721961, guid: db0e0b3c32bbfc74582f9a35a1732d30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -209,8 +209,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: -0.125}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.5, y: 1.5}
+    pivot: {x: 0.5, y: 0.25}
+    oldSize: {x: 1.125, y: 2.125}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -267,7 +267,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4884819245130439819}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -394,6 +394,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6778370160103942265}
   - component: {fileID: 4820013636729818771}
+  - component: {fileID: 3809760817996077687}
   m_Layer: 7
   m_Name: InteractManager
   m_TagString: Untagged
@@ -409,7 +410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8374615656388463790}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -430,7 +431,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactibleLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16384
+--- !u!58 &3809760817996077687
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374615656388463790}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1001 &2567415792598599801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,7 +473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631931256971578531, guid: 48404cc84a6ebddf297f3007f77ead82, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2631931256971578531, guid: 48404cc84a6ebddf297f3007f77ead82, type: 3}
       propertyPath: m_LocalPosition.z
