@@ -19,5 +19,5 @@ MonoBehaviour:
     bulletsInSpread: 6
     spreadTimeInterval: 0
     spreadClockwise: 0
-    spreadRandomization: 60
+    spreadRandomization: 40
     aimOffset: 0
