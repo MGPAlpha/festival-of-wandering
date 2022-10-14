@@ -1,0 +1,12 @@
+﻿title: Hostess_Room1
+tags:
+---
+<<switch_camera "CM vcam2">>
+<<p_walk_to "Player" "hr1_pMarker1" 4>>
+Elder Witch: Who goes there? #line:009b870 
+<<p_walk_to "Player" "hr1_pMarker2" 2>>
+<<p_face_towards "Player" "Hostess">>
+Elder Witch: bruh #line:00b9c72 
+<<walk_to "Hostess" "hr1_hMarker1" 3>>
+<<teleport_to "Hostess" "hr1_hMarker2">>
+===
