@@ -260,6 +260,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSpell(Memento spell) {
         this.spell = spell;
+        mementoCharge = spell.ChargeRequired;
     }
 
     public void StartDialogue() {
