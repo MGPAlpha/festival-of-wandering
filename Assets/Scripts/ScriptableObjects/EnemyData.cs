@@ -10,6 +10,12 @@ public class EnemyData : ScriptableObject {
     public string EnemyName { get => enemyName; }
     [SerializeField] private RuntimeAnimatorController animatorController;
     public RuntimeAnimatorController AnimatorController { get => animatorController; }
+    [SerializeField] private float idleAnimSpeed = 1;
+    public float IdleAnimSpeed { get => idleAnimSpeed; }
+    [SerializeField] private float walkAnimSpeed = 1;
+    public float WalkAnimSpeed { get => walkAnimSpeed; }
+    [SerializeField] private float attackAnimSpeed = 1;
+    public float AttackAnimSpeed { get => attackAnimSpeed; }
     [SerializeField] private float moveSpeed = 1f;
     public float MoveSpeed { get => moveSpeed; }
     [SerializeField] private int baseHealth = 3;

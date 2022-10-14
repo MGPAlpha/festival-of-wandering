@@ -14,6 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Willow Guardian
   animatorController: {fileID: 9100000, guid: 339c75ef5b706ff22b86bffe0fa83aa0, type: 2}
+  idleAnimSpeed: 0.4
+  walkAnimSpeed: 0.6
+  attackAnimSpeed: 0.5
   moveSpeed: 1
   baseHealth: 3
   initTime: 0
