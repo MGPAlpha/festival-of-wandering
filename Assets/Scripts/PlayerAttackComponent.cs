@@ -92,7 +92,7 @@ public class PlayerAttackComponent : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable damageable)) {
             if (hits.Contains(damageable)) return;
             hits.Add(damageable);
-            damageable.Damage(1);
+            damageable.Damage(1, gameObject.transform.parent.gameObject);
             if (other.TryGetComponent<Rigidbody2D>(out Rigidbody2D rbOther)) {
                 rbOther.AddForce(attackDirection * CurrAttack.PushbackForce, ForceMode2D.Impulse);
             }
