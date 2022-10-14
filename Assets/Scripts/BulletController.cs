@@ -93,6 +93,7 @@ public class BulletController : MonoBehaviour
         isDead = false;
         bulletData = bullet;
         hitLayers = hit;
+        _we.hitLayers = hitLayers;
         transform.position = pos;
         lifetimeRemaining = bullet.Lifetime;
         _ao["Basic Bullet Animation"] = null;

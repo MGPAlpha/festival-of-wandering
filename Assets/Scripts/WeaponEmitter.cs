@@ -6,7 +6,7 @@ using UnityEngine;
 public class WeaponEmitter : MonoBehaviour
 {
     [SerializeField] private GameObject _bulletPrefab;
-    [SerializeField] private LayerMask hitLayers;
+    [SerializeField] public LayerMask hitLayers;
 
     
     // Start is called before the first frame update
