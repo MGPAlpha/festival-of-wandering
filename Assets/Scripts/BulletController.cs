@@ -122,7 +122,8 @@ public class BulletController : MonoBehaviour
             Kill(BulletKillReason.Firework);
         } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
             if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable)) {
-                damageable.Damage(1);
+                bool successfulHit = damageable.Damage(1);
+                if (!successfulHit) return;
                 if (other.attachedRigidbody) {
                     if (bulletData.KnockbackForce > 0)
                         other.attachedRigidbody.AddForce(bulletData.KnockbackForce * this.movementDir, ForceMode2D.Impulse);

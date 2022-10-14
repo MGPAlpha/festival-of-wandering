@@ -66,12 +66,13 @@ public class Enemy : MonoBehaviour, IDamageable
         target = GameObject.Find("Player");
     }
 
-    public void Damage(int amount) {
-        if (state == EnemyState.DEAD) return;
+    public bool Damage(int amount) {
+        if (state == EnemyState.DEAD) return false;
         health -= amount;
         if (health <= 0) {
             Die();
         }
+        return true;
     }
 
     // Update is called once per frame
@@ -80,7 +81,6 @@ public class Enemy : MonoBehaviour, IDamageable
         target.transform.position = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
         Vector2 nmaDirection = (_nma.steeringTarget - transform.position).normalized;
         Vector2 targetDirection = (target.transform.position - transform.position).normalized;
-        Debug.Log(nmaDirection.normalized);
         _nma.SetDestination(target.transform.position);
         stateTime += Time.deltaTime;
         switch (state) {

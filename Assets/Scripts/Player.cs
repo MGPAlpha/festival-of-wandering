@@ -40,8 +40,9 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private float tempInvincibilityTime = 1;
     private float tempInvincibilityRemaining = 0;
+    public bool IsDodgeInvincible { get => dodging && dodgeTimer < dodgeTime * 7/8; }
     public bool IsTempInvincible { get => tempInvincibilityRemaining > 0; }
-    public bool IsInvincible { get => IsTempInvincible; } // Change once invincibility cheat available
+    public bool IsInvincible { get => IsTempInvincible || IsDodgeInvincible; } // Change once invincibility cheat available
 
     // Start is called before the first frame update
     void Start()
@@ -57,12 +58,13 @@ public class Player : MonoBehaviour, IDamageable
         health = maxHealth;
     }
 
-    public void Damage(int amount) {
+    public bool Damage(int amount) {
         if (!IsInvincible) {
             health -= amount;
             tempInvincibilityRemaining = tempInvincibilityTime;
             Debug.Log("New player health: " + health);
-        }
+            return true;
+        } return false;
     }
 
     // Update is called once per frame
@@ -141,16 +143,18 @@ public class Player : MonoBehaviour, IDamageable
         moveDir = gameObject.transform.position - transform.position;
     }
 
+    float dodgeTimer;
+
     IEnumerator Dodge(Vector2 dir) {
         dodging = true;
         _an.SetFloat("facingX", dir.x);
         _an.SetFloat("facingY", dir.y);
         float dodgeSpeed = dodgeSpeedFactor * baseSpeed;
         _rb.velocity = dodgeSpeed * dir;
-        float elapsedTime = 0;
-        while (elapsedTime < dodgeTime)
+        dodgeTimer = 0;
+        while (dodgeTimer < dodgeTime)
         {
-            elapsedTime += Time.deltaTime;
+            dodgeTimer += Time.deltaTime;
             yield return null;
         }
         dodging = false;
