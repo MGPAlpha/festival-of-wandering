@@ -171,6 +171,22 @@ public class Player : MonoBehaviour, IDamageable
         _an.SetBool("walking", false);
     }
 
+    /// <summary>
+    /// OnGUI is called for rendering and handling GUI events.
+    /// This function can be called multiple times per frame (one call per event).
+    /// </summary>
+    private void OnGUI()
+    {
+        GUI.skin.label.fontSize = 30;
+        GUILayout.Label("Health: " + health + "/" + maxHealth);
+        GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
+        GUILayout.Label("Current Memento: " + (spell ? ("Yes!" + " (Left Click or Right Trigger)") : "None"));
+        if (dead) {
+            GUILayout.Label("You died!");
+        }
+
+    }
+
     float dodgeTimer;
 
     IEnumerator Dodge(Vector2 dir) {
