@@ -121,8 +121,9 @@ public class BulletController : MonoBehaviour
         if (other.tag == "Firework Wave") {
             Kill(BulletKillReason.Firework);
         } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
+            if (isDead) return;
             if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable)) {
-                bool successfulHit = damageable.Damage(1);
+                bool successfulHit = damageable.Damage(1, this.gameObject);
                 if (!successfulHit) return;
                 if (other.attachedRigidbody) {
                     if (bulletData.KnockbackForce > 0)

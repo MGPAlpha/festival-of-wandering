@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private BoxCollider2D _hitbox;
     private Animator _an;
     private SpriteRenderer _sp;
+    private Rigidbody2D _rb;
     private GameObject target;
 
     public EnemyData enemyType;
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     [SerializeField] private float spriteDissolveTime = 1;
     [SerializeField] private float spriteDissolveDelay = 1;
+    [SerializeField] private float killingBlowForce = 6;
 
     private int health;
     private int maxHealth;
@@ -48,6 +50,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _an = GetComponent<Animator>();
         _hitbox = GetComponent<BoxCollider2D>();
         _sp = GetComponent<SpriteRenderer>();
+        _rb = GetComponent<Rigidbody2D>();
         if (enemyType) Initialize(enemyType);
     }
 
@@ -76,11 +79,14 @@ public class Enemy : MonoBehaviour, IDamageable
         target = GameObject.Find("Player");
     }
 
-    public bool Damage(int amount) {
+    public bool Damage(int amount, GameObject src) {
+        Debug.Log(health);
         if (state == EnemyState.DEAD) return false;
         health -= amount;
         if (health <= 0) {
+            _rb.AddForce((transform.position - src.transform.position).normalized * killingBlowForce, ForceMode2D.Impulse);
             Die();
+
         }
         return true;
     }
