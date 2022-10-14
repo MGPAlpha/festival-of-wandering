@@ -824,20 +824,18 @@ MonoBehaviour:
   CollisionTag: 
   EventReference:
     Guid:
-      Data1: -1393045424
-      Data2: 1178573302
-      Data3: 1278236321
-      Data4: -1917554150
-    Path: event:/Music/Stages/Stage Theme 2
+      Data1: -874882559
+      Data2: 1339861945
+      Data3: -1332078441
+      Data4: -1226267708
+    Path: event:/Music/Misc/MainTheme_M2
   Event: 
   PlayEvent: 1
   StopEvent: 2
   AllowFadeout: 1
   TriggerOnce: 0
   Preload: 0
-  Params:
-  - Name: Combat
-    Value: 0
+  Params: []
   OverrideAttenuation: 0
   OverrideMinDistance: 0
   OverrideMaxDistance: 0
@@ -968,8 +966,8 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.22602738
-    y: 0.22515212
+    x: 0.30365294
+    y: 0.12778905
     width: 0.5479452
     height: 0.5476673
   near clip plane: 0.1
