@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(fileName = "New Memento", menuName = "Festival/Memento")]
 public class Memento : ScriptableObject
 {
     
