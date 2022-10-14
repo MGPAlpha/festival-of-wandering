@@ -8,6 +8,8 @@ using System.Linq;
 public class EnemyData : ScriptableObject {
     [SerializeField] private string enemyName = "New Enemy";
     public string EnemyName { get => enemyName; }
+    [SerializeField] private RuntimeAnimatorController animatorController;
+    public RuntimeAnimatorController AnimatorController { get => animatorController; }
     [SerializeField] private float moveSpeed = 1f;
     public float MoveSpeed { get => moveSpeed; }
     [SerializeField] private int baseHealth = 3;
@@ -18,6 +20,8 @@ public class EnemyData : ScriptableObject {
     public float MoveTime { get => moveTime; }
     [SerializeField] private float aimTime = 2;
     public float AimTime { get => aimTime; }
+    [SerializeField] [Min(0)] private float attackAnimLeadTime = 0;
+    public float AttackAnimLeadTime { get => attackAnimLeadTime; }
     [SerializeField] private float cooldownTime = .5f;
     public float CooldownTime { get => cooldownTime; }
     [SerializeField] private float speedWhileAiming = 0;
@@ -26,6 +30,10 @@ public class EnemyData : ScriptableObject {
     public float SpeedWhileFiring { get => speedWhileFiring; }
     [Tooltip("Enemy must have line of sight for this long before aiming")][SerializeField] private float lineOfSightTime = .5f;
     public float LineOfSightTime { get => lineOfSightTime; }
+    [SerializeField] private Vector2 hitboxCenter;
+    public Vector2 HitboxCenter { get => hitboxCenter; }
+    [SerializeField] private Vector2 hitboxSize = new Vector2(1,1);
+    public Vector2 HitboxSize { get => hitboxSize; }
     [SerializeReference] private List<EnemyAttackChoice> weapons;
     public ReadOnlyCollection<EnemyAttackChoice> Weapons { get => weapons.AsReadOnly(); }
 }
