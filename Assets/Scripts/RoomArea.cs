@@ -72,4 +72,20 @@ public class RoomArea : MonoBehaviour
             }
         }
     }
+
+    public void Reset() {
+        if (mists != null) {
+            foreach (GameObject mist in mists) {
+                if (mist) Destroy(mist);
+            }
+        }
+        roomComplete = false;
+        roomStarted = false;
+
+        foreach (EnemySpawner spawner in spawners) {
+            spawner.Reset();
+        }
+
+
+    }
 }

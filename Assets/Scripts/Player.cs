@@ -47,6 +47,8 @@ public class Player : MonoBehaviour, IDamageable
     public bool IsTempInvincible { get => tempInvincibilityRemaining > 0; }
     public bool IsInvincible { get => IsTempInvincible || IsDodgeInvincible; } // Change once invincibility cheat available
 
+    [SerializeField] private List<Checkpoint> checkpoints;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -65,7 +67,9 @@ public class Player : MonoBehaviour, IDamageable
         if (!IsInvincible) {
             health -= amount;
             tempInvincibilityRemaining = tempInvincibilityTime;
-            Debug.Log("New player health: " + health);
+            if (health <= 0) {
+                Die();
+            }
             return true;
         } return false;
     }
@@ -227,5 +231,22 @@ public class Player : MonoBehaviour, IDamageable
         if (initMove) {
             canMove = true;
         }
+    }
+
+    private void Die() {
+        RespawnAtLastCheckpoint();
+    }
+
+    public void AddCheckpoint(Checkpoint checkpoint) {
+        if (!checkpoints.Contains(checkpoint)) {
+            checkpoints.Add(checkpoint);
+        }
+    }
+
+    private void RespawnAtLastCheckpoint() {
+        Checkpoint lastCheckpoint = checkpoints[checkpoints.Count-1];
+        transform.position = lastCheckpoint.transform.position;
+        health = maxHealth;
+        lastCheckpoint.ResetCheckpoint();
     }
 }

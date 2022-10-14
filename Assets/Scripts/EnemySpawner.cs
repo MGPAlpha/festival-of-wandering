@@ -32,6 +32,8 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    Coroutine spawnCoroutine;
+
     private IEnumerator SpawnRoutine(float delay) {
         float spawnTimer = -delay;
         while (spawnTimer < 0) {
@@ -59,6 +61,13 @@ public class EnemySpawner : MonoBehaviour
     }
 
     public void Spawn(float delay) {
-        StartCoroutine(SpawnRoutine(delay));
+        spawnCoroutine = StartCoroutine(SpawnRoutine(delay));
+    }
+
+    public void Reset() {
+        SpawnComplete = false;
+        StopAllCoroutines();
+        _sp.material.SetFloat("_Progress", 0);
+        if (childEnemy) Destroy(childEnemy);
     }
 }
