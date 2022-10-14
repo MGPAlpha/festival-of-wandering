@@ -1,0 +1,15 @@
+﻿title: Hostess_Room3
+tags:
+---
+<<change_camera_speed 1>>
+<<switch_camera "CM vcam5">>
+<<p_walk_to "Player" "hr3_pMarker1" .6>>
+<<p_face_towards "Player" "Hostess (1)">>
+Elder Witch: Good job.
+Elder Witch: You will now test your ability to fight.
+Elder Witch: You may have already realized that you have 2 weapons on your person.
+Elder Witch: You will need to use these to defend yourself.
+Elder Witch: Good luck.
+<<deleteSelf "Hostess (1)">>
+<<spawn_enemy "Enemy Spawner Cutscene1" 0>>
+===

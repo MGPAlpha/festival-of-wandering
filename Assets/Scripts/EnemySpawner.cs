@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -60,6 +61,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
+    [YarnCommand("spawn_enemy")]
     public void Spawn(float delay) {
         spawnCoroutine = StartCoroutine(SpawnRoutine(delay));
     }

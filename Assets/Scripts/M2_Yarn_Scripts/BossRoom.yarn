@@ -1,0 +1,7 @@
+﻿title: BossRoom
+tags:
+---
+Elder Witch: Who goes there?
+<<stop_track "TrackManager">>
+<<play_track "TrackManager" "Bosses/Hostess_Tutorial">>
+===
