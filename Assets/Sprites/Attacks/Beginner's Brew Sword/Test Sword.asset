@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5024c74f7c020ac5bdceb383647f851, type: 3}
+  m_Name: Test Sword
+  m_EditorClassIdentifier: 
+  weaponName: 
+  isHeavy: 0
+  attacks:
+  - animationClip: {fileID: 7400000, guid: 1b03a27d9a86e3a5eb97ec78c968d7e4, type: 2}
+    animationSpeed: 0.2
+    movementSpeed: 0
+    pivotOffset: {x: 0, y: 0}
+    colliderCenter: {x: 0, y: 0}
+    colliderSize: {x: 0, y: 0}
+    attackStartTime: 0
+    attackDuration: 0
+    attackCooldown: 0
+    comboTimeLimit: 0
+    pushbackForce: 0
