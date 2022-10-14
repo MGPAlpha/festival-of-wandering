@@ -161,14 +161,17 @@ MonoBehaviour:
   weapons:
   - {fileID: 11400000, guid: 04d3de3196ebd7624847b18cf333371d, type: 2}
   - {fileID: 11400000, guid: f01bcceb763ae022a85af6375283d85f, type: 2}
-  spell: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
+  spell: {fileID: 0}
   maxHealth: 6
   baseSpeed: 3
   maxAimOffset: 2
-  interactManager: {fileID: 0}
+  interactManager: {fileID: 4820013636729818771}
   dodgeSpeedFactor: 2.5
   dodgeTime: 0.4
   tempInvincibilityTime: 1
+  checkpoints: []
+  fireworkSupply: 2
+  deathTime: 3
 --- !u!50 &4884819244816967162
 Rigidbody2D:
   serializedVersion: 4
