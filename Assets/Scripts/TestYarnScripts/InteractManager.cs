@@ -55,6 +55,8 @@ public class InteractManager : MonoBehaviour
         }
     }
 
+    public bool CanInteract { get => target != null; } 
+
     public void Interact() {
         if (target) {
             bool keepTarget = target.Interact();

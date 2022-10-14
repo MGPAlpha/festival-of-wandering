@@ -51,6 +51,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private int mementoCharge;
 
+    private ParticleSystem _ps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour, IDamageable
         _rb = GetComponent<Rigidbody2D>();
         _an = GetComponent<Animator>();
         _sp = GetComponent<SpriteRenderer>();
+        _ps = GetComponentInChildren<ParticleSystem>();
         _attackComponent = GetComponentInChildren<PlayerAttackComponent>();
         _weaponEmitter = GetComponentInChildren<WeaponEmitter>();
         canMove = true;
@@ -77,9 +80,21 @@ public class Player : MonoBehaviour, IDamageable
         } return false;
     }
 
+    float escHoldTime = 0;
+
     // Update is called once per frame
     void Update()
     {
+
+        if (_input.actions["Exit"].IsPressed()) {
+            escHoldTime += Time.deltaTime;
+            if (escHoldTime > 3) {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            }
+        } else {
+            escHoldTime = 0;
+        }
+
         if (_cco) {
             _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
         }
@@ -191,14 +206,21 @@ public class Player : MonoBehaviour, IDamageable
         // healthStyle.fontSize = 30;
         // GUI.skin.label.fontSize = 20;
         GUILayout.Label("Health: " + health + "/" + maxHealth);
-        GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
-        GUILayout.Label("Current Memento: " + (spell ? (spell.MementoName + " (Press E or Right Bumper)") : "None"));
+        if (weapons[0]) {
+            GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
+        }
         if (spell) {
+            GUILayout.Label("Current Memento: " + spell.MementoName + " (Press E or Right Bumper)");
             GUILayout.Label("Memento Charge: " + mementoCharge + "/" + spell.ChargeRequired);
         }
-        GUILayout.Label("Firework Charms: " + "not implemented" + " remaining");
+        if (fireworkSupply > 0) {
+            GUILayout.Label("Firework Charms: " + fireworkSupply + " remaining (Press Q or Left Bumper)");
+        }
         if (dead) {
             GUILayout.Label("You died!");
+        }
+        if (interactManager.CanInteract) {
+            GUILayout.Label("Press F on keyboard or X on controller to Interact!");
         }
 
     }
@@ -209,6 +231,7 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         _an.SetFloat("facingX", dir.x);
         _an.SetFloat("facingY", dir.y);
+        _ps.Play();
         float dodgeSpeed = dodgeSpeedFactor * baseSpeed;
         _rb.velocity = dodgeSpeed * dir;
         dodgeTimer = 0;
@@ -218,6 +241,7 @@ public class Player : MonoBehaviour, IDamageable
             yield return null;
         }
         dodging = false;
+        _ps.Stop();
     }
 
     void OnDodge() {
@@ -228,9 +252,18 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    [SerializeField] private int fireworkSupply = 2;
+    public void GainFireworks(int amount) {
+        fireworkSupply += amount;
+    }
+    public void ResupplyFireworks(int amount) {
+        fireworkSupply = Mathf.Max(fireworkSupply, amount);
+    }
+
     void OnFirework() {
-        if (canAttack) {
+        if (canAttack && fireworkSupply > 0) {
             Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
+            fireworkSupply--;
         }
     }
 
@@ -244,6 +277,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSpell(Memento spell) {
         this.spell = spell;
+        mementoCharge = spell.ChargeRequired;
     }
 
     public void StartDialogue() {
