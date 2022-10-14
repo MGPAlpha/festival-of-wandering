@@ -14,6 +14,7 @@ public class StaticAssetReferencer : MonoBehaviour
     public void EndDialogue() {
         PlayerSingleton.PlayerSing.Play.StopDialogue();
         CameraSingleton.ClearSwitchedCameras();
+        CameraSingleton.ChangeCameraSpeed(1.5f);
         //PlayerSingleton.PlayerSing.PInput.ActivateInput();
     }
 }

@@ -34,4 +34,9 @@ public class NPCYarnScripts : MonoBehaviour
     public void TeleportTo(GameObject gameObject) {
         transform.position = gameObject.transform.position;
     }
+
+    [YarnCommand("deleteSelf")]
+    public void DeleteSelf() {
+        Destroy(gameObject);
+    }
 }

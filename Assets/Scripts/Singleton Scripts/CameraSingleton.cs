@@ -12,7 +12,7 @@ public class CameraSingleton : MonoBehaviour
     private static int priority;
     private static int currPriority;
     private static List<CinemachineVirtualCamera> switchedCameras;
-    private CinemachineFramingTransposer transposer;
+    private static CinemachineBrain cBrain;
 
     [YarnCommand("switch_camera")]
     public static void SwitchCamera(GameObject gameObject2) {
@@ -24,6 +24,11 @@ public class CameraSingleton : MonoBehaviour
             camera.m_Priority = currPriority;
             switchedCameras.Add(camera);
         }
+    }
+
+    [YarnCommand("change_camera_speed")]
+    public static void ChangeCameraSpeed(float num) {
+        cBrain.m_DefaultBlend.m_Time = num;
     }
 
     public static void ClearSwitchedCameras() {
@@ -47,6 +52,7 @@ public class CameraSingleton : MonoBehaviour
         priority = initCam.m_Priority;
         currPriority = priority;
         switchedCameras = new List<CinemachineVirtualCamera>();
+        cBrain = GameObject.Find("Main Camera").GetComponent<CinemachineBrain>();
         //transposer = cinemachine.GetCinemachineComponent<CinemachineFramingTransposer>();
         //PanCameraTo(GameObject.Find("Letter"));
     }
