@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private CircleCollider2D _cc;
     private BoxCollider2D _hitbox;
     private Animator _an;
+    private SpriteRenderer _sp;
+    private Rigidbody2D _rb;
     private GameObject target;
 
     public EnemyData enemyType;
@@ -26,6 +28,10 @@ public class Enemy : MonoBehaviour, IDamageable
     private float stateTime = 0;
     private float lineOfSightTime = 0;
     [SerializeField] private LayerMask sightBlockingLayers;
+
+    [SerializeField] private float spriteDissolveTime = 1;
+    [SerializeField] private float spriteDissolveDelay = 1;
+    [SerializeField] private float killingBlowForce = 6;
 
     private int health;
     private int maxHealth;
@@ -43,6 +49,8 @@ public class Enemy : MonoBehaviour, IDamageable
         _cc = GetComponent<CircleCollider2D>();
         _an = GetComponent<Animator>();
         _hitbox = GetComponent<BoxCollider2D>();
+        _sp = GetComponent<SpriteRenderer>();
+        _rb = GetComponent<Rigidbody2D>();
         if (enemyType) Initialize(enemyType);
     }
 
@@ -67,14 +75,18 @@ public class Enemy : MonoBehaviour, IDamageable
         _an.SetFloat("attackSpeed", enemy.AttackAnimSpeed);
         _hitbox.offset = enemy.HitboxCenter;
         _hitbox.size = enemy.HitboxSize;
+        _sp.material.SetFloat("_Dissolve", 0);
         target = GameObject.Find("Player");
     }
 
-    public bool Damage(int amount) {
+    public bool Damage(int amount, GameObject src) {
+        Debug.Log(health);
         if (state == EnemyState.DEAD) return false;
         health -= amount;
         if (health <= 0) {
+            _rb.AddForce((transform.position - src.transform.position).normalized * killingBlowForce, ForceMode2D.Impulse);
             Die();
+
         }
         return true;
     }
@@ -126,6 +138,11 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
                 break;
             case EnemyState.DEAD:
+                float dissolveProgress = (stateTime - spriteDissolveDelay) / spriteDissolveTime;
+                _sp.material.SetFloat("_Dissolve", Mathf.Clamp(dissolveProgress, 0, 1));
+                if (dissolveProgress >= 1) {
+                    Destroy(this.gameObject);
+                }
                 break;
         }
     }
@@ -170,6 +187,6 @@ public class Enemy : MonoBehaviour, IDamageable
         _nma.speed = 0;
         _cc.enabled = false;
         _hitbox.enabled = false;
-        _an.speed = 0;
+        _an.speed = .2f;
     }
 }

@@ -61,7 +61,7 @@ public class Player : MonoBehaviour, IDamageable
         health = maxHealth;
     }
 
-    public bool Damage(int amount) {
+    public bool Damage(int amount, GameObject src) {
         if (!IsInvincible) {
             health -= amount;
             tempInvincibilityRemaining = tempInvincibilityTime;
