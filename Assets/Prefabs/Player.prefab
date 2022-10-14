@@ -168,6 +168,7 @@ MonoBehaviour:
   interactManager: {fileID: 0}
   dodgeSpeedFactor: 2.5
   dodgeTime: 0.4
+  tempInvincibilityTime: 1
 --- !u!50 &4884819244816967162
 Rigidbody2D:
   serializedVersion: 4
@@ -390,6 +391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6778370160103942265}
   - component: {fileID: 4820013636729818771}
+  - component: {fileID: 4644344554832657656}
   m_Layer: 7
   m_Name: InteractManager
   m_TagString: Untagged
@@ -426,7 +428,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactibleLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8192
+--- !u!58 &4644344554832657656
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8374615656388463790}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.46
 --- !u!1001 &2567415792598599801
 PrefabInstance:
   m_ObjectHideFlags: 0
