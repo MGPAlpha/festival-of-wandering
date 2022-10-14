@@ -60,6 +60,7 @@ public class Enemy : MonoBehaviour, IDamageable
         attackAnimTriggered = false;
         _nma.speed = 0;
         _cc.enabled = true;
+        _hitbox.enabled = true;
         _an.speed = 1;
         _hitbox.offset = enemy.HitboxCenter;
         _hitbox.size = enemy.HitboxSize;
@@ -165,6 +166,7 @@ public class Enemy : MonoBehaviour, IDamageable
         state = EnemyState.DEAD;
         _nma.speed = 0;
         _cc.enabled = false;
+        _hitbox.enabled = false;
         _an.speed = 0;
     }
 }
