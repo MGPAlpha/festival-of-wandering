@@ -51,6 +51,8 @@ public class Player : MonoBehaviour, IDamageable
 
     private int mementoCharge;
 
+    private ParticleSystem _ps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour, IDamageable
         _rb = GetComponent<Rigidbody2D>();
         _an = GetComponent<Animator>();
         _sp = GetComponent<SpriteRenderer>();
+        _ps = GetComponentInChildren<ParticleSystem>();
         _attackComponent = GetComponentInChildren<PlayerAttackComponent>();
         _weaponEmitter = GetComponentInChildren<WeaponEmitter>();
         canMove = true;
@@ -216,6 +219,7 @@ public class Player : MonoBehaviour, IDamageable
         dodging = true;
         _an.SetFloat("facingX", dir.x);
         _an.SetFloat("facingY", dir.y);
+        _ps.Play();
         float dodgeSpeed = dodgeSpeedFactor * baseSpeed;
         _rb.velocity = dodgeSpeed * dir;
         dodgeTimer = 0;
@@ -225,6 +229,7 @@ public class Player : MonoBehaviour, IDamageable
             yield return null;
         }
         dodging = false;
+        _ps.Stop();
     }
 
     void OnDodge() {
