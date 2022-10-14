@@ -15,17 +15,17 @@ MonoBehaviour:
   bursts:
   - startTime: 0
     bullet: {fileID: 11400000, guid: ef456f6f69eec5311ba642cdc80a4be5, type: 2}
-    firingSpread: 45
+    firingSpread: 360
     bulletsInSpread: 8
-    spreadTimeInterval: 2
+    spreadTimeInterval: 0.5
     spreadClockwise: 0
     spreadRandomization: 1
     aimOffset: 0
-  - startTime: 0
+  - startTime: 2
     bullet: {fileID: 11400000, guid: 63517db42f1b995c99e85d74d3d2224f, type: 2}
-    firingSpread: 45
+    firingSpread: 360
     bulletsInSpread: 8
-    spreadTimeInterval: 2
+    spreadTimeInterval: 0.5
     spreadClockwise: 0
     spreadRandomization: 1
     aimOffset: 0
