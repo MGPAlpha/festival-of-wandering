@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268c78606f600e9768a98c114ae497dd, type: 3}
+  m_Name: Hostess
+  m_EditorClassIdentifier: 
+  enemyName: Hostess
+  animatorController: {fileID: 9100000, guid: 06998d5531d5d6d44969627ff4a8564c, type: 2}
+  idleAnimSpeed: 1
+  walkAnimSpeed: 1
+  attackAnimSpeed: 1
+  moveSpeed: 2
+  baseHealth: 15
+  initTime: 0
+  moveTime: 3
+  aimTime: 2
+  attackAnimLeadTime: 0
+  cooldownTime: 0.5
+  speedWhileAiming: 0
+  speedWhileFiring: 0
+  lineOfSightTime: 0.5
+  hitboxCenter: {x: 0, y: 0}
+  hitboxSize: {x: 1, y: 1}
+  weapons:
+  - rid: 7250422999774134272
+  - rid: 7250422999774134273
+  references:
+    version: 2
+    RefIds:
+    - rid: 7250422999774134272
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: 1ec22419de7667bf1a6cb30fecc28ee2, type: 2}
+        probability: 0.5
+    - rid: 7250422999774134273
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: 1d81875c98230d54488451e3e59d8fc0, type: 2}
+        probability: 0.5
