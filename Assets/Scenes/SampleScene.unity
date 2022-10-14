@@ -343,10 +343,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.058769513
-    y: 0.10982659
-    width: 0.8815427
-    height: 0.7803468
+    x: 0.0862069
+    y: 0.13197279
+    width: 0.8275862
+    height: 0.7346939
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -971,6 +971,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1100472621}
   - component: {fileID: 1100472620}
+  - component: {fileID: 1100472622}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -1045,6 +1046,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1100472622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100472619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40468037a0606d4c90ecdec60b31d2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnOffset: {x: 0, y: -0.25}
+  actualSpawnTimestamp: 0.95
+  spawnAnimSpeed: 0.5
+  enemyPrefab: {fileID: 684315158556548935, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
+  enemyToSpawn: {fileID: 11400000, guid: 2356189ca676f29b98a97c435f7379d3, type: 2}
 --- !u!1001 &684315157444923499
 PrefabInstance:
   m_ObjectHideFlags: 0
