@@ -191,14 +191,21 @@ public class Player : MonoBehaviour, IDamageable
         // healthStyle.fontSize = 30;
         // GUI.skin.label.fontSize = 20;
         GUILayout.Label("Health: " + health + "/" + maxHealth);
-        GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
-        GUILayout.Label("Current Memento: " + (spell ? (spell.MementoName + " (Press E or Right Bumper)") : "None"));
+        if (weapons[0]) {
+            GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
+        }
         if (spell) {
+            GUILayout.Label("Current Memento: " + spell.MementoName + " (Press E or Right Bumper)");
             GUILayout.Label("Memento Charge: " + mementoCharge + "/" + spell.ChargeRequired);
         }
-        GUILayout.Label("Firework Charms: " + "not implemented" + " remaining");
+        if (fireworkSupply > 0) {
+            GUILayout.Label("Firework Charms: " + fireworkSupply + " remaining (Press Q or Left Bumper)");
+        }
         if (dead) {
             GUILayout.Label("You died!");
+        }
+        if (interactManager.CanInteract) {
+            GUILayout.Label("Press F on keyboard or X on controller to Interact!");
         }
 
     }
