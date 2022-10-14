@@ -80,9 +80,21 @@ public class Player : MonoBehaviour, IDamageable
         } return false;
     }
 
+    float escHoldTime = 0;
+
     // Update is called once per frame
     void Update()
     {
+
+        if (_input.actions["Exit"].IsPressed()) {
+            escHoldTime += Time.deltaTime;
+            if (escHoldTime > 3) {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            }
+        } else {
+            escHoldTime = 0;
+        }
+
         if (_cco) {
             _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
         }
