@@ -5244,7 +5244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactibleLayers:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 8192
 --- !u!58 &3809760817996077687
 CircleCollider2D:
   m_ObjectHideFlags: 0
