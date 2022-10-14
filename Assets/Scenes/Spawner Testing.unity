@@ -3913,6 +3913,6 @@ PrefabInstance:
     - target: {fileID: 4884819244816967167, guid: 405acf42ed24b7f69998b4497f02b417, type: 3}
       propertyPath: spell
       value: 
-      objectReference: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
+      objectReference: {fileID: 11400000, guid: 4df88adb493b7236fa9b0e3f972607e2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 405acf42ed24b7f69998b4497f02b417, type: 3}
