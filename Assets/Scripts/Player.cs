@@ -23,7 +23,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private GameObject fireworkWavePrefab;
 
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
-    [SerializeField] private Weapon spell;
+    [SerializeField] private Memento spell;
 
     private Vector2 moveDir;
     private Vector2 aimDir;
@@ -49,6 +49,8 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private List<Checkpoint> checkpoints;
 
+    private int mementoCharge;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -61,6 +63,7 @@ public class Player : MonoBehaviour, IDamageable
         canMove = true;
         canAttack = true;
         health = maxHealth;
+        if (spell) mementoCharge = spell.ChargeRequired;
     }
 
     public bool Damage(int amount, GameObject src) {
@@ -135,9 +138,10 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     void OnSpell() {
-        if (!canAttack || !spell || _weaponEmitter.FiringActive) return;
-        _weaponEmitter.Fire(spell, aimDir);
+        if (!canAttack || !spell || _weaponEmitter.FiringActive || mementoCharge < spell.ChargeRequired) return;
+        _weaponEmitter.Fire(spell.Weapon, aimDir);
         _an.SetTrigger("spell");
+        mementoCharge = 0;
     }
     
     void OnInteract() {
@@ -171,6 +175,12 @@ public class Player : MonoBehaviour, IDamageable
         _an.SetBool("walking", false);
     }
 
+    public void ChargeMemento(int charge) {
+        if (!spell) return;
+        mementoCharge += charge;
+        mementoCharge = Mathf.Min(mementoCharge, spell.ChargeRequired);
+    }
+
     /// <summary>
     /// OnGUI is called for rendering and handling GUI events.
     /// This function can be called multiple times per frame (one call per event).
@@ -182,7 +192,10 @@ public class Player : MonoBehaviour, IDamageable
         // GUI.skin.label.fontSize = 20;
         GUILayout.Label("Health: " + health + "/" + maxHealth);
         GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
-        GUILayout.Label("Current Memento: " + (spell ? ("Yes!" + " (Left Click or Right Trigger)") : "None"));
+        GUILayout.Label("Current Memento: " + (spell ? (spell.MementoName + " (Press E or Right Bumper)") : "None"));
+        if (spell) {
+            GUILayout.Label("Memento Charge: " + mementoCharge + "/" + spell.ChargeRequired);
+        }
         GUILayout.Label("Firework Charms: " + "not implemented" + " remaining");
         if (dead) {
             GUILayout.Label("You died!");
@@ -229,7 +242,7 @@ public class Player : MonoBehaviour, IDamageable
         weapons[1] = weapon;
     }
 
-    public void SetSpell(Weapon spell) {
+    public void SetSpell(Memento spell) {
         this.spell = spell;
     }
 
