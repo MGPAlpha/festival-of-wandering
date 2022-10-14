@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     {
         _sp = GetComponent<SpriteRenderer>();
         _sp.material.SetFloat("_Progress", 0);
-        Spawn();
+        // Spawn();
     }
 
     // Update is called once per frame
@@ -29,8 +29,12 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    private IEnumerator SpawnRoutine() {
-        float spawnTimer = 0;
+    private IEnumerator SpawnRoutine(float delay) {
+        float spawnTimer = -delay;
+        while (spawnTimer < 0) {
+            spawnTimer += Time.deltaTime;
+            yield return null;
+        }
         while (spawnTimer < actualSpawnTimestamp) {
             spawnTimer += Time.deltaTime * spawnAnimSpeed;
             _sp.material.SetFloat("_Progress", spawnTimer);
@@ -50,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
     }
 
-    public void Spawn() {
-        StartCoroutine(SpawnRoutine());
+    public void Spawn(float delay) {
+        StartCoroutine(SpawnRoutine(delay));
     }
 }
