@@ -119,16 +119,19 @@ public class Player : MonoBehaviour, IDamageable
     void OnPrimaryAttack() {
         if (weapons[0] && canAttack)
             _attackComponent.TriggerWeapon(weapons[0], aimDir);
+            _an.SetTrigger("attack");
     }
 
     void OnSecondaryAttack() {
         if (weapons[1] && canAttack)
             _attackComponent.TriggerWeapon(weapons[1], aimDir);
+            _an.SetTrigger("attack");
     }
 
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive) return;
         _weaponEmitter.Fire(spell, aimDir);
+        _an.SetTrigger("spell");
     }
     
     void OnInteract() {

@@ -98,4 +98,14 @@ public class PlayerAttackComponent : MonoBehaviour
             }
         }
     }
+
+    /// <summary>
+    /// Callback to draw gizmos that are pickable and always drawn.
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        if (hitboxActive) {
+            Gizmos.DrawCube(transform.position, Vector3.one/6);
+        }
+    }
 }
