@@ -228,9 +228,18 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    [SerializeField] private int fireworkSupply = 2;
+    public void GainFireworks(int amount) {
+        fireworkSupply += amount;
+    }
+    public void ResupplyFireworks(int amount) {
+        fireworkSupply = Mathf.Max(fireworkSupply, amount);
+    }
+
     void OnFirework() {
-        if (canAttack) {
+        if (canAttack && fireworkSupply > 0) {
             Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
+            fireworkSupply--;
         }
     }
 
