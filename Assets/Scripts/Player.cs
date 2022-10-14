@@ -64,11 +64,11 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     public bool Damage(int amount, GameObject src) {
-        if (!IsInvincible) {
+        if (!dead && !IsInvincible) {
             health -= amount;
             tempInvincibilityRemaining = tempInvincibilityTime;
             if (health <= 0) {
-                Die();
+                StartCoroutine(Die());
             }
             return true;
         } return false;
@@ -121,15 +121,17 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     void OnPrimaryAttack() {
-        if (weapons[0] && canAttack)
+        if (weapons[0] && canAttack) {
             _attackComponent.TriggerWeapon(weapons[0], aimDir);
             _an.SetTrigger("attack");
+        }
     }
 
     void OnSecondaryAttack() {
-        if (weapons[1] && canAttack)
+        if (weapons[1] && canAttack) {
             _attackComponent.TriggerWeapon(weapons[1], aimDir);
             _an.SetTrigger("attack");
+        }
     }
 
     void OnSpell() {
@@ -233,7 +235,22 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
-    private void Die() {
+    [SerializeField] private float deathTime = 3;
+    private bool dead = false;
+    private IEnumerator Die() {
+        initAttack = canAttack;
+        initMove = canMove;
+        
+        canAttack = false;
+        canMove = false;
+        dead = true;
+
+        float deathTimer = 0;
+        while (deathTimer < deathTime) {
+            deathTimer += Time.deltaTime;
+            yield return null;
+        }
+
         RespawnAtLastCheckpoint();
     }
 
@@ -248,5 +265,7 @@ public class Player : MonoBehaviour, IDamageable
         transform.position = lastCheckpoint.transform.position;
         health = maxHealth;
         lastCheckpoint.ResetCheckpoint();
+        StopDialogue();
+        dead = false;
     }
 }
