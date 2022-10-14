@@ -13,6 +13,9 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private EnemyData enemyToSpawn;
 
+    public bool SpawnComplete { get; private set; } = false;
+    public bool SpawnKilled { get => SpawnComplete && (!childEnemy || childEnemy.GetComponent<Enemy>().IsDead); }
+
     private GameObject childEnemy;
 
     // Start is called before the first frame update
@@ -43,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
         if (enemyToSpawn) {
             childEnemy = Instantiate(enemyPrefab, transform.position + (Vector3)spawnOffset, Quaternion.identity);
             childEnemy.GetComponent<Enemy>().Initialize(enemyToSpawn);
+            SpawnComplete = true;
         }
         while (spawnTimer < 1) {
             spawnTimer += Time.deltaTime * spawnAnimSpeed;

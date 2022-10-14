@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private Rigidbody2D _rb;
     private GameObject target;
 
+    public bool IsDead { get => state == EnemyState.DEAD; }
+
     public EnemyData enemyType;
     EnemyState state;
     private float stateTime = 0;

@@ -35,5 +35,6 @@ Material:
     m_Ints: []
     m_Floats:
     - _Mist_Falloff: 0.37
+    - _Opacity: 1
     m_Colors: []
   m_BuildTextureStacks: []
