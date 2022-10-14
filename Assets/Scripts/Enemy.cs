@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private Rigidbody2D _rb;
     private GameObject target;
 
+    public bool IsDead { get => state == EnemyState.DEAD; }
+
     public EnemyData enemyType;
     EnemyState state;
     private float stateTime = 0;
@@ -38,19 +40,28 @@ public class Enemy : MonoBehaviour, IDamageable
 
     private bool attackAnimTriggered;
 
-
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Awake is called when the script instance is being loaded.
+    /// </summary>
+    private void Awake()
     {
         _nma = GetComponent<NavMeshAgent>();
-        _nma.updateRotation = false;
-        _nma.updateUpAxis = false;
         _we = GetComponentInChildren<WeaponEmitter>();
         _cc = GetComponent<CircleCollider2D>();
         _an = GetComponent<Animator>();
         _hitbox = GetComponent<BoxCollider2D>();
         _sp = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+        _nma.updateRotation = false;
+        _nma.updateUpAxis = false;
+        
+        
         if (enemyType) Initialize(enemyType);
     }
 
@@ -58,7 +69,7 @@ public class Enemy : MonoBehaviour, IDamageable
         target = GameObject.Find("Player");
     }
 
-    void Initialize(EnemyData enemy) {
+    public void Initialize(EnemyData enemy) {
         state = EnemyState.INIT;
         stateTime = 0;
         enemyType = enemy;
