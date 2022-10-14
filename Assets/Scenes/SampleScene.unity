@@ -171,7 +171,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.7777777, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -343,9 +343,9 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.06594399
+    x: 0.0101936795
     y: 0.05
-    width: 0.8672087
+    width: 0.97859323
     height: 0.90000004
   near clip plane: 0.1
   far clip plane: 5000
@@ -1019,7 +1019,7 @@ PrefabInstance:
     - target: {fileID: 684315158556548955, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
       propertyPath: enemyType
       value: 
-      objectReference: {fileID: 11400000, guid: 2356189ca676f29b98a97c435f7379d3, type: 2}
+      objectReference: {fileID: 11400000, guid: 4891a52083e71dedebc885bad608a4be, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60b2b3fd969c584c980fbd570c324d3e, type: 3}
 --- !u!1001 &4884819244192403999

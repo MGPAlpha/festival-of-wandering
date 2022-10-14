@@ -62,6 +62,9 @@ public class Enemy : MonoBehaviour, IDamageable
         _cc.enabled = true;
         _hitbox.enabled = true;
         _an.speed = 1;
+        _an.SetFloat("idleSpeed", enemy.IdleAnimSpeed);
+        _an.SetFloat("walkSpeed", enemy.WalkAnimSpeed);
+        _an.SetFloat("attackSpeed", enemy.AttackAnimSpeed);
         _hitbox.offset = enemy.HitboxCenter;
         _hitbox.size = enemy.HitboxSize;
         target = GameObject.Find("Player");
