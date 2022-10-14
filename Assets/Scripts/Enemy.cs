@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private CircleCollider2D _cc;
     private BoxCollider2D _hitbox;
     private Animator _an;
+    private SpriteRenderer _sp;
     private GameObject target;
 
     public EnemyData enemyType;
@@ -26,6 +27,8 @@ public class Enemy : MonoBehaviour, IDamageable
     private float stateTime = 0;
     private float lineOfSightTime = 0;
     [SerializeField] private LayerMask sightBlockingLayers;
+
+    [SerializeField] private float spriteDissolveTime = 1;
 
     private int health;
     private int maxHealth;
@@ -43,6 +46,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _cc = GetComponent<CircleCollider2D>();
         _an = GetComponent<Animator>();
         _hitbox = GetComponent<BoxCollider2D>();
+        _sp = GetComponent<SpriteRenderer>();
         if (enemyType) Initialize(enemyType);
     }
 
@@ -67,6 +71,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _an.SetFloat("attackSpeed", enemy.AttackAnimSpeed);
         _hitbox.offset = enemy.HitboxCenter;
         _hitbox.size = enemy.HitboxSize;
+        _sp.material.SetFloat("_Dissolve", 0);
         target = GameObject.Find("Player");
     }
 
@@ -126,6 +131,11 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
                 break;
             case EnemyState.DEAD:
+                float dissolveProgress = stateTime / spriteDissolveTime;
+                _sp.material.SetFloat("_Dissolve", Mathf.Clamp(dissolveProgress, 0, 1));
+                if (dissolveProgress >= 1) {
+                    Destroy(this.gameObject);
+                }
                 break;
         }
     }
