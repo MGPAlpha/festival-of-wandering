@@ -130,6 +130,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   spriteDissolveTime: 1
+  spriteDissolveDelay: 0.5
 --- !u!58 &7398810204106560161
 CircleCollider2D:
   m_ObjectHideFlags: 0

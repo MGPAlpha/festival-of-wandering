@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour, IDamageable
     [SerializeField] private LayerMask sightBlockingLayers;
 
     [SerializeField] private float spriteDissolveTime = 1;
+    [SerializeField] private float spriteDissolveDelay = 1;
 
     private int health;
     private int maxHealth;
@@ -131,7 +132,7 @@ public class Enemy : MonoBehaviour, IDamageable
                 }
                 break;
             case EnemyState.DEAD:
-                float dissolveProgress = stateTime / spriteDissolveTime;
+                float dissolveProgress = (stateTime - spriteDissolveDelay) / spriteDissolveTime;
                 _sp.material.SetFloat("_Dissolve", Mathf.Clamp(dissolveProgress, 0, 1));
                 if (dissolveProgress >= 1) {
                     Destroy(this.gameObject);
@@ -180,6 +181,6 @@ public class Enemy : MonoBehaviour, IDamageable
         _nma.speed = 0;
         _cc.enabled = false;
         _hitbox.enabled = false;
-        _an.speed = 0;
+        _an.speed = .2f;
     }
 }
