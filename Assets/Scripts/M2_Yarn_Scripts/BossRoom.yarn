@@ -1,0 +1,7 @@
+﻿title: BossRoom
+tags:
+---
+Hostess: Face me, dear guest!
+<<stop_track "TrackManager">>
+<<play_track "TrackManager" "Bosses/Hostess_Tutorial">>
+===

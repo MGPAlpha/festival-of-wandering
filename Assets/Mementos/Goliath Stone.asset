@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mementoName: Goliath Stone
   displaySprite: {fileID: 0}
-  weapon: {fileID: 11400000, guid: 1ec22419de7667bf1a6cb30fecc28ee2, type: 2}
+  weapon: {fileID: 11400000, guid: 24039bc8d9270be838d1419f7f4ce718, type: 2}
   chargeRequired: 15
