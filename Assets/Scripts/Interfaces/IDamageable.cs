@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IDamageable
 {
     
-    void Damage(int amt);
+    bool Damage(int amt, GameObject src);
 
 }

@@ -92,10 +92,23 @@ public class PlayerAttackComponent : MonoBehaviour
         if (other.TryGetComponent<IDamageable>(out IDamageable damageable)) {
             if (hits.Contains(damageable)) return;
             hits.Add(damageable);
-            damageable.Damage(1);
-            if (other.TryGetComponent<Rigidbody2D>(out Rigidbody2D rbOther)) {
-                rbOther.AddForce(attackDirection * CurrAttack.PushbackForce, ForceMode2D.Impulse);
+            bool successfulDamage = damageable.Damage(1, gameObject.transform.parent.gameObject);
+            if (successfulDamage) {
+                transform.parent.GetComponent<Player>().ChargeMemento(1);
+                if (other.TryGetComponent<Rigidbody2D>(out Rigidbody2D rbOther)) {
+                    rbOther.AddForce(attackDirection * CurrAttack.PushbackForce, ForceMode2D.Impulse);
+                }
             }
+        }
+    }
+
+    /// <summary>
+    /// Callback to draw gizmos that are pickable and always drawn.
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        if (hitboxActive) {
+            Gizmos.DrawCube(transform.position, Vector3.one/6);
         }
     }
 }

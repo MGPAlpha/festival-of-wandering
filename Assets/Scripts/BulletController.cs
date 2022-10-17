@@ -93,6 +93,7 @@ public class BulletController : MonoBehaviour
         isDead = false;
         bulletData = bullet;
         hitLayers = hit;
+        _we.hitLayers = hitLayers;
         transform.position = pos;
         lifetimeRemaining = bullet.Lifetime;
         _ao["Basic Bullet Animation"] = null;
@@ -121,8 +122,10 @@ public class BulletController : MonoBehaviour
         if (other.tag == "Firework Wave") {
             Kill(BulletKillReason.Firework);
         } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
+            if (isDead) return;
             if (other.gameObject.TryGetComponent<IDamageable>(out IDamageable damageable)) {
-                damageable.Damage(1);
+                bool successfulHit = damageable.Damage(1, this.gameObject);
+                if (!successfulHit) return;
                 if (other.attachedRigidbody) {
                     if (bulletData.KnockbackForce > 0)
                         other.attachedRigidbody.AddForce(bulletData.KnockbackForce * this.movementDir, ForceMode2D.Impulse);
