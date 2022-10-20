@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 268c78606f600e9768a98c114ae497dd, type: 3}
+  m_Name: Lost Soul
+  m_EditorClassIdentifier: 
+  enemyName: Lost Soul
+  animatorController: {fileID: 22100000, guid: 8df46d0c19e23539b898125c1b385acb, type: 2}
+  idleAnimSpeed: 0.2
+  walkAnimSpeed: 0.2
+  attackAnimSpeed: 0.5
+  moveSpeed: 1
+  baseHealth: 3
+  initTime: 0
+  moveTime: 4
+  aimTime: 3
+  attackAnimLeadTime: 1.2
+  cooldownTime: 0.5
+  speedWhileAiming: 0
+  speedWhileFiring: 0
+  lineOfSightTime: 0.5
+  hitboxCenter: {x: 0, y: 0}
+  hitboxSize: {x: 1, y: 1}
+  weapons:
+  - rid: 1854828056388042752
+  references:
+    version: 2
+    RefIds:
+    - rid: 1854828056388042752
+      type: {class: AttackChoiceAlways, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: f394662a02628df9c908575ec1bffb38, type: 2}
