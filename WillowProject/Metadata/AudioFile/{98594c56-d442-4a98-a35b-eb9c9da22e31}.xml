@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{98594c56-d442-4a98-a35b-eb9c9da22e31}">
+		<property name="assetPath">
+			<value>Willow Stage Theme 2 Combat v5 (stems only).wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>202.16517006802721</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{796e5ebd-ac9c-4ab7-95de-86a2112eee42}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,15 @@
+﻿title: Hostess_Room1
+tags:
+---
+<<change_camera_speed 1.5>>
+<<switch_camera "CM vcam2">>
+<<p_walk_to "Player" "hr1_pMarker1" 4>>
+???: Ah, a fellow wanderer, welcome to the Phantasmal Wood. 
+???: Oh, is that an invitation I see? So you've been invited to the Festival of Wandering, how auspicious. 
+Hostess: Allow me to formally introduce myself, I am the Hostess of said festival. It is my duty to guide guests to the grounds. 
+<<p_walk_to "Player" "hr1_pMarker2" 2>>
+<<p_face_towards "Player" "Hostess">>
+Hostess: Dear guest, allow me to aid you on your journey. Please follow me. 
+<<walk_to "Hostess" "hr1_hMarker1" 3>>
+<<teleport_to "Hostess" "hr1_hMarker2">>
+===
