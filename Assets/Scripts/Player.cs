@@ -99,7 +99,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_cco)
         {
             Vector3 offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
-            cameraOffset.OffsetTo(offset, Time.deltaTime);
+            cameraOffset.OffsetTo(offset);
         }
         if (!canMove) {
             moveDir = Vector2.zero;
