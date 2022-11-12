@@ -62,4 +62,5 @@ Material:
     - _QueueOffset: 0
     m_Colors:
     - _DissolveColor: {r: 0.5881465, g: 0.28773582, b: 1, a: 0}
+    - _Fade: {r: 0, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
