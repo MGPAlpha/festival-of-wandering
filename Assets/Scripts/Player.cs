@@ -53,6 +53,12 @@ public class Player : MonoBehaviour, IDamageable
 
     private ParticleSystem _ps;
 
+    public int MaxHealth => maxHealth;
+    public int Health => health;
+    public PlayerWeaponBase[] Weapons => weapons;
+    public float MementoChargePercentage => mementoCharge / (float) spell.ChargeRequired;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -253,6 +259,7 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     [SerializeField] private int fireworkSupply = 2;
+    public int FireworkSupply => fireworkSupply;
     public void GainFireworks(int amount) {
         fireworkSupply += amount;
     }
