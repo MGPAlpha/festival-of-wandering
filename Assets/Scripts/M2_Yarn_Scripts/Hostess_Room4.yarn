@@ -1,0 +1,17 @@
+﻿title: Hostess_Room4
+tags:
+---
+<<change_camera_speed 1>>
+<<switch_camera "CM vcam6">>
+<<p_walk_to "Player" "hr4_pMarker1" 1.5>>
+<<p_face_towards "Player" "Hostess (2)">>
+Hostess: Excellent, it seems you are capable of defending yourself quite well.
+Hostess: However, there will be times when your blade might not be enough to withstand the dangers of these woods.
+Hostess: This is where we rely on <b>Mementos</b>, powerful items that enhance our bodies or perform great abilities.
+Hostess: It seems you're holding one right now, the <b>Goliath Stone</b>. Press E or Right Bumper to use it.
+Hostess: The <b>Goliath Stone</b> fires a volley of stones at your foes. Use it when you need to hit a strong foe from afar.
+Hostess: Mementos are very powerful, but some require energy to cast. Recharge them by attacking foes with your blade. 
+Hostess: Here, try it out on this dummy soul.
+<<spawn_enemy "Enemy Spawner Cutscene2" 0>>
+<<teleport_to "Hostess (2)" "hr4_hMarker1">>
+===
