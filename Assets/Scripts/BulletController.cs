@@ -119,7 +119,7 @@ public class BulletController : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Firework Wave") {
+        if (other.tag == "Firework Wave" && hitLayers == (hitLayers | (1 << 8))) {
             Kill(BulletKillReason.Firework);
         } else if (hitLayers == (hitLayers | (1 << other.gameObject.layer))) { // If other is hittable
             if (isDead) return;
