@@ -10,6 +10,6 @@ Hostess: You will now test your ability to fight.
 Hostess: You may have already realized that you have 2 weapons on your person.
 Hostess: You will need to use these to defend yourself.
 Hostess: Good luck.
-<<teleport_to "Hostess (1)" "hr3_hMarker1">>
+<<deleteSelf "Hostess (1)">>
 <<spawn_enemy "Enemy Spawner Cutscene1" 0>>
 ===
