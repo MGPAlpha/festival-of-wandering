@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpriteFill
+  m_Name: EnemyHit
   m_Shader: {fileID: -6465566751694194690, guid: 3a493a78044b809498754da73ad6c69c, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -51,9 +51,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _EnableExternalAlpha: 0
+    - _FillOpacity: 0.8
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _FillColor: {r: 0.6393443, g: 0.13106555, b: 0.78, a: 0.5568628}
+    - _FillColor: {r: 0.69305855, g: 0.42896, b: 0.766, a: 0.5568628}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

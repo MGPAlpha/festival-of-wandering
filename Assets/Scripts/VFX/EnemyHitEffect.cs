@@ -6,7 +6,6 @@ public class EnemyHitEffect : MonoBehaviour
 {
     [SerializeField, Tooltip("Number of flickers")] private int numFlickers = 1;
     [SerializeField, Tooltip("How much time to do one flicker")] private float flickerDuration = 0.25f;
-    [SerializeField] private Color fillColor = new Color(0.5f, 0.5f, 0.5f, 0.5f);
     [SerializeField] private Material spriteFillMat;
     [SerializeField] private GameObject hitParticles;
 
@@ -19,7 +18,6 @@ public class EnemyHitEffect : MonoBehaviour
     {
         _sr = GetComponent<SpriteRenderer>();
         _savedMaterial = _sr.material;
-        spriteFillMat.SetColor("_FillColor", fillColor);
     }
 
     private void OnDestroy()
