@@ -5,19 +5,39 @@ using UnityEngine;
 public class HudSingleton : MonoBehaviour
 {
     public static HudSingleton Hud {get; private set;}
+    [SerializeField] private float fadeSpeed = 3f;
+    private CanvasGroup cg;
 
     private void Awake()
     {
         Hud = this;
     }
 
+    private void Start()
+    {
+        cg = GetComponent<CanvasGroup>();
+    }
+
+    private void Update()
+    {
+        if (DialogueSingleton.Dialogue.Runner.IsDialogueRunning)
+        {
+            HideHud();
+        } 
+        else
+        {
+            ShowHud();
+        }
+        cg.alpha = Mathf.Clamp(cg.alpha, 0, 1);
+    }
+
     public void HideHud()
     {
-        GetComponent<CanvasGroup>().alpha = 0;
+        cg.alpha -= fadeSpeed * Time.deltaTime;
     }
 
     public void ShowHud()
     {
-        GetComponent<CanvasGroup>().alpha = 1;
+        cg.alpha += fadeSpeed * Time.deltaTime;
     }
 }

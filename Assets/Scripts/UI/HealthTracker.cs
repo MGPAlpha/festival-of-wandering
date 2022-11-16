@@ -9,12 +9,13 @@ public class HealthTracker : MonoBehaviour
     private int trackedMaxHealth;
     private int trackedCurrHealth;
     [SerializeField] private GameObject healthPrefab;
-    [SerializeField] private Sprite healthFill;
+    [SerializeField] private Sprite healthFull;
+    [SerializeField] private Sprite healthHalf;
     [SerializeField] private Sprite healthEmpty;
 
     private void Start()
     {
-        trackedMaxHealth = transform.childCount;
+        trackedMaxHealth = transform.childCount * 2;
         trackedCurrHealth = 0;
     }
 
@@ -37,22 +38,25 @@ public class HealthTracker : MonoBehaviour
         // then display the missing health Icons
         if (PlayerSingleton.PlayerSing.Play.MaxHealth > trackedMaxHealth)
         {
+            int priorCount = transform.childCount * 2;
             // If there aren't enough Health Prefabs already, add more!
-            if (transform.childCount < PlayerSingleton.PlayerSing.Play.MaxHealth)
+            if (priorCount < PlayerSingleton.PlayerSing.Play.MaxHealth)
             {
-                int priorCount = transform.childCount;
-                for (int n = 0; n < PlayerSingleton.PlayerSing.Play.MaxHealth - priorCount; n++)
+                for (int n = 0; n < (PlayerSingleton.PlayerSing.Play.MaxHealth - priorCount) / 2; n++)
+                {
                     Instantiate(healthPrefab).transform.SetParent(transform, false);
+                    transform.GetChild(transform.childCount - 1).GetComponent<Image>().sprite = healthEmpty;
+                }
             }
 
-            for (int n = trackedMaxHealth; n < PlayerSingleton.PlayerSing.Play.MaxHealth; n++)
+            for (int n = trackedMaxHealth / 2; n < (PlayerSingleton.PlayerSing.Play.MaxHealth / 2); n++)
                 transform.GetChild(n).gameObject.SetActive(true);
         }
         // Else the current Player Max health is less than what the UI is tracking
         // then hide the latter health icons till the number is dropped 
         else
         {
-            for (int n = trackedMaxHealth - 1; n >= PlayerSingleton.PlayerSing.Play.MaxHealth; n--)
+            for (int n = (trackedMaxHealth / 2) - 1; n >= (PlayerSingleton.PlayerSing.Play.MaxHealth / 2); n--)
                 transform.GetChild(n).gameObject.SetActive(false);
         }
 
@@ -61,14 +65,41 @@ public class HealthTracker : MonoBehaviour
 
     private void UpdateHealthValue()
     {
+
         // If the Player Healed then reflect that healing
         if (PlayerSingleton.PlayerSing.Play.Health > trackedCurrHealth)
-            for (int n = trackedCurrHealth; n < PlayerSingleton.PlayerSing.Play.Health; n++)
-                transform.GetChild(n).GetComponent<Image>().sprite = healthFill;
+        {
+            int lengthOfIteration = ((PlayerSingleton.PlayerSing.Play.Health + 1) / 2);
+            for (int n = trackedCurrHealth / 2; n < lengthOfIteration; n++)
+            {
+                if (n == lengthOfIteration - 1 && PlayerSingleton.PlayerSing.Play.Health % 2 == 1)
+                {
+                    transform.GetChild(n).GetComponent<Image>().sprite = healthHalf;
+                }
+                else
+                {
+                    transform.GetChild(n).GetComponent<Image>().sprite = healthFull;
+                }
+            }
+        }             
         // Else the only other change is that the player lost health, reflect that as well
         else
-            for (int n = trackedCurrHealth - 1; n >= PlayerSingleton.PlayerSing.Play.Health; n--)
-                transform.GetChild(n).GetComponent<Image>().sprite = healthEmpty;
+        {
+            int lengthOfIteration = PlayerSingleton.PlayerSing.Play.Health / 2;
+            for (int n = ((trackedCurrHealth - 1) / 2); n >= lengthOfIteration; n--)
+            {
+                if (n == lengthOfIteration && PlayerSingleton.PlayerSing.Play.Health % 2 == 1)
+                {
+                    transform.GetChild(n).GetComponent<Image>().sprite = healthHalf;
+                }
+                else
+                {
+                    transform.GetChild(n).GetComponent<Image>().sprite = healthEmpty;
+                }
+            }
+             
+        }
+            
 
         trackedCurrHealth = PlayerSingleton.PlayerSing.Play.Health;
     }
