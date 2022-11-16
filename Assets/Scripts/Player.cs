@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private bool canAttack;
     [SerializeField] private bool canMove;
     [SerializeField] private CinemachineCameraOffset _cco;
+    [SerializeField] private CameraOffset cameraOffset;
     [SerializeField] private GameObject fireworkWavePrefab;
 
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
@@ -95,8 +96,10 @@ public class Player : MonoBehaviour, IDamageable
             escHoldTime = 0;
         }
 
-        if (_cco) {
-            _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
+        if (_cco)
+        {
+            Vector3 offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
+            cameraOffset.OffsetTo(offset);
         }
         if (!canMove) {
             moveDir = Vector2.zero;
