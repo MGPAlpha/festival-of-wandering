@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: afac7cbe1ad29d949a98998d0be1965b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   canAttack: 0
   canMove: 0
   _cco: {fileID: 0}
+  cameraOffset: {fileID: 0}
   fireworkWavePrefab: {fileID: 4257421256083799110, guid: 321e0a7a241e2f417a07851645d10ab5, type: 3}
   weapons:
   - {fileID: 11400000, guid: 04d3de3196ebd7624847b18cf333371d, type: 2}
