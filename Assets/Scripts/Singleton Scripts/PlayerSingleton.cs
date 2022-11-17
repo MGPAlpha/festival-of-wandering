@@ -18,5 +18,6 @@ public class PlayerSingleton : MonoBehaviour
     {
         Play = GetComponent<Player>();
         PInput = GetComponent<PlayerInput>();
+        Debug.Log(Play != null ? "Player is instatiaed!" : "Player is not instatiated!");
     }
 }
