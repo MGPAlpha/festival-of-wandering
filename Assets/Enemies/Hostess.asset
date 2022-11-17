@@ -17,11 +17,11 @@ MonoBehaviour:
   idleAnimSpeed: 1
   walkAnimSpeed: 1
   attackAnimSpeed: 1
-  moveSpeed: 2
-  baseHealth: 15
+  moveSpeed: 1.6
+  baseHealth: 60
   initTime: 0
   moveTime: 3
-  aimTime: 2
+  aimTime: 0.75
   attackAnimLeadTime: 0
   cooldownTime: 0.5
   speedWhileAiming: 0
@@ -30,18 +30,36 @@ MonoBehaviour:
   hitboxCenter: {x: 0, y: 0}
   hitboxSize: {x: 1, y: 1}
   weapons:
-  - rid: 7250422999774134272
-  - rid: 7250422999774134273
+  - rid: 8350186331259273216
+  - rid: 8350186379576606724
+  - rid: 8350186379576606721
+  - rid: 8350186379576606722
+  - rid: 8350186379576606723
   references:
     version: 2
     RefIds:
-    - rid: 7250422999774134272
+    - rid: 8350186331259273216
       type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
       data:
-        weapon: {fileID: 11400000, guid: 1ec22419de7667bf1a6cb30fecc28ee2, type: 2}
-        probability: 0.5
-    - rid: 7250422999774134273
+        weapon: {fileID: 11400000, guid: 13a52836b57c8c3438696351328a89b8, type: 2}
+        probability: 1
+    - rid: 8350186379576606721
       type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
       data:
-        weapon: {fileID: 11400000, guid: 1d81875c98230d54488451e3e59d8fc0, type: 2}
-        probability: 0.5
+        weapon: {fileID: 11400000, guid: 350bd6e1b49967d468ce97314aa48cb9, type: 2}
+        probability: 0.4
+    - rid: 8350186379576606722
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: e6afac9bfe15082408cb57311070186c, type: 2}
+        probability: 0.55
+    - rid: 8350186379576606723
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: cabe0c8da009c094f8856a255919fe33, type: 2}
+        probability: 1
+    - rid: 8350186379576606724
+      type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
+      data:
+        weapon: {fileID: 11400000, guid: 14fb9e7d085324a4fa652f63130fc4b8, type: 2}
+        probability: 0.25
