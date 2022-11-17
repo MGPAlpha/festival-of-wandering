@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4bd5c5dce5b3c1788fe49eb33635fc, type: 3}
+  m_Name: TH Arc 1
+  m_EditorClassIdentifier: 
+  bursts:
+  - startTime: 0
+    bullet: {fileID: 11400000, guid: 069d8cb07019e3949a2f8595e0b84f9f, type: 2}
+    firingSpread: 360
+    bulletsInSpread: 20
+    spreadTimeInterval: 0
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: 0
+  - startTime: 0.6
+    bullet: {fileID: 11400000, guid: 456beb5789f42024eb184a9ab31a3483, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 3
+    spreadTimeInterval: 0.1
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: -30
+  - startTime: 0.6
+    bullet: {fileID: 11400000, guid: 572b1232dffb2754ba7544c4582daa81, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 3
+    spreadTimeInterval: 0.1
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: 30
+  - startTime: 0.6
+    bullet: {fileID: 11400000, guid: ab66a36eb3680a444854b63aa7e86dd0, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 3
+    spreadTimeInterval: 0.1
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: -90
+  - startTime: 0.6
+    bullet: {fileID: 11400000, guid: cf66020befe4f734488fe6d8360caf11, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 3
+    spreadTimeInterval: 0.1
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: 90
