@@ -46,6 +46,7 @@ public class FMODYarnBehavior : MonoBehaviour
         } else if (!RoomArea.InCombat && combat > 0) {
             combat -=.1f;
         }
+        combat = Mathf.Clamp(combat, 0, 1);
         SetParameter(instance, "Combat", combat);
     }
 
