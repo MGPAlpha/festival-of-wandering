@@ -966,10 +966,10 @@ Camera:
   m_FocalLength: 50
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.03033268
-    y: 0.064412236
-    width: 0.93933463
-    height: 0.86956525
+    x: 0.22716945
+    y: 0.17391305
+    width: 0.5452067
+    height: 0.6521739
   near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
@@ -1030,6 +1030,7 @@ GameObject:
   - component: {fileID: 1652472855}
   - component: {fileID: 1652472857}
   - component: {fileID: 1652472856}
+  - component: {fileID: 1652472858}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -1096,3 +1097,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1652472854}
   m_CullTransparentMesh: 1
+--- !u!95 &1652472858
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1652472854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c55f974aa43a3a44d94414acc1ccd443, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
