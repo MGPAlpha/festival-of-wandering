@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class RoomArea : MonoBehaviour
 {
+    
+    public static bool InCombat {get; private set;} = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +35,8 @@ public class RoomArea : MonoBehaviour
         }
         if (!roomStarted && other.TryGetComponent<Player>(out Player player)) {
             roomStarted = true;
+
+            InCombat = true;
             
             foreach (EnemySpawner spawn in spawners) {
                 spawn.Spawn(Random.Range(.5f, 2f));
@@ -66,6 +71,7 @@ public class RoomArea : MonoBehaviour
             }
             if (allKilled) {
                 roomComplete = true;
+                InCombat = false;
                 foreach (GameObject mistObj in mists) {
                     mistObj.GetComponent<MistBarrier>().SetMistActive(false);
                 }
@@ -81,6 +87,8 @@ public class RoomArea : MonoBehaviour
         }
         roomComplete = false;
         roomStarted = false;
+
+        InCombat = false;
 
         foreach (EnemySpawner spawner in spawners) {
             spawner.Reset();
