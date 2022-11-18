@@ -2,13 +2,13 @@
 ---
 <<p_face_towards Player Letter>>
 <<changeRespondantImg null>>
-Mysterious Note: Welcome, dear guest, to the Willow milestone 2 demo build!
+Mysterious Note: Welcome, dear guest, to the Dreamhack build of Willow!
 Mysterious Note: In this build, you'll be exploring a small section of the Forest. Before you head out though, here's some tips for ya!
-Mysterious Note: Movement: WASD, Left Joystick
-Mysterious Note: Aim: Mouse, Right Joystick 
-Mysterious Note: Melee: Left Click, Left Trigger
-Mysterious Note: Use Memento: E, Right Bumper
-Mysterious Note: Use Firework: Q, Left Bumper
-Mysterious Note: Interact: F, X Button
+Mysterious Note: Movement: Left Joystick or WASD
+Mysterious Note: Aim: Right Joystick or Mouse 
+Mysterious Note: Melee: Right Trigger or Left Click
+Mysterious Note: Use Memento: Right Bumper or the E key
+Mysterious Note: Use Firework: B Button or the Q key
+Mysterious Note: Interact: X Button or the F key 
 Mysterious Note: That should be it! Keep in mind that this is a test build and that many things are still in the works! Have fun out there! 
 ===
