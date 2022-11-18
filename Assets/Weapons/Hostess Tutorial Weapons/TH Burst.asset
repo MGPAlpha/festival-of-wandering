@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd4bd5c5dce5b3c1788fe49eb33635fc, type: 3}
+  m_Name: TH Burst
+  m_EditorClassIdentifier: 
+  bursts:
+  - startTime: 0
+    bullet: {fileID: 11400000, guid: 702bed111deeb694ab70ed802b653d4b, type: 2}
+    firingSpread: 45
+    bulletsInSpread: 4
+    spreadTimeInterval: 0
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: 0
+  - startTime: 0.75
+    bullet: {fileID: 11400000, guid: 6c6fa00178e4a5f4d90e707d46a1bac1, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 1
+    spreadTimeInterval: 0
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: -75
+  - startTime: 0.75
+    bullet: {fileID: 11400000, guid: 179adad2d51485d45aa70dfc34b88635, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 1
+    spreadTimeInterval: 0
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: 75
+  - startTime: 0.75
+    bullet: {fileID: 11400000, guid: a72fd74077afb794c9d96c56ae58daae, type: 2}
+    firingSpread: 0
+    bulletsInSpread: 1
+    spreadTimeInterval: 0
+    spreadClockwise: 0
+    spreadRandomization: 0
+    aimOffset: 180

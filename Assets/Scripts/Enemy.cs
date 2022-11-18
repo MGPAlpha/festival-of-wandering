@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour, IDamageable
     private Animator _an;
     private SpriteRenderer _sp;
     private Rigidbody2D _rb;
+    private EnemyHitEffect _hitEffect;
     private GameObject target;
 
     public bool IsDead { get => state == EnemyState.DEAD; }
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _hitbox = GetComponent<BoxCollider2D>();
         _sp = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
+        _hitEffect = GetComponent<EnemyHitEffect>();
     }
 
     // Start is called before the first frame update
@@ -91,13 +93,14 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
     public bool Damage(int amount, GameObject src) {
-        Debug.Log(health);
+        Debug.Log($"Enemy Health: {health}");
         if (state == EnemyState.DEAD) return false;
         health -= amount;
-        if (health <= 0) {
+        _hitEffect.PlayEffect();
+        if (health <= 0)
+        {
             _rb.AddForce((transform.position - src.transform.position).normalized * killingBlowForce, ForceMode2D.Impulse);
             Die();
-
         }
         return true;
     }
