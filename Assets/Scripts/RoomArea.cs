@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomArea : MonoBehaviour
 {
-    
+
     public static bool InCombat {get; private set;} = false;
     
     // Start is called before the first frame update
@@ -71,6 +71,7 @@ public class RoomArea : MonoBehaviour
             }
             if (allKilled) {
                 roomComplete = true;
+                InCombat = false;
                 InCombat = false;
                 foreach (GameObject mistObj in mists) {
                     mistObj.GetComponent<MistBarrier>().SetMistActive(false);

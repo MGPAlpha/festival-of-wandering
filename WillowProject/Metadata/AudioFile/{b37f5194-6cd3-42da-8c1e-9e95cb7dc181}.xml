@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{b37f5194-6cd3-42da-8c1e-9e95cb7dc181}">
+		<property name="assetPath">
+			<value>WoodlandAmbience.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>14.020453514739229</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{796e5ebd-ac9c-4ab7-95de-86a2112eee42}</destination>
+		</relationship>
+	</object>
+</objects>
