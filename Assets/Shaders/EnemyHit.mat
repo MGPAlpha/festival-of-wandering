@@ -54,7 +54,7 @@ Material:
     - _FillOpacity: 0.8
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _FillColor: {r: 0.69305855, g: 0.42896, b: 0.766, a: 0.5568628}
+    - _FillColor: {r: 0.69305855, g: 0.42896, b: 0.766, a: 0.7294118}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
