@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <objects serializationModel="Studio.02.01.00">
-	<object class="AudioFile" id="{00b9bc25-b543-4ac6-9644-deea4053b714}">
+	<object class="AudioFile" id="{109c4034-ea8d-4ee1-9155-46b1978c1caa}">
 		<property name="assetPath">
-			<value>campfire.wav</value>
+			<value>fire.wav</value>
 		</property>
 		<property name="isStreaming">
 			<value>true</value>
@@ -14,7 +14,7 @@
 			<value>2</value>
 		</property>
 		<property name="length">
-			<value>114.21229024943311</value>
+			<value>12.725532879818594</value>
 		</property>
 		<relationship name="masterAssetFolder">
 			<destination>{796e5ebd-ac9c-4ab7-95de-86a2112eee42}</destination>
