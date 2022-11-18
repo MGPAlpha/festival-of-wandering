@@ -15,25 +15,25 @@ MonoBehaviour:
   weaponName: Beginner's Brew
   isHeavy: 0
   attacks:
-  - animationClip: {fileID: 7400000, guid: 9c007980663686da68dd159c243acbca, type: 2}
+  - animationClip: {fileID: 7400000, guid: 5a8ec5d5e447406cd8415e6360668d8b, type: 2}
     animationSpeed: 1.2
     movementSpeed: 0.5
-    pivotOffset: {x: 0, y: 0.6}
-    colliderCenter: {x: 0, y: 0.5}
-    colliderSize: {x: 1.6, y: 1}
-    attackStartTime: 0
-    attackDuration: 0.25
+    pivotOffset: {x: 0, y: 0}
+    colliderCenter: {x: 0, y: 1.4}
+    colliderSize: {x: 2.5, y: 2.5}
+    attackStartTime: 0.1
+    attackDuration: 0.15
     attackCooldown: 0.15
     comboTimeLimit: 0.3
     pushbackForce: 0
-  - animationClip: {fileID: 7400000, guid: fd7c8281f8bc6a98f9304d1c6018841f, type: 2}
+  - animationClip: {fileID: 7400000, guid: 08f6c9d5388a3abec96a274d7d0493fb, type: 2}
     animationSpeed: 1.2
     movementSpeed: 0.5
-    pivotOffset: {x: 0, y: 0.6}
-    colliderCenter: {x: 0, y: 0.5}
-    colliderSize: {x: 1.6, y: 1}
-    attackStartTime: 0
-    attackDuration: 0.25
+    pivotOffset: {x: 0, y: 0}
+    colliderCenter: {x: 0, y: 1.4}
+    colliderSize: {x: 2.5, y: 2.5}
+    attackStartTime: 0.1
+    attackDuration: 0.15
     attackCooldown: 0.15
-    comboTimeLimit: 0.15
+    comboTimeLimit: 0.3
     pushbackForce: 0
