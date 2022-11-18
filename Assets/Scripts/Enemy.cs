@@ -96,9 +96,11 @@ public class Enemy : MonoBehaviour, IDamageable
         Debug.Log($"Enemy Health: {health}");
         if (state == EnemyState.DEAD) return false;
         health -= amount;
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_hit", transform.position);
         _hitEffect.PlayEffect();
         if (health <= 0)
         {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
             _rb.AddForce((transform.position - src.transform.position).normalized * killingBlowForce, ForceMode2D.Impulse);
             Die();
         }
@@ -182,6 +184,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if (!attackAnimTriggered) {
             _an.SetTrigger("attack");
         }
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/pew", transform.position);
         state = EnemyState.FIRE;
         _nma.speed = enemyType.SpeedWhileFiring;
         Weapon weapon = EnemyAttackChoice.ChooseFromList(enemyType.Weapons, this);

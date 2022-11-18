@@ -79,8 +79,10 @@ public class Player : MonoBehaviour, IDamageable
     public bool Damage(int amount, GameObject src) {
         if (!dead && !IsInvincible) {
             health -= amount;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_hit", transform.position);
             tempInvincibilityRemaining = tempInvincibilityTime;
             if (health <= 0) {
+                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
                 StartCoroutine(Die());
             }
             return true;
@@ -164,6 +166,7 @@ public class Player : MonoBehaviour, IDamageable
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive || mementoCharge < spell.ChargeRequired) return;
         _weaponEmitter.Fire(spell.Weapon, aimDir);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/pew", transform.position);
         _an.SetTrigger("spell");
         mementoCharge = 0;
     }
