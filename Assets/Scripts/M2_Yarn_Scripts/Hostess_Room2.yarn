@@ -14,6 +14,6 @@ Hostess: A test for you.
 <<firingRepeaterActive "Firing Repeater2" true>>
 <<wait 1.5>>
 <<switch_camera "CM vcam3">>
-Elder Witch: You will need to dash through these bullets to progress.
-Elder Witch: Good luck.
+Hostess: You will need to dash through these bullets to progress.
+Hostess: Good luck.
 ===

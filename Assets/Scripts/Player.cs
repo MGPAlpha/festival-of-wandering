@@ -40,7 +40,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool dodging = false;
     [SerializeField] private float dodgeSpeedFactor = 1.75f;
-    [SerializeField] private float dodgeTime = 1;
+    [SerializeField] private float dodgeTime = 0.75f;
 
     [SerializeField] private float tempInvincibilityTime = 1;
     private float tempInvincibilityRemaining = 0;
