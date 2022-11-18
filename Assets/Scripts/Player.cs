@@ -329,7 +329,7 @@ public class Player : MonoBehaviour, IDamageable
             deathTimer += Time.deltaTime;
             yield return null;
         }
-
+        ResupplyFireworks(2);
         RespawnAtLastCheckpoint();
     }
 
