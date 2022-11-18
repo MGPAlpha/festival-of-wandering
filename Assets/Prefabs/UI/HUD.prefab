@@ -722,7 +722,7 @@ MonoBehaviour:
   healthPrefab: {fileID: 7414061274458654611, guid: 8a60b93fa5e00c44c89a2192843b4641, type: 3}
   healthFull: {fileID: 21300000, guid: 979b71fe1b3d5cc4b943030788e8cd84, type: 3}
   healthHalf: {fileID: 21300000, guid: 0cad104d0855b404393d4f801cf2c142, type: 3}
-  healthEmpty: {fileID: 21300000, guid: 2a6b2de4e3d59d3208d60c65c75d3a04, type: 3}
+  healthEmpty: {fileID: 21300000, guid: e0ca88d9251207be9b7c724c79737914, type: 3}
 --- !u!114 &1525271470752577766
 MonoBehaviour:
   m_ObjectHideFlags: 0
