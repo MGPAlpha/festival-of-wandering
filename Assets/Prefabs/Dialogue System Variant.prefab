@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 4409564701362353437}
-  useFadeEffect: 1
+  useFadeEffect: 0
   fadeInTime: 0.25
   fadeOutTime: 0.05
   lineText: {fileID: 4409564701135412898}
@@ -1536,6 +1536,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f99f102ab671544e91af9c893bcfdeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteList: []
 --- !u!1 &8895392921687916791
 GameObject:
   m_ObjectHideFlags: 0

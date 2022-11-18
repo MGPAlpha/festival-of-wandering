@@ -29,7 +29,6 @@ public class RoomArea : MonoBehaviour
     /// <param name="other">The other Collider2D involved in this collision.</param>
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log(other.gameObject.name);
         if (other.TryGetComponent<EnemySpawner>(out EnemySpawner spawner)) {
             spawners.Add(spawner);
         }

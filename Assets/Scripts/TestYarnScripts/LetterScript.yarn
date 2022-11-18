@@ -1,7 +1,8 @@
 ﻿title: Letter
 ---
 <<p_face_towards Player Letter>>
-Mysterious Note: Welcome, dear guest, to the Willow milestone 2 demo build! (Press X or Continue)
+<<changeRespondantImg null>>
+Mysterious Note: Welcome, dear guest, to the Willow milestone 2 demo build!
 Mysterious Note: In this build, you'll be exploring a small section of the Forest. Before you head out though, here's some tips for ya!
 Mysterious Note: Movement: WASD, Left Joystick
 Mysterious Note: Aim: Mouse, Right Joystick 
