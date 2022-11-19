@@ -32,6 +32,8 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private int maxHealth = 6;
     [SerializeField] private int health;
+    
+    public bool CanHeal {get => health < maxHealth; }
 
     [SerializeField] private float baseSpeed = 3f;
     [SerializeField] private float maxAimOffset = 2;
@@ -82,7 +84,7 @@ public class Player : MonoBehaviour, IDamageable
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_hit", transform.position);
             tempInvincibilityRemaining = tempInvincibilityTime;
             if (health <= 0) {
-                FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
                 StartCoroutine(Die());
             }
             return true;
@@ -312,6 +314,11 @@ public class Player : MonoBehaviour, IDamageable
         if (initMove) {
             canMove = true;
         }
+    }
+
+    public void Heal(int amount) {
+        health += amount;
+        health = Mathf.Min(health, maxHealth);
     }
 
     [SerializeField] private float deathTime = 3;

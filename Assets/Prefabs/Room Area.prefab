@@ -125,6 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0788612f409e3ae3b97fa73cb02e82a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  autoStartWithPlayer: 1
+  mistPrefab: {fileID: 2934212142810119624, guid: b06b6b1882b269f22a8eb8db1a8148e0, type: 3}
 --- !u!50 &1651836703149229475
 Rigidbody2D:
   serializedVersion: 4

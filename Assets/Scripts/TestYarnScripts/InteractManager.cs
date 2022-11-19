@@ -20,7 +20,7 @@ public class InteractManager : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        Debug.Log(other.gameObject.name);
+        // Debug.Log(other.gameObject.name);
         if (((1 << other.gameObject.layer) | interactibleLayers) == interactibleLayers) {
             Interactible newInter = other.GetComponent<Interactible>();
             inRange.Add(newInter);
