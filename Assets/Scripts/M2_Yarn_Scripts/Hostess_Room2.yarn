@@ -13,6 +13,7 @@ Hostess: A test for you.
 <<wait 1.5>>
 <<firingRepeaterActive "Firing Repeater1" true>>
 <<firingRepeaterActive "Firing Repeater2" true>>
+<<firingRepeaterActive "Firing Repeater3" true>>
 <<wait 1.5>>
 <<switch_camera "CM vcam3">>
 Hostess: You will need to dash through these bullets to progress.
