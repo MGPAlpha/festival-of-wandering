@@ -61,24 +61,24 @@ public class FMODYarnBehavior : MonoBehaviour
     }
 
     [YarnCommand("play_track")]
-    void Playtrack(string name) {
+    public void Playtrack(string name) {
 		instance = FMODUnity.RuntimeManager.CreateInstance("event:/Music/" + name);
         instance.start();
     }
 
-    void SetParameter(FMOD.Studio.EventInstance e, string name, float value) {
+    public void SetParameter(FMOD.Studio.EventInstance e, string name, float value) {
 	    e.setParameterByName(name, value);
 	}
 
     [YarnCommand("stop_track")]
-    void StopTrack() {
+    public void StopTrack() {
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         instance.release();
         instance.clearHandle();
     }
 
     [YarnCommand("stop_all_tracks")]
-    void StopAllTracks() {
+    public void StopAllTracks() {
         instance.stop(FMOD.Studio.STOP_MODE.ALLOWFADEOUT);
         instance.release();
         instance.clearHandle();

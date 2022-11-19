@@ -1,7 +1,8 @@
-﻿title: Hostess_Room2
+title: Hostess_Room2
 tags:
 ---
 <<change_camera_speed 1>>
+<<changeRespondantImg hostessImg>>
 <<switch_camera "CM vcam3">>
 <<p_walk_to "Player" "hr2_pMarker1" .6>>
 <<p_face_towards "Player" "Hostess">>

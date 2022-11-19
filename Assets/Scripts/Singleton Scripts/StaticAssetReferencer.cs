@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Yarn.Unity;
 
 public class StaticAssetReferencer : MonoBehaviour
 {
@@ -16,5 +18,12 @@ public class StaticAssetReferencer : MonoBehaviour
         CameraSingleton.ClearSwitchedCameras();
         CameraSingleton.ChangeCameraSpeed(1.5f);
         //PlayerSingleton.PlayerSing.PInput.ActivateInput();
+    }
+
+    [YarnCommand("return_to_start")]
+    public static void ReturnToStart() {
+        FMODYarnBehavior fmodMusic = FindObjectOfType<FMODYarnBehavior>();
+        fmodMusic.StopAllTracks();
+        SceneManager.LoadScene(0);
     }
 }
