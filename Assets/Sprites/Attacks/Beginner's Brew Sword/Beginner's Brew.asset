@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5024c74f7c020ac5bdceb383647f851, type: 3}
-  m_Name: Test Sword
+  m_Name: Beginner's Brew
   m_EditorClassIdentifier: 
   weaponName: Beginner's Brew
   isHeavy: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
     attackDuration: 0.15
     attackCooldown: 0.15
     comboTimeLimit: 0.3
-    pushbackForce: 0
+    pushbackForce: 10
   - animationClip: {fileID: 7400000, guid: 08f6c9d5388a3abec96a274d7d0493fb, type: 2}
     animationSpeed: 1.2
     movementSpeed: 0.5
@@ -36,4 +36,4 @@ MonoBehaviour:
     attackDuration: 0.15
     attackCooldown: 0.15
     comboTimeLimit: 0.3
-    pushbackForce: 0
+    pushbackForce: 10
