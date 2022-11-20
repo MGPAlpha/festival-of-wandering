@@ -6,6 +6,7 @@ using System;
 public class GenericPickup : MonoBehaviour
 {
     public enum PickupType {
+        None,
         Heal,
         HalfHeal,
         FireworkCharm,
@@ -59,6 +60,12 @@ public class GenericPickup : MonoBehaviour
         }
     }
 
+    public void InitializeBeforeStart(PickupType type, bool autoPickUp) {
+        this.type = type;
+        this.autoPickUp = autoPickUp;
+        this.singleUse = true;
+    }
+
     public void InteractionTrigger() {
         if (usedUp) return;
         bool successfulInteraction = false;
@@ -90,6 +97,7 @@ public class GenericPickup : MonoBehaviour
             switch (type) {
                 case PickupType.Heal:
                 case PickupType.HalfHeal:
+                case PickupType.FireworkCharm:
                     Destroy(this.gameObject);
                     break;
             }

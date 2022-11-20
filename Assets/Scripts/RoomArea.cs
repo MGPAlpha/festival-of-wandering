@@ -9,17 +9,21 @@ public class RoomArea : MonoBehaviour
     public static bool InCombat {get; private set;} = false;
 
     [SerializeField] private bool autoStartWithPlayer = true;
+
+    private LootSpawner lootSpawner;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        lootSpawner = GetComponentInChildren<LootSpawner>();
     }
 
     private bool roomStarted = false;
     private bool roomComplete = false;
 
     [SerializeField] private GameObject mistPrefab;
+
+    private GameObject spawnedPickup;
 
     private List<EnemySpawner> spawners = new List<EnemySpawner>();
 
@@ -103,6 +107,7 @@ public class RoomArea : MonoBehaviour
                 foreach (GameObject mistObj in mists) {
                     mistObj.GetComponent<MistBarrier>().SetMistActive(false);
                 }
+                spawnedPickup = lootSpawner.Spawn();
             }
         }
     }
@@ -113,6 +118,10 @@ public class RoomArea : MonoBehaviour
                 if (mist) Destroy(mist);
             }
         }
+        if (spawnedPickup) {
+            Destroy(spawnedPickup);
+        }
+
         roomComplete = false;
         roomStarted = false;
 

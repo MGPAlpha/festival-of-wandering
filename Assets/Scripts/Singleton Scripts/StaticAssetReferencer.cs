@@ -11,6 +11,7 @@ public class StaticAssetReferencer : MonoBehaviour
         //CameraSingleton.CamSingle
         DialogueSingleton.Dialogue.Runner.StartDialogue(dialogue);
         PlayerSingleton.PlayerSing.Play.StartDialogue();
+        Debug.Log("Dialogue Started");
     }
 
     public void EndDialogue() {
@@ -18,6 +19,7 @@ public class StaticAssetReferencer : MonoBehaviour
         CameraSingleton.ClearSwitchedCameras();
         CameraSingleton.ChangeCameraSpeed(1.5f);
         //PlayerSingleton.PlayerSing.PInput.ActivateInput();
+        Debug.Log("Dialogue Ended");
     }
 
     [YarnCommand("return_to_start")]

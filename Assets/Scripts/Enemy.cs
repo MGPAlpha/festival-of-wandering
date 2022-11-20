@@ -93,7 +93,7 @@ public class Enemy : MonoBehaviour, IDamageable
     }
 
     public bool Damage(int amount, GameObject src) {
-        Debug.Log($"Enemy Health: {health}");
+        // Debug.Log($"Enemy Health: {health}");
         if (state == EnemyState.DEAD) return false;
         health -= amount;
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_hit", transform.position);
