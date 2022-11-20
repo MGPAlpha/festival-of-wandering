@@ -9,7 +9,13 @@ public class StaticAssetReferencer : MonoBehaviour
     private bool canAttackInit;
     public void StartDialogue(string dialogue) {
         //CameraSingleton.CamSingle
-        DialogueSingleton.Dialogue.Runner.StartDialogue(dialogue);
+        try {
+            DialogueSingleton.Dialogue.Runner.StartDialogue(dialogue);
+        } catch (UnityException e) {
+            Debug.Log("DIALOGUE ERROR ENCOUNTERED");
+            Debug.Log("Currently running dialogue: " + DialogueSingleton.Dialogue.Runner.CurrentNodeName);
+            Debug.Log("Attempted to run: " + dialogue);
+        }
         PlayerSingleton.PlayerSing.Play.StartDialogue();
         Debug.Log("Dialogue Started");
     }
