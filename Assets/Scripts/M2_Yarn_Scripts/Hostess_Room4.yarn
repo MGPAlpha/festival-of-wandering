@@ -13,6 +13,6 @@ Hostess: It seems you're holding one right now, the <b>Goliath Stone</b>. Press 
 Hostess: The <b>Goliath Stone</b> fires a volley of stones at your foes. Use it when you need to hit a strong foe from afar.
 Hostess: Mementos are very powerful, but some require energy to cast. Recharge them by attacking foes with your blade. 
 Hostess: Here, try it out on this dummy soul.
-<<spawn_enemy "Enemy Spawner Cutscene2" 0>>
+<<start_room "Memento Room Spawn">>
 <<teleport_to "Hostess (2)" "hr4_hMarker1">>
 ===
