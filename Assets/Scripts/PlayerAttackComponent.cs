@@ -67,6 +67,7 @@ public class PlayerAttackComponent : MonoBehaviour
         } else {
             comboIndex = 0;
         }
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/atk_sword", transform.position);
         currWeapon = weapon;
         CurrAttack = attacks[comboIndex];
         _col.offset = CurrAttack.ColliderCenter;

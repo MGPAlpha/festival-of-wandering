@@ -18,7 +18,7 @@ MonoBehaviour:
   walkAnimSpeed: 1
   attackAnimSpeed: 1
   moveSpeed: 1.6
-  baseHealth: 60
+  baseHealth: 50
   initTime: 0
   moveTime: 3
   aimTime: 0.75
@@ -42,7 +42,7 @@ MonoBehaviour:
       type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
       data:
         weapon: {fileID: 11400000, guid: 13a52836b57c8c3438696351328a89b8, type: 2}
-        probability: 1
+        probability: 0.15
     - rid: 8350186379576606721
       type: {class: AttackChoiceChance, ns: , asm: Assembly-CSharp}
       data:

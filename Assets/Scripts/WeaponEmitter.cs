@@ -28,6 +28,7 @@ public class WeaponEmitter : MonoBehaviour
     public void Fire(Weapon weapon, Vector2 direction) {
         
         ReadOnlyCollection<WeaponBurst> bursts = weapon.Bursts;
+        //FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/pew", transform.position);
         foreach (WeaponBurst burst in bursts) {
             activeBursts.Add(StartCoroutine(FireBurstCoroutine(burst, direction)));
         }

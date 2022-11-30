@@ -1,7 +1,8 @@
-﻿title: Hostess_Room5
+title: Hostess_Room5
 tags:
 ---
 <<change_camera_speed 0.5>>
+<<changeRespondantImg hostessImg>>
 <<switch_camera "CM vcam7">>
 <<p_face_towards "Player" "Hostess (2)">>
 Hostess: There are many mementos out there, if this one was not fitting, find others that suite you better.

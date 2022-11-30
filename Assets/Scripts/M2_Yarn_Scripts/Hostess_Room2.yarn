@@ -1,19 +1,21 @@
-﻿title: Hostess_Room2
+title: Hostess_Room2
 tags:
 ---
 <<change_camera_speed 1>>
+<<changeRespondantImg hostessImg>>
 <<switch_camera "CM vcam3">>
 <<p_walk_to "Player" "hr2_pMarker1" .6>>
 <<p_face_towards "Player" "Hostess">>
 Hostess: This forest is filled with dangerous entities. To proceed, you will need to utilize the power of the wood to your advantage.
-Hostess: Press Space or the B button to Spirit Shift. You will dash forward and be intangible to threats as you move. 
+Hostess: Press the Left Bumper or the Space key to Spirit Shift. You will dash forward and be intangible to threats as you move. 
 Hostess: A test for you.
 <<switch_camera "CM vcam4">>
 <<wait 1.5>>
 <<firingRepeaterActive "Firing Repeater1" true>>
 <<firingRepeaterActive "Firing Repeater2" true>>
+<<firingRepeaterActive "Firing Repeater3" true>>
 <<wait 1.5>>
 <<switch_camera "CM vcam3">>
-Elder Witch: You will need to dash through these bullets to progress.
-Elder Witch: Good luck.
+Hostess: You will need to dash through these bullets to progress.
+Hostess: Good luck.
 ===

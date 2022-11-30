@@ -40,11 +40,11 @@ public class EnemyHitEffect : MonoBehaviour
         int count = 0;
         while (count < numFlickers)
         {
-            Debug.Log("Flicker On");
+            // Debug.Log("Flicker On");
             _sr.material = spriteFillMat;
             yield return new WaitForSeconds(flickerDuration);
             _sr.material = _savedMaterial;
-            Debug.Log("Flicker Off");
+            // Debug.Log("Flicker Off");
             yield return new WaitForSeconds(flickerDuration);
             count++;
         }

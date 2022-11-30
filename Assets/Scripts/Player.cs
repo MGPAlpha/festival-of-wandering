@@ -32,6 +32,8 @@ public class Player : MonoBehaviour, IDamageable
 
     [SerializeField] private int maxHealth = 6;
     [SerializeField] private int health;
+    
+    public bool CanHeal {get => health < maxHealth; }
 
     [SerializeField] private float baseSpeed = 3f;
     [SerializeField] private float maxAimOffset = 2;
@@ -40,7 +42,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool dodging = false;
     [SerializeField] private float dodgeSpeedFactor = 1.75f;
-    [SerializeField] private float dodgeTime = 1;
+    [SerializeField] private float dodgeTime = 0.75f;
 
     [SerializeField] private float tempInvincibilityTime = 1;
     private float tempInvincibilityRemaining = 0;
@@ -79,8 +81,10 @@ public class Player : MonoBehaviour, IDamageable
     public bool Damage(int amount, GameObject src) {
         if (!dead && !IsInvincible) {
             health -= amount;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_hit", transform.position);
             tempInvincibilityRemaining = tempInvincibilityTime;
             if (health <= 0) {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
                 StartCoroutine(Die());
             }
             return true;
@@ -164,6 +168,7 @@ public class Player : MonoBehaviour, IDamageable
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive || mementoCharge < spell.ChargeRequired) return;
         _weaponEmitter.Fire(spell.Weapon, aimDir);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/pew", transform.position);
         _an.SetTrigger("spell");
         mementoCharge = 0;
     }
@@ -311,6 +316,11 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    public void Heal(int amount) {
+        health += amount;
+        health = Mathf.Min(health, maxHealth);
+    }
+
     [SerializeField] private float deathTime = 3;
     private bool dead = false;
     private IEnumerator Die() {
@@ -326,7 +336,7 @@ public class Player : MonoBehaviour, IDamageable
             deathTimer += Time.deltaTime;
             yield return null;
         }
-
+        ResupplyFireworks(2);
         RespawnAtLastCheckpoint();
     }
 

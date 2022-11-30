@@ -18,7 +18,7 @@ MonoBehaviour:
   walkAnimSpeed: 0.2
   attackAnimSpeed: 0.5
   moveSpeed: 1
-  baseHealth: 5
+  baseHealth: 3
   initTime: 0
   moveTime: 0.8
   aimTime: 0.8
