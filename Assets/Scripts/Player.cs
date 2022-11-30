@@ -26,7 +26,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
     [SerializeField] private Memento spell;
 
-    private Vector2 moveDir;
+    private Vector2 inputMoveDir;
     private Vector2 aimDir;
     private Vector2? targetPos;
 
@@ -93,6 +93,8 @@ public class Player : MonoBehaviour, IDamageable
 
     float escHoldTime = 0;
 
+    Vector2 lastActiveMoveDir = Vector2.down;
+
     // Update is called once per frame
     void Update()
     {
@@ -106,13 +108,8 @@ public class Player : MonoBehaviour, IDamageable
             escHoldTime = 0;
         }
 
-        if (_cco)
-        {
-            Vector3 offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
-            cameraOffset.OffsetTo(offset);
-        }
         if (!canMove) {
-            moveDir = Vector2.zero;
+            inputMoveDir = Vector2.zero;
             _rb.velocity = Vector2.zero;
             return;
         }
@@ -127,18 +124,36 @@ public class Player : MonoBehaviour, IDamageable
             _sp.enabled = true;
         }
         
-        moveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
-        if (aimDir.magnitude == 0) aimDir = moveDir;
+        inputMoveDir = _input.currentActionMap["Move"].ReadValue<Vector2>();
+        if (inputMoveDir.magnitude > .6) {
+            lastActiveMoveDir = inputMoveDir.normalized;
+        }
+        if (inputAimDir.magnitude == 0) {
+            aimDir = lastActiveMoveDir;
+        } else {
+            aimDir = inputAimDir;
+        }
         if (dodging) return;
         Vector2 normalizedAim = aimDir.normalized;
         _an.SetFloat("facingX", normalizedAim.x);
         _an.SetFloat("facingY", normalizedAim.y);
-        _an.SetBool("walking", moveDir.magnitude > 0);
+        _an.SetBool("walking", inputMoveDir.magnitude > 0);
+
+        if (_cco)
+        {
+            Vector3 offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
+            if (inputAimDir.magnitude == 0) {
+                offset = Vector3.zero;
+            }
+            cameraOffset.OffsetTo(offset);
+        }
     }
+
+    private Vector2 inputAimDir;
 
     private void OnGamepadAim() {
         // if (canMove) {
-        aimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
+        inputAimDir = _input.currentActionMap["Gamepad Aim"].ReadValue<Vector2>();
         // }
         // Debug.Log(aimDir);
     }
@@ -148,7 +163,7 @@ public class Player : MonoBehaviour, IDamageable
         if (dodging || !canMove) return;
         float speed = baseSpeed;
         if (_attackComponent.Attacking) speed *= _attackComponent.CurrAttack.MovementSpeed;
-        _rb.velocity = Vector2.ClampMagnitude(moveDir, 1) * speed;
+        _rb.velocity = Vector2.ClampMagnitude(inputMoveDir, 1) * speed;
     }
 
     void OnPrimaryAttack() {
@@ -260,8 +275,8 @@ public class Player : MonoBehaviour, IDamageable
 
     void OnDodge() {
         if (!dodging && canMove) {
-            Vector2 dodgeDir = moveDir;
-            if (moveDir == Vector2.zero) dodgeDir = aimDir;
+            Vector2 dodgeDir = inputMoveDir;
+            if (inputMoveDir == Vector2.zero) dodgeDir = aimDir;
             StartCoroutine(Dodge(dodgeDir.normalized));
         }
     }
