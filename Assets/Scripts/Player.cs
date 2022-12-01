@@ -93,6 +93,8 @@ public class Player : MonoBehaviour, IDamageable
 
     float escHoldTime = 0;
 
+    private Vector2 transformedAimDir = Vector2.down;
+
     Vector2 lastActiveMoveDir = Vector2.down;
 
     // Update is called once per frame
@@ -133,6 +135,9 @@ public class Player : MonoBehaviour, IDamageable
         } else {
             aimDir = inputAimDir;
         }
+
+        transformedAimDir = AimAssistSystem.TransformAim(transform.position, aimDir);
+
         if (dodging) return;
         Vector2 normalizedAim = aimDir.normalized;
         _an.SetFloat("facingX", normalizedAim.x);
@@ -168,21 +173,21 @@ public class Player : MonoBehaviour, IDamageable
 
     void OnPrimaryAttack() {
         if (weapons[0] && canAttack) {
-            _attackComponent.TriggerWeapon(weapons[0], aimDir);
+            _attackComponent.TriggerWeapon(weapons[0], transformedAimDir);
             _an.SetTrigger("attack");
         }
     }
 
     void OnSecondaryAttack() {
         if (weapons[1] && canAttack) {
-            _attackComponent.TriggerWeapon(weapons[1], aimDir);
+            _attackComponent.TriggerWeapon(weapons[1], transformedAimDir);
             _an.SetTrigger("attack");
         }
     }
 
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive || mementoCharge < spell.ChargeRequired) return;
-        _weaponEmitter.Fire(spell.Weapon, aimDir);
+        _weaponEmitter.Fire(spell.Weapon, transformedAimDir);
         FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/pew", transform.position);
         _an.SetTrigger("spell");
         mementoCharge = 0;
