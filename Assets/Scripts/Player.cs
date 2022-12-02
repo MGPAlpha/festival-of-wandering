@@ -59,7 +59,7 @@ public class Player : MonoBehaviour, IDamageable
     public int MaxHealth => maxHealth;
     public int Health => health;
     public PlayerWeaponBase[] Weapons => weapons;
-    public float MementoChargePercentage => mementoCharge / (float) spell.ChargeRequired;
+    public float MementoChargePercentage => (spell && spell.ChargeRequired > 0) ? mementoCharge / (float) spell.ChargeRequired : 1f;
     public Memento Spell => spell;
 
     // Start is called before the first frame update
@@ -93,6 +93,13 @@ public class Player : MonoBehaviour, IDamageable
 
     float escHoldTime = 0;
 
+    void OnControlsChanged() {
+        if (!_input) _input = GetComponent<PlayerInput>();
+        Debug.Log("Controls changed and input is " + _input);
+        if (_input && OnControlSchemeChanged != null) OnControlSchemeChanged.Invoke(_input.currentControlScheme);
+    }
+
+    public System.Action<string> OnControlSchemeChanged;
     private Vector2 transformedAimDir = Vector2.down;
 
     Vector2 lastActiveMoveDir = Vector2.down;
@@ -332,7 +339,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSpell(Memento spell) {
         this.spell = spell;
-        mementoCharge = spell.ChargeRequired;
+        if (spell) mementoCharge = spell.ChargeRequired;
     }
 
     public void StartDialogue() {
@@ -356,9 +363,23 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    [YarnCommand("heal_player")]
     public void Heal(int amount) {
         health += amount;
         health = Mathf.Min(health, maxHealth);
+    }
+
+    public void MaxHealthUp(int amount) {
+        maxHealth += amount;
+        health += amount;
+    }
+
+    [YarnCommand("lower_max_health")]
+    public void MaxHealthDownTo(int amount) {
+        if (maxHealth > amount) {
+            maxHealth = amount;
+            health = Mathf.Min(health, maxHealth);
+        }
     }
 
     [SerializeField] private float deathTime = 3;

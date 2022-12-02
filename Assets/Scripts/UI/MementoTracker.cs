@@ -8,6 +8,10 @@ public class MementoTracker : MonoBehaviour
     [SerializeField] private Image mementoIcon;
     public void Update()
     {
-        mementoIcon.sprite = PlayerSingleton.PlayerSing.Play.Spell.DisplaySprite;
+        if (PlayerSingleton.PlayerSing.Play.Spell) {
+            mementoIcon.enabled = false;
+            mementoIcon.sprite = PlayerSingleton.PlayerSing.Play.Spell.DisplaySprite;
+        } 
+        else mementoIcon.enabled = false;
     }
 }

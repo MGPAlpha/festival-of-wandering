@@ -108,6 +108,7 @@ MonoBehaviour:
   assetSettings:
     healSprite: {fileID: 21300000, guid: 979b71fe1b3d5cc4b943030788e8cd84, type: 3}
     halfHealSprite: {fileID: 21300000, guid: 0cad104d0855b404393d4f801cf2c142, type: 3}
+    maxHealthSprite: {fileID: 21300000, guid: 9dc328a66d230b338b5c9aac384b81d0, type: 3}
     fireworkCharmSprite: {fileID: 21300000, guid: f0cea573114b8f64e92b66233b363cb4, type: 3}
     fireworkCharmReplenishSprite: {fileID: 21300000, guid: f0cea573114b8f64e92b66233b363cb4, type: 3}
 --- !u!114 &4884428953872312231
