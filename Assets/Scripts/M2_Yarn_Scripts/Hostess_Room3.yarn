@@ -13,4 +13,6 @@ Hostess: You will need to use these to defend yourself.
 Hostess: Good luck.
 <<deleteSelf "Hostess (1)">>
 <<start_room "First Combat Room Area">>
+<<show_tooltip "First Fight Tooltip" true>>
+<<show_tooltip "Fight Aim Tooltip" true>>
 ===
