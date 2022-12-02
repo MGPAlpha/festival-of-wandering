@@ -97,6 +97,8 @@ public class Player : MonoBehaviour, IDamageable
 
     Vector2 lastActiveMoveDir = Vector2.down;
 
+    [SerializeField] private Transform aimPointer;
+
     // Update is called once per frame
     void Update()
     {
@@ -151,6 +153,24 @@ public class Player : MonoBehaviour, IDamageable
                 offset = Vector3.zero;
             }
             cameraOffset.OffsetTo(offset);
+        }
+
+        if (aimPointer) {
+            aimPointer.position = transform.position + (Vector3)transformedAimDir.normalized;
+            aimPointer.rotation = Quaternion.Euler(0,0,Mathf.Atan2(transformedAimDir.y, transformedAimDir.x) * Mathf.Rad2Deg - 90);
+        }
+    }
+
+    /// <summary>
+    /// Callback to draw gizmos that are pickable and always drawn.
+    /// </summary>
+    private void OnDrawGizmos()
+    {
+        for (int i = 0; i < 24; i++) {
+            float angle = i/24f * 2*Mathf.PI;
+            Vector2 transformed = AimAssistSystem.TransformAim(transform.position, new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)));
+            Gizmos.color = Color.HSVToRGB(i/24f, 1, 1);
+            Gizmos.DrawLine(transform.position, transform.position + (Vector3)transformed.normalized);
         }
     }
 

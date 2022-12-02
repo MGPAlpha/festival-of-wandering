@@ -251,26 +251,32 @@ public static class AimAssistSystem
 
         float alphaBetaSq = alpha*alpha + beta*beta;
         if (alphaBetaSq > 9) {
-            float tau = 3 / Mathf.Sqrt(alphaBetaSq);
+            float tau = 9.0f / Mathf.Sqrt(alphaBetaSq);
 
             splineR2 = tau * alpha * splineVel23;
             splineR3 = tau * beta * splineVel23;
         }
+        
 
-        //Debug.Log("R2 " + splineR2 + " R3 " + splineR3);
+        // Debug.Log("R2 " + splineR2 + " R3 " + splineR3);
 
         float splineT = Mathf.InverseLerp(splineControl2.x, splineControl3.x, aimT);
 
         float t2 = splineT*splineT;
         float t3 = splineT*t2;
 
-        // Matrix4x4 tMatrix = new Matrix4x4(new Vector4(t3, t2, aimT, 1), Vector4.zero, Vector4.zero, Vector4.zero).transpose;
-        Vector4 tVector = new Vector4(t3, t2, splineT, 1);
-        Vector4 gVector = new Vector4(splineControl2.y, splineControl3.y, splineR2, splineR3);
+        float xSubXi = aimT - splineControl2.x;
+        float xSubXi2 = xSubXi * xSubXi;
+        float xSubXi3 = xSubXi2 * xSubXi;
 
-        float outT = Vector4.Dot(tVector, HERMITE_M * gVector);
+        float h = splineControl3.x - splineControl2.x;
 
-        //Debug.Log("Output " + outT);
+        float outT = (splineR2 + splineR3 - 2*splineVel23)/(h*h) * xSubXi3 + 
+            (-2*splineR2 - splineR3 + 3*splineVel23) / h * xSubXi2 + 
+            splineR2 * xSubXi + 
+            splineControl2.y;
+
+        // Debug.Log("Output " + outT);
 
         float outAngle = outT * (Mathf.PI*2) - Mathf.PI;
 
@@ -282,11 +288,5 @@ public static class AimAssistSystem
 
     }
 
-    private static Matrix4x4 HERMITE_M = new Matrix4x4(
-        new Vector4(2,-2,1,1),
-        new Vector4(-3,3,-2,-1),
-        new Vector4(0,0,1,0),
-        new Vector4(1,0,0,0)
-    ).transpose; 
 
 }
