@@ -93,6 +93,14 @@ public class Player : MonoBehaviour, IDamageable
 
     float escHoldTime = 0;
 
+    void OnControlsChanged() {
+        if (!_input) _input = GetComponent<PlayerInput>();
+        Debug.Log("Controls changed and input is " + _input);
+        if (_input && OnControlSchemeChanged != null) OnControlSchemeChanged.Invoke(_input.currentControlScheme);
+    }
+
+    public System.Action<string> OnControlSchemeChanged;
+
     // Update is called once per frame
     void Update()
     {
