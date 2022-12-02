@@ -12,4 +12,11 @@ using UnityEngine;
          v.y = (sin * tx) + (cos * ty);
          return v;
      }
+
+    public static Vector2 FlipX(this Vector2 v) => new Vector2(-v.x,v.y);
+    public static Vector2 FlipY(this Vector2 v) => new Vector2(v.x,-v.y);
+
+    public static Vector3 FlipX(this Vector3 v) => new Vector3(-v.x,v.y,v.z);
+    public static Vector3 FlipY(this Vector3 v) => new Vector3(v.x,-v.y,v.z);
+    public static Vector3 FlipZ(this Vector3 v) => new Vector3(v.x,v.y,-v.z);
  }

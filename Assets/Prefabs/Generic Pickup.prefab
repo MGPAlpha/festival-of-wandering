@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4884428953872312231}
   - component: {fileID: 4884428953872312224}
   - component: {fileID: 4884428953872312225}
+  - component: {fileID: -367209837599472474}
   m_Layer: 13
   m_Name: Generic Pickup
   m_TagString: Untagged
@@ -198,3 +199,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.53125
+--- !u!114 &-367209837599472474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4884428953872312237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eec9390b9f4ebaa3099316c051c9dee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnMaterial: {fileID: 2100000, guid: c0e35adbec3253157abd1ec018d50492, type: 2}
+  defaultMaterialAfterSpawn: {fileID: 0}
+  spawnTime: 2
+  disableCollider: 1

@@ -20,6 +20,9 @@ public class LootSpawner : MonoBehaviour
         GenericPickup newPickup = Instantiate(pickupPrefab, transform.position, Quaternion.identity).GetComponent<GenericPickup>();
         bool shouldAutoPickup = new List<GenericPickup.PickupType>{GenericPickup.PickupType.Heal, GenericPickup.PickupType.HalfHeal, GenericPickup.PickupType.FireworkCharm}.Contains(loot.type);
         newPickup.InitializeBeforeStart(loot.type, shouldAutoPickup);
+        if (newPickup.TryGetComponent<ShaderSpawnHandler>(out ShaderSpawnHandler shaderSpawn)) {
+            shaderSpawn.Spawn();
+        }
         return newPickup.gameObject;
     }
     

@@ -56,6 +56,22 @@ public class Enemy : MonoBehaviour, IDamageable
         _hitEffect = GetComponent<EnemyHitEffect>();
     }
 
+    /// <summary>
+    /// This function is called when the object becomes enabled and active.
+    /// </summary>
+    private void OnEnable()
+    {
+        AimAssistSystem.RegisterTarget(_hitbox);
+    }
+
+    /// <summary>
+    /// This function is called when the behaviour becomes disabled or inactive.
+    /// </summary>
+    private void OnDisable()
+    {
+        AimAssistSystem.DeleteTarget(_hitbox);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
