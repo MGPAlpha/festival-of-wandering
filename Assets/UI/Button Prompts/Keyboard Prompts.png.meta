@@ -239,7 +239,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -260,7 +260,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -268,6 +268,48 @@ TextureImporter:
       bones: []
       spriteID: d3317eb4a2e8d71be8e9cc96d7d3549e
       internalID: -2113145416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard Prompts_8
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 37
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 545c0116a675bddd185411dd1f38382e
+      internalID: -264432537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard Prompts_9
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 37
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9084e550fcf2932048b57555496c53ba
+      internalID: -571498390
       vertices: []
       indices: 
       edges: []
@@ -287,7 +329,9 @@ TextureImporter:
       Keyboard Prompts_5: 1171193736
       Keyboard Prompts_7: -2113145416
       Keyboard Prompts_6: 42950462
+      Keyboard Prompts_8: -264432537
       Keyboard Prompts_0: -1607163918
+      Keyboard Prompts_9: -571498390
       Keyboard Prompts_1: 1878823918
       Keyboard Prompts_3: 687836963
       Keyboard Prompts_2: -859870386

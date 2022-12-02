@@ -324,6 +324,7 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    [YarnCommand("heal_player")]
     public void Heal(int amount) {
         health += amount;
         health = Mathf.Min(health, maxHealth);
@@ -332,6 +333,14 @@ public class Player : MonoBehaviour, IDamageable
     public void MaxHealthUp(int amount) {
         maxHealth += amount;
         health += amount;
+    }
+
+    [YarnCommand("lower_max_health")]
+    public void MaxHealthDownTo(int amount) {
+        if (maxHealth > amount) {
+            maxHealth = amount;
+            health = Mathf.Min(health, maxHealth);
+        }
     }
 
     [SerializeField] private float deathTime = 3;

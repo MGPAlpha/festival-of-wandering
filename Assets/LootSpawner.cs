@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class LootSpawner : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class LootSpawner : MonoBehaviour
 
     private bool spawned = false;
 
+    [YarnCommand("spawn_loot")]
     public GameObject Spawn() {
         if (!lootTable) return null;
         LootProbability loot = lootTable.Choose();

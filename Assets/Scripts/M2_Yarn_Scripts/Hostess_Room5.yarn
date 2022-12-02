@@ -10,6 +10,5 @@ tags:
 Hostess: There are many mementos out there, if this one was not fitting, find others that suite you better.
 Hostess: After all, the woods are wide and vast, so be sure to explore and uncover its secrets.
 Hostess: One may encounter all sorts of people and artifacts...
-Hostess: Now let us test your exploration skills. The woods ahead contain crossroads, go ahead and seek me on the other side. Good luck, dear guest.
 <<teleport_to "Hostess (2)" "hr4_hMarker2">>
 ===

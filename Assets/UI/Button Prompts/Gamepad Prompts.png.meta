@@ -260,7 +260,7 @@ TextureImporter:
         width: 10
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -281,7 +281,7 @@ TextureImporter:
         width: 10
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -289,6 +289,90 @@ TextureImporter:
       bones: []
       spriteID: 10f49ad2e384bc3f3b23ed824e46893b
       internalID: 992564520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gamepad Prompts_8
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 159
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463979ee1f10f8a698a498b8595bc214
+      internalID: 1760771205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gamepad Prompts_10
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 159
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9256a4b350fdb583bb2f4dab12859a88
+      internalID: 654840910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gamepad Prompts_11
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 146
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb28b63dd02d91215bfe0f8ccaac5864
+      internalID: 353210494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gamepad Prompts_12
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 146
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bec479c924e1251fbe21ea556f59523
+      internalID: -37539177
       vertices: []
       indices: 
       edges: []
@@ -305,6 +389,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Gamepad Prompts_3: -1652279437
+      Gamepad Prompts_11: 353210494
+      Gamepad Prompts_12: -37539177
       Gamepad Prompts_2: -227158908
       Gamepad Prompts_1: -1859727281
       Gamepad Prompts_5: -889403707
@@ -314,6 +400,7 @@ TextureImporter:
       Gamepad Prompts_6: 2021048926
       Gamepad Prompts_0: 1645476833
       Gamepad Prompts_9: -314651787
+      Gamepad Prompts_10: 654840910
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
