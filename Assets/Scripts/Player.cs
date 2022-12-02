@@ -62,6 +62,9 @@ public class Player : MonoBehaviour, IDamageable
     public float MementoChargePercentage => mementoCharge / (float) spell.ChargeRequired;
     public Memento Spell => spell;
 
+    private FMOD.Studio.Bus masterBus;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,6 +78,7 @@ public class Player : MonoBehaviour, IDamageable
         canMove = true;
         canAttack = true;
         health = maxHealth;
+        masterBus = FMODUnity.RuntimeManager.GetBus("Bus:/");
         if (spell) mementoCharge = spell.ChargeRequired;
     }
 
@@ -100,6 +104,7 @@ public class Player : MonoBehaviour, IDamageable
         if (_input.actions["Exit"].IsPressed()) {
             escHoldTime += Time.deltaTime;
             if (escHoldTime > 3) {
+                masterBus.stopAllEvents(FMOD.Studio.STOP_MODE .ALLOWFADEOUT);
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
         } else {
@@ -277,6 +282,7 @@ public class Player : MonoBehaviour, IDamageable
 
     void OnFirework() {
         if (canAttack && fireworkSupply > 0) {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/fireworkcharm", transform.position);
             Instantiate(fireworkWavePrefab, transform.position, Quaternion.identity);
             fireworkSupply--;
         }
