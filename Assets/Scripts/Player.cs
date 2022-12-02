@@ -59,7 +59,7 @@ public class Player : MonoBehaviour, IDamageable
     public int MaxHealth => maxHealth;
     public int Health => health;
     public PlayerWeaponBase[] Weapons => weapons;
-    public float MementoChargePercentage => mementoCharge / (float) spell.ChargeRequired;
+    public float MementoChargePercentage => (spell && spell.ChargeRequired > 0) ? mementoCharge / (float) spell.ChargeRequired : 1f;
     public Memento Spell => spell;
 
     // Start is called before the first frame update
@@ -300,7 +300,7 @@ public class Player : MonoBehaviour, IDamageable
 
     public void SetSpell(Memento spell) {
         this.spell = spell;
-        mementoCharge = spell.ChargeRequired;
+        if (spell) mementoCharge = spell.ChargeRequired;
     }
 
     public void StartDialogue() {
@@ -327,6 +327,11 @@ public class Player : MonoBehaviour, IDamageable
     public void Heal(int amount) {
         health += amount;
         health = Mathf.Min(health, maxHealth);
+    }
+
+    public void MaxHealthUp(int amount) {
+        maxHealth += amount;
+        health += amount;
     }
 
     [SerializeField] private float deathTime = 3;
