@@ -2270,7 +2270,7 @@
     },
     "m_Name": "Multiply",
     "m_DrawState": {
-        "m_Expanded": false,
+        "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
             "x": -2199.000244140625,
@@ -2535,7 +2535,7 @@
     "m_ShaderOutputName": "B",
     "m_StageCapability": 3,
     "m_Value": {
-        "e00": -1.0,
+        "e00": -3.0,
         "e01": 2.0,
         "e02": 2.0,
         "e03": 2.0,
