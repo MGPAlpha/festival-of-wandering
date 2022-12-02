@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Yarn.Unity;
 
 public class Tooltip : MonoBehaviour
 {
@@ -43,6 +44,7 @@ public class Tooltip : MonoBehaviour
         _cg.alpha = alpha;
     }
 
+    [YarnCommand("show_tooltip")]
     public void SetVisible(bool visible) {
         this.visible = visible;
     }

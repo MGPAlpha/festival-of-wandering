@@ -1,0 +1,43 @@
+title: Firework_Room1
+tags:
+---
+<<change_camera_speed 0.5>>
+<<changeRespondantImg hostessImg>>
+<<switch_camera "FireworkCam1">>
+<<p_walk_to "Player" "fireworkRoom-marker1" 1.5>>
+<<p_face_towards "Player" "Hostess (3)">>
+Hostess: It's time for you to try one of the most powerful artifacts that can be found in this forest, the <b>Firework Charm</b>.
+Hostess: By just dropping one on the ground, you can send out a powerful shockwave that turns dangerous projectiles into harmless fireworks.
+Hostess: To teach you to use this powerful tool, I'm going to temporarily weaken you, but I'll make sure you get back to normal once we're done.
+<<lower_max_health "Player" 2>>
+<<heal_player "Player" 2>>
+<<heal_player "Player" -1>>
+Hostess: Now, here is your challenge!
+<<change_camera_speed 1>>
+<<switch_camera "FireworkCam2">>
+<<wait 1.5>>
+<<firingRepeaterActive "Firing Repeater (2)" true>>
+<<firingRepeaterActive "Firing Repeater (3)" true>>
+<<firingRepeaterActive "Firing Repeater (4)" true>>
+<<firingRepeaterActive "Firing Repeater (5)" true>>
+<<firingRepeaterActive "Firing Repeater (6)" true>>
+<<firingRepeaterActive "Firing Repeater (7)" true>>
+<<firingRepeaterActive "Firing Repeater (8)" true>>
+<<firingRepeaterActive "Firing Repeater (9)" true>>
+<<firingRepeaterActive "Firing Repeater (10)" true>>
+<<firingRepeaterActive "Firing Repeater (11)" true>>
+<<firingRepeaterActive "Firing Repeater (12)" true>>
+<<firingRepeaterActive "Firing Repeater (13)" true>>
+<<firingRepeaterActive "Firing Repeater (14)" true>>
+<<firingRepeaterActive "Firing Repeater (15)" true>>
+<<firingRepeaterActive "Firing Repeater (16)" true>>
+<<firingRepeaterActive "Firing Repeater (17)" true>>
+<<wait 1.5>>
+<<switch_camera "FireworkCam1">>
+<<wait 1.5>>
+Hostess: I'm setting down a stack of <b>Firework Charms</b> for you to take from, so feel free to use as many as you need.
+<<spawn_loot "FireworkPileSpawner">>
+Hostess: Use the <b>Firework Charms</b> to make your way though that hailstorm of bullets!
+Hostess: The woods ahead contain crossroads. Once you get past these bullets, go ahead and seek me on the other side. Good luck, dear guest.
+<<show_tooltip "Firework Tooltip" true>>
+===

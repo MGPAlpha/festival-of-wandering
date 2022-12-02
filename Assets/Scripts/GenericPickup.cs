@@ -9,6 +9,7 @@ public class GenericPickup : MonoBehaviour
         None,
         Heal,
         HalfHeal,
+        MaxHealth,
         FireworkCharm,
         FireworkCharmReplenish,
         Memento,
@@ -50,6 +51,9 @@ public class GenericPickup : MonoBehaviour
             case PickupType.HalfHeal:
                 _sp.sprite = assetSettings.halfHealSprite;
                 break;
+            case PickupType.MaxHealth:
+                _sp.sprite = assetSettings.maxHealthSprite;
+                break;
             case PickupType.FireworkCharm:
                 _sp.sprite = assetSettings.fireworkCharmSprite;
                 break;
@@ -76,6 +80,10 @@ public class GenericPickup : MonoBehaviour
             case PickupType.HalfHeal:
                 successfulInteraction = HealPlayer(1);
                 break;
+            case PickupType.MaxHealth:
+                MaxHealthUp(2);
+                successfulInteraction = true;
+                break;
             case PickupType.FireworkCharm:
                 successfulInteraction = true;
                 PlayerSingleton.PlayerSing.Play.GainFireworks(1);
@@ -97,6 +105,7 @@ public class GenericPickup : MonoBehaviour
             switch (type) {
                 case PickupType.Heal:
                 case PickupType.HalfHeal:
+                case PickupType.MaxHealth:
                 case PickupType.FireworkCharm:
                     Destroy(this.gameObject);
                     break;
@@ -110,6 +119,10 @@ public class GenericPickup : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    private void MaxHealthUp(int amount = 2) {
+        PlayerSingleton.PlayerSing.Play.MaxHealthUp(amount);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -128,6 +141,7 @@ public class GenericPickup : MonoBehaviour
     public class PickupAssetSettings {
         [SerializeField] public Sprite healSprite;
         [SerializeField] public Sprite halfHealSprite;
+        [SerializeField] public Sprite maxHealthSprite;
         [SerializeField] public Sprite fireworkCharmSprite;
         [SerializeField] public Sprite fireworkCharmReplenishSprite;
     }

@@ -11,13 +11,14 @@ public class PlayerSingleton : MonoBehaviour
 
     void Awake() {
         PlayerSing = this;
+        Play = GetComponent<Player>();
+        PInput = GetComponent<PlayerInput>();
+        Debug.Log(Play != null ? "Player is instatiaed!" : "Player is not instatiated!");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        Play = GetComponent<Player>();
-        PInput = GetComponent<PlayerInput>();
-        Debug.Log(Play != null ? "Player is instatiaed!" : "Player is not instatiated!");
+        
     }
 }
