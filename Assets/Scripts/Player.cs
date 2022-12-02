@@ -156,8 +156,8 @@ public class Player : MonoBehaviour, IDamageable
         }
 
         if (aimPointer) {
-            aimPointer.position = transform.position + (Vector3)transformedAimDir.normalized;
-            aimPointer.rotation = Quaternion.Euler(0,0,Mathf.Atan2(transformedAimDir.y, transformedAimDir.x) * Mathf.Rad2Deg - 90);
+            aimPointer.position = transform.position + (Vector3)transformedAimDir.normalized * 1.5f;
+            aimPointer.rotation = Quaternion.Euler(0,0,Mathf.Atan2(transformedAimDir.y, transformedAimDir.x) * Mathf.Rad2Deg);
         }
     }
 
