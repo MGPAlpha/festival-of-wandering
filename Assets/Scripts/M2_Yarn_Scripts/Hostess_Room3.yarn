@@ -1,7 +1,8 @@
-﻿title: Hostess_Room3
+title: Hostess_Room3
 tags:
 ---
 <<change_camera_speed 1>>
+<<changeRespondantImg hostessImg>>
 <<switch_camera "CM vcam5">>
 <<p_walk_to "Player" "hr3_pMarker1" .6>>
 <<p_face_towards "Player" "Hostess (1)">>
@@ -11,5 +12,5 @@ Hostess: You may have already realized that you have 2 weapons on your person.
 Hostess: You will need to use these to defend yourself.
 Hostess: Good luck.
 <<deleteSelf "Hostess (1)">>
-<<spawn_enemy "Enemy Spawner Cutscene1" 0>>
+<<start_room "First Combat Room Area">>
 ===

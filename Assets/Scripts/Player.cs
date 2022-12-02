@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IDamageable
     [SerializeField] private bool canAttack;
     [SerializeField] private bool canMove;
     [SerializeField] private CinemachineCameraOffset _cco;
+    [SerializeField] private CameraOffset cameraOffset;
     [SerializeField] private GameObject fireworkWavePrefab;
 
     [SerializeField] private PlayerWeaponBase[] weapons = new PlayerWeaponBase[2];
@@ -30,7 +31,9 @@ public class Player : MonoBehaviour, IDamageable
     private Vector2? targetPos;
 
     [SerializeField] private int maxHealth = 6;
-    private int health;
+    [SerializeField] private int health;
+    
+    public bool CanHeal {get => health < maxHealth; }
 
     [SerializeField] private float baseSpeed = 3f;
     [SerializeField] private float maxAimOffset = 2;
@@ -39,7 +42,7 @@ public class Player : MonoBehaviour, IDamageable
 
     private bool dodging = false;
     [SerializeField] private float dodgeSpeedFactor = 1.75f;
-    [SerializeField] private float dodgeTime = 1;
+    [SerializeField] private float dodgeTime = 0.75f;
 
     [SerializeField] private float tempInvincibilityTime = 1;
     private float tempInvincibilityRemaining = 0;
@@ -52,6 +55,12 @@ public class Player : MonoBehaviour, IDamageable
     private int mementoCharge;
 
     private ParticleSystem _ps;
+
+    public int MaxHealth => maxHealth;
+    public int Health => health;
+    public PlayerWeaponBase[] Weapons => weapons;
+    public float MementoChargePercentage => mementoCharge / (float) spell.ChargeRequired;
+    public Memento Spell => spell;
 
     // Start is called before the first frame update
     void Start()
@@ -72,8 +81,10 @@ public class Player : MonoBehaviour, IDamageable
     public bool Damage(int amount, GameObject src) {
         if (!dead && !IsInvincible) {
             health -= amount;
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_hit", transform.position);
             tempInvincibilityRemaining = tempInvincibilityTime;
             if (health <= 0) {
+            FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
                 StartCoroutine(Die());
             }
             return true;
@@ -95,8 +106,10 @@ public class Player : MonoBehaviour, IDamageable
             escHoldTime = 0;
         }
 
-        if (_cco) {
-            _cco.m_Offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
+        if (_cco)
+        {
+            Vector3 offset = Vector2.ClampMagnitude(aimDir, 1) * maxAimOffset;
+            cameraOffset.OffsetTo(offset);
         }
         if (!canMove) {
             moveDir = Vector2.zero;
@@ -155,6 +168,7 @@ public class Player : MonoBehaviour, IDamageable
     void OnSpell() {
         if (!canAttack || !spell || _weaponEmitter.FiringActive || mementoCharge < spell.ChargeRequired) return;
         _weaponEmitter.Fire(spell.Weapon, aimDir);
+        FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/pew", transform.position);
         _an.SetTrigger("spell");
         mementoCharge = 0;
     }
@@ -200,30 +214,30 @@ public class Player : MonoBehaviour, IDamageable
     /// OnGUI is called for rendering and handling GUI events.
     /// This function can be called multiple times per frame (one call per event).
     /// </summary>
-    private void OnGUI()
-    {
-        // GUIStyle healthStyle = new GUIStyle();
-        // healthStyle.fontSize = 30;
-        // GUI.skin.label.fontSize = 20;
-        GUILayout.Label("Health: " + health + "/" + maxHealth);
-        if (weapons[0]) {
-            GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
-        }
-        if (spell) {
-            GUILayout.Label("Current Memento: " + spell.MementoName + " (Press E or Right Bumper)");
-            GUILayout.Label("Memento Charge: " + mementoCharge + "/" + spell.ChargeRequired);
-        }
-        if (fireworkSupply > 0) {
-            GUILayout.Label("Firework Charms: " + fireworkSupply + " remaining (Press Q or Left Bumper)");
-        }
-        if (dead) {
-            GUILayout.Label("You died!");
-        }
-        if (interactManager.CanInteract) {
-            GUILayout.Label("Press F on keyboard or X on controller to Interact!");
-        }
+    //private void OnGUI()
+    //{
+    //    // GUIStyle healthStyle = new GUIStyle();
+    //    // healthStyle.fontSize = 30;
+    //    // GUI.skin.label.fontSize = 20;
+    //    GUILayout.Label("Health: " + health + "/" + maxHealth);
+    //    if (weapons[0]) {
+    //        GUILayout.Label("Current Weapon: " + (weapons[0] ? (weapons[0].WeaponName + " (Left Click or Right Trigger)") : "None"));
+    //    }
+    //    if (spell) {
+    //        GUILayout.Label("Current Memento: " + spell.MementoName + " (Press E or Right Bumper)");
+    //        GUILayout.Label("Memento Charge: " + mementoCharge + "/" + spell.ChargeRequired);
+    //    }
+    //    if (fireworkSupply > 0) {
+    //        GUILayout.Label("Firework Charms: " + fireworkSupply + " remaining (Press Q or Left Bumper)");
+    //    }
+    //    if (dead) {
+    //        GUILayout.Label("You died!");
+    //    }
+    //    if (interactManager.CanInteract) {
+    //        GUILayout.Label("Press F on keyboard or X on controller to Interact!");
+    //    }
 
-    }
+    //}
 
     float dodgeTimer;
 
@@ -253,6 +267,7 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     [SerializeField] private int fireworkSupply = 2;
+    public int FireworkSupply => fireworkSupply;
     public void GainFireworks(int amount) {
         fireworkSupply += amount;
     }
@@ -301,6 +316,11 @@ public class Player : MonoBehaviour, IDamageable
         }
     }
 
+    public void Heal(int amount) {
+        health += amount;
+        health = Mathf.Min(health, maxHealth);
+    }
+
     [SerializeField] private float deathTime = 3;
     private bool dead = false;
     private IEnumerator Die() {
@@ -316,7 +336,7 @@ public class Player : MonoBehaviour, IDamageable
             deathTimer += Time.deltaTime;
             yield return null;
         }
-
+        ResupplyFireworks(2);
         RespawnAtLastCheckpoint();
     }
 

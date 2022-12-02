@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 684315158556548933}
   - component: {fileID: 684315158556548934}
   - component: {fileID: 684315158556548955}
+  - component: {fileID: 7379020753700464898}
   - component: {fileID: 7398810204106560161}
   - component: {fileID: 3310003990907907858}
   - component: {fileID: 6349594722775126877}
@@ -77,8 +78,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1649408375
-  m_SortingLayer: 3
+  m_SortingLayerID: -2008575807
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -250736363, guid: 86ec43796361e280fb85127714db270b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -132,6 +133,22 @@ MonoBehaviour:
   spriteDissolveTime: 1
   spriteDissolveDelay: 0.5
   killingBlowForce: 6
+--- !u!114 &7379020753700464898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 684315158556548935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2cd7d613028ed4c88e8083e20f2f95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numFlickers: 1
+  flickerDuration: 0.2
+  spriteFillMat: {fileID: 2100000, guid: 2b7c3b6563d50644998ebc0dc2534312, type: 2}
+  hitParticles: {fileID: 8549702593808195003, guid: 5e3f21608748a2042aebe993289655b7, type: 3}
 --- !u!58 &7398810204106560161
 CircleCollider2D:
   m_ObjectHideFlags: 0

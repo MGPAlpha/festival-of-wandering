@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{62b11a7d-908f-4ed3-8a89-10cfc652e50e}">
+		<property name="assetPath">
+			<value>combat_hit.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.59879818594104306</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{796e5ebd-ac9c-4ab7-95de-86a2112eee42}</destination>
+		</relationship>
+	</object>
+</objects>

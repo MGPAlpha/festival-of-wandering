@@ -61,7 +61,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: afac7cbe1ad29d949a98998d0be1965b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2008575807
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 4729606205655721961, guid: db0e0b3c32bbfc74582f9a35a1732d30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &4884819244816967166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,12 +158,14 @@ MonoBehaviour:
   canAttack: 0
   canMove: 0
   _cco: {fileID: 0}
+  cameraOffset: {fileID: 0}
   fireworkWavePrefab: {fileID: 4257421256083799110, guid: 321e0a7a241e2f417a07851645d10ab5, type: 3}
   weapons:
   - {fileID: 11400000, guid: 04d3de3196ebd7624847b18cf333371d, type: 2}
   - {fileID: 11400000, guid: f01bcceb763ae022a85af6375283d85f, type: 2}
   spell: {fileID: 0}
   maxHealth: 6
+  health: 0
   baseSpeed: 3
   maxAimOffset: 2
   interactManager: {fileID: 4820013636729818771}
@@ -192,7 +194,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &4884819244816967163
 BoxCollider2D:

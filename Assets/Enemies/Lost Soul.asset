@@ -20,10 +20,10 @@ MonoBehaviour:
   moveSpeed: 1
   baseHealth: 3
   initTime: 0
-  moveTime: 4
-  aimTime: 3
+  moveTime: 0.8
+  aimTime: 0.8
   attackAnimLeadTime: 1.2
-  cooldownTime: 0.5
+  cooldownTime: 0.2
   speedWhileAiming: 0
   speedWhileFiring: 0
   lineOfSightTime: 0.5
