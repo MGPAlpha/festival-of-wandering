@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
+  m_Script: {fileID: 11500000, guid: a71d879f334083f48b8bd2dd596fd4c7, type: 3}
   m_Name: DirtRule
   m_EditorClassIdentifier: 
   m_DefaultSprite: {fileID: -952834938, guid: 6fd3a212c17b96846b03467abe6291d7, type: 3}
@@ -44,7 +44,7 @@ MonoBehaviour:
     m_Sprites:
     - {fileID: -331839544, guid: 6fd3a212c17b96846b03467abe6291d7, type: 3}
     m_GameObject: {fileID: 0}
-    m_MinAnimationSpeed: 1
+    m_MinAnimationSpeed: 0
     m_MaxAnimationSpeed: 1
     m_PerlinScale: 0.5
     m_Output: 0
