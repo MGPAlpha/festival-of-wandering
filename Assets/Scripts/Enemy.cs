@@ -105,6 +105,9 @@ public class Enemy : MonoBehaviour, IDamageable
         _an.SetFloat("attackSpeed", enemy.AttackAnimSpeed);
         _hitbox.offset = enemy.HitboxCenter;
         _hitbox.size = enemy.HitboxSize;
+        if (enemy.OverrideMaterial) {
+            _sp.material = enemy.OverrideMaterial;
+        }
         _sp.material.SetFloat("_Dissolve", 0);
         target = GameObject.Find("Player");
     }

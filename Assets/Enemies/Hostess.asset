@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Hostess
   animatorController: {fileID: 9100000, guid: 06998d5531d5d6d44969627ff4a8564c, type: 2}
+  overrideMaterial: {fileID: 2100000, guid: f19dc8321cd9c31f194d000a7012dd49, type: 2}
   idleAnimSpeed: 1
   walkAnimSpeed: 1
   attackAnimSpeed: 1
