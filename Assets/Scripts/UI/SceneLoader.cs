@@ -9,5 +9,6 @@ public class SceneLoader : MonoBehaviour
 
    public void LoadStage() {
        SceneManager.LoadScene(sceneName);
+       GetComponent<UISoundLoader>().EndTrack();
    }
 }
