@@ -95,6 +95,7 @@ public class Enemy : MonoBehaviour, IDamageable
         health = enemy.BaseHealth;
         maxHealth = enemy.BaseHealth;
         attackAnimTriggered = false;
+        _rb.mass = enemy.Mass;
         _nma.speed = 0;
         _cc.enabled = true;
         _hitbox.enabled = true;
@@ -116,6 +117,7 @@ public class Enemy : MonoBehaviour, IDamageable
         _hitEffect.PlayEffect();
         if (health <= 0)
         {
+            _rb.mass = 1;
             FMODUnity.RuntimeManager.PlayOneShot("event:/SFX/Combat/combat_death", transform.position);
             _rb.AddForce((transform.position - src.transform.position).normalized * killingBlowForce, ForceMode2D.Impulse);
             Die();
