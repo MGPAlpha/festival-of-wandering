@@ -204,14 +204,14 @@ public class Player : MonoBehaviour, IDamageable
     }
 
     void OnPrimaryAttack() {
-        if (weapons[0] && canAttack) {
+        if (weapons[0] && canAttack && !dodging) {
             _attackComponent.TriggerWeapon(weapons[0], transformedAimDir);
             _an.SetTrigger("attack");
         }
     }
 
     void OnSecondaryAttack() {
-        if (weapons[1] && canAttack) {
+        if (weapons[1] && canAttack && !dodging) {
             _attackComponent.TriggerWeapon(weapons[1], transformedAimDir);
             _an.SetTrigger("attack");
         }
@@ -313,6 +313,7 @@ public class Player : MonoBehaviour, IDamageable
     void OnDodge() {
         if (!dodging && canMove) {
             Vector2 dodgeDir = inputMoveDir;
+            _attackComponent.CancelAttack();
             if (inputMoveDir == Vector2.zero) dodgeDir = aimDir;
             StartCoroutine(Dodge(dodgeDir.normalized));
         }
