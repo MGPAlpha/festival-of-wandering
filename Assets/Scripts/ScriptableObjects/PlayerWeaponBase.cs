@@ -10,6 +10,8 @@ public class PlayerWeaponBase : ScriptableObject
     public string WeaponName {
         get { return weaponName; }
     }
+    [SerializeField] private Sprite weaponIcon;
+    public Sprite WeaponIcon { get => weaponIcon; }
     [SerializeField] private bool isHeavy;
     public bool IsHeavy {
         get { return isHeavy; }

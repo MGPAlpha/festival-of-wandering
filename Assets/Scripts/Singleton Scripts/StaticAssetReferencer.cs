@@ -8,10 +8,13 @@ public class StaticAssetReferencer : MonoBehaviour
 {
     private bool canAttackInit;
     public void StartDialogue(string dialogue) {
+        
+        if (DialogueSingleton.Dialogue.Runner.IsDialogueRunning) return;
+        
         //CameraSingleton.CamSingle
         try {
             DialogueSingleton.Dialogue.Runner.StartDialogue(dialogue);
-        } catch (UnityException e) {
+        } catch (Yarn.DialogueException e) {
             Debug.Log("DIALOGUE ERROR ENCOUNTERED");
             Debug.Log("Currently running dialogue: " + DialogueSingleton.Dialogue.Runner.CurrentNodeName);
             Debug.Log("Attempted to run: " + dialogue);
