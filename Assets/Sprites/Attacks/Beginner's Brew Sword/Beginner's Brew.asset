@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Beginner's Brew
   m_EditorClassIdentifier: 
   weaponName: Beginner's Brew
+  weaponIcon: {fileID: 1932534409, guid: a0c78cf078d44d42996fa22b057c14bc, type: 3}
   isHeavy: 0
   attacks:
   - animationClip: {fileID: 7400000, guid: 5a8ec5d5e447406cd8415e6360668d8b, type: 2}
