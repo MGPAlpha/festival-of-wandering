@@ -17,7 +17,6 @@ public class EnemyHitEffect : MonoBehaviour
     private void Awake()
     {
         _sr = GetComponent<SpriteRenderer>();
-        _savedMaterial = _sr.material;
     }
 
     private void OnDestroy()
@@ -30,7 +29,7 @@ public class EnemyHitEffect : MonoBehaviour
 
     public void PlayEffect()
     {
-        _savedMaterial = _sr.material;
+        if (!_savedMaterial) _savedMaterial = _sr.material;
         _particlesInstance = Instantiate(hitParticles, this.transform);
         _particlesInstance.GetComponentInChildren<ParticleSystem>().Play();
         _flickerCoroutine = StartCoroutine(FlickerCoroutine());
