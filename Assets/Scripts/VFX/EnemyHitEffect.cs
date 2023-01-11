@@ -30,6 +30,7 @@ public class EnemyHitEffect : MonoBehaviour
 
     public void PlayEffect()
     {
+        _savedMaterial = _sr.material;
         _particlesInstance = Instantiate(hitParticles, this.transform);
         _particlesInstance.GetComponentInChildren<ParticleSystem>().Play();
         _flickerCoroutine = StartCoroutine(FlickerCoroutine());

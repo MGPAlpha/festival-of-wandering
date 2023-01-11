@@ -38,6 +38,16 @@ public class PlayerAttackComponent : MonoBehaviour
         animationSpeedParameter = Animator.StringToHash("Attack Speed");
     }
 
+    public void CancelAttack() {
+        _an.StopPlayback();
+        CurrAttack = null;
+        canAttack = true;
+        hitboxActive = false;
+        comboIndex = 0;
+        Attacking = false;
+        _sp.enabled = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
