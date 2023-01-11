@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: E Key Press
+  m_Name: A Press
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 42950462, guid: 0f2e8112f48e9fc7fb6756d8ac28bf27, type: 3}
+      value: {fileID: 1760771205, guid: 134dd6bbe22cda333946b4aad1c6104f, type: 3}
     - time: 0.016666668
-      value: {fileID: -2113145416, guid: 0f2e8112f48e9fc7fb6756d8ac28bf27, type: 3}
+      value: {fileID: 654840910, guid: 134dd6bbe22cda333946b4aad1c6104f, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 42950462, guid: 0f2e8112f48e9fc7fb6756d8ac28bf27, type: 3}
-    - {fileID: -2113145416, guid: 0f2e8112f48e9fc7fb6756d8ac28bf27, type: 3}
+    - {fileID: 1760771205, guid: 134dd6bbe22cda333946b4aad1c6104f, type: 3}
+    - {fileID: 654840910, guid: 134dd6bbe22cda333946b4aad1c6104f, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

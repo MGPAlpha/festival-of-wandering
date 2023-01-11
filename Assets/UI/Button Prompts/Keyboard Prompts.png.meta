@@ -281,7 +281,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -302,7 +302,7 @@ TextureImporter:
         width: 11
         height: 11
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -310,6 +310,48 @@ TextureImporter:
       bones: []
       spriteID: 9084e550fcf2932048b57555496c53ba
       internalID: -571498390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard Prompts_10
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 37
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d8df3548ded2c3e0adadfa00d70f708
+      internalID: -1347794569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Keyboard Prompts_11
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 37
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4ead3b3de38cfecfb7ab89295462b15
+      internalID: -1254273533
       vertices: []
       indices: 
       edges: []
@@ -325,12 +367,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      Keyboard Prompts_10: -1347794569
       Keyboard Prompts_4: 2073775293
       Keyboard Prompts_5: 1171193736
       Keyboard Prompts_7: -2113145416
       Keyboard Prompts_6: 42950462
       Keyboard Prompts_8: -264432537
       Keyboard Prompts_0: -1607163918
+      Keyboard Prompts_11: -1254273533
       Keyboard Prompts_9: -571498390
       Keyboard Prompts_1: 1878823918
       Keyboard Prompts_3: 687836963
